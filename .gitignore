@@ -1,0 +1,77 @@
+# ============================================================================
+# OSR PROTOCOL — .gitignore
+# ============================================================================
+
+# Secrets — NEVER commit
+.env
+.env.local
+.env.production
+.env.staging
+*.key
+*.pem
+*.p12
+*.jks
+secrets/
+.secret*
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+.venv/
+venv/
+env/
+.python-version
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+coverage.xml
+
+# Rust / Anchor
+contracts/target/
+contracts/escrow/target/
+contracts/presale/target/
+**/*.rs.bk
+.anchor/
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+.vercel
+tools/.next/
+tools/node_modules/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# AWS
+.aws/
+samconfig.toml
+
+# Solana
+test-ledger/
+*.so
+keys/devnet/*.json
+keys/mainnet/
+
+# Telethon session files (contain auth tokens)
+*.session
+*.session-journal
+
+# Logs
+*.log
+logs/

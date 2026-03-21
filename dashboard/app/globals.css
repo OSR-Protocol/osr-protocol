@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+
+body {
+  font-family: 'JetBrains Mono', monospace;
+  background: #000000;
+  color: #e0e0e0;
+}
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #0A0A0A; }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #04FC00; }
+
+::selection { background: #04FC0033; color: #04FC00; }
+
+@layer components {
+  .card {
+    @apply bg-osr-card border border-osr-border p-4 rounded-none;
+  }
+  .card-hover {
+    @apply card hover:bg-osr-card-hover hover:border-osr-green/20 transition-colors;
+  }
+  .btn-primary {
+    @apply bg-osr-green text-black font-mono font-bold px-4 py-2 hover:bg-osr-green/90 transition-colors;
+  }
+  .btn-ghost {
+    @apply border border-osr-border text-osr-text-muted px-4 py-2 hover:border-osr-green/40 hover:text-osr-green transition-colors;
+  }
+  .input-field {
+    @apply bg-osr-surface border border-osr-border px-3 py-2 text-sm font-mono text-white focus:outline-none focus:border-osr-green/50;
+  }
+  .badge-high {
+    @apply inline-block px-2 py-0.5 text-xs font-bold bg-red-500/20 text-red-400 border border-red-500/30;
+  }
+  .badge-medium {
+    @apply inline-block px-2 py-0.5 text-xs font-bold bg-yellow-500/20 text-yellow-400 border border-yellow-500/30;
+  }
+  .badge-low {
+    @apply inline-block px-2 py-0.5 text-xs font-bold bg-osr-green/20 text-osr-green border border-osr-green/30;
+  }
+  .tier-1 {
+    @apply text-osr-green font-bold;
+  }
+  .tier-2 {
+    @apply text-yellow-400 font-bold;
+  }
+  .tier-3 {
+    @apply text-osr-text-muted;
+  }
+}

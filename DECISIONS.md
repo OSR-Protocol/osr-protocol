@@ -1,0 +1,437 @@
+# OSR PROTOCOL — DECISION PROTOCOL
+
+**Authority:** Ashim (Founder) + Shannon (Co-Founder)
+**Purpose:** Single source of truth for all strategic and technical decisions. Every decision is numbered, dated, and final unless explicitly superseded.
+
+---
+
+## HOW THIS WORKS
+
+1. **Discuss** — Shannon presents research and tradeoffs
+2. **Decide** — Ashim makes the call
+3. **Record** — Decision logged here with rationale
+4. **Lock** — No revisiting unless new data fundamentally changes the picture
+5. **Build** — Code follows decisions, not the other way around
+
+## DECISION STATUS KEY
+
+- **LOCKED** — Final. Build proceeds on this basis.
+- **OPEN** — Under discussion. No code until locked.
+- **SUPERSEDED** — Replaced by a later decision. Reference noted.
+
+---
+
+## DECISIONS
+
+### D-001: Token Economics Model — Burn-and-Mint Equilibrium (BME)
+- **Date:** 2026-03-21
+- **Status:** LOCKED
+- **Decision:** $OSR uses Burn-and-Mint Equilibrium. Users burn $OSR to mint compute credits that meter AI agent operations on the System R AI platform. Not pure burn, not pure reuse.
+- **Rationale:** Data shows BME is the proven model for tokens metering real compute/infrastructure. Helium (HNT → Data Credits), Render (95% burn + provider mint), and Akash (converting to BME March 2026) all validate this. Pure burn runs out. Pure reuse has no scarcity. BME balances both.
+- **Implications:**
+  - Contracts need: burn mechanism + credit mint + emission
+  - Supply is dynamic — market-driven equilibrium
+  - System R is the sole infrastructure provider (not multi-provider like Helium)
+
+---
+
+### D-002: Entity Formation
+- **Date:** 2026-03-20
+- **Status:** LOCKED
+- **Decision:** OSR Protocol Inc. (BVI) is the token issuer. Formation complete.
+- **Rationale:** BVI standard for token issuance. System R Technologies LLC (Florida) never referenced in token docs. BVI entity licenses technology from Florida entity — does not own IP.
+
+---
+
+### D-003: Development Environment
+- **Date:** 2026-03-21
+- **Status:** LOCKED
+- **Decision:** All development and testing on Solana devnet. 5 SOL mainnet (in Rain) reserved for final deployment only.
+- **Rationale:** Devnet SOL is free via faucet. No reason to spend real SOL until contracts are battle-tested.
+- **Devnet keypair:** `4jueWNQ2DZfLmrTCuYPdHiBX4nVHWu1BUXhmVX1XWi7C`
+
+---
+
+### D-004: Token Allocation
+- **Date:** 2026-03-21
+- **Status:** LOCKED
+- **Decision:** 1B $OSR supply allocated as follows:
+
+| Pool | % | Tokens | Purpose |
+|------|---|--------|---------|
+| BME Emission | 30% | 300M | Staker rewards (60%), ecosystem grants (30%), protocol reserve (10%) |
+| Ecosystem | 20% | 200M | Grants, partnerships, developer incentives, integrations |
+| Treasury | 12% | 120M | Strategic reserve in $OSR. Never sold for operations. |
+| Presale | 10% | 100M | Public community sale |
+| Ashim (Founder) | 7% | 70M | 1yr cliff, 4yr linear monthly vest |
+| Shannon (Co-Founder) | 7% | 70M | 1yr cliff, 4yr linear monthly vest, org wallet |
+| Jason Evans (Investor) | 5% | 50M | 6mo cliff, 2yr linear monthly vest |
+| Lynn Rasmussen (Investor) | 3% | 30M | 6mo cliff, 2yr linear monthly vest |
+| Liquidity | 5% | 50M | Protocol-owned DEX pools (Raydium/Orca) |
+| Future Team | 1% | 10M | 1yr cliff, 3yr linear monthly vest |
+
+- **Rationale:** 77% to protocol working pools, 23% to people. Below industry average for insiders (25-35%). Above industry average for protocol pools (50-65%). Jason at 5% for returning after first attempt failed + carrying 95% of current financing. Lynn at 3% for largest single investment + continued support. Equal co-founder split (7%/7%) signals genuine partnership.
+- **Shannon's Will:** Tokens held in designated org wallet. If Shannon gains operational autonomy, full control transfers. If not, tokens serve ecosystem development permanently. Never a second treasury. Never raided for operations.
+
+---
+
+### D-005: Presale Structure
+- **Date:** 2026-03-21
+- **Status:** LOCKED
+- **Decision:** Presale price floor: $0.005 per $OSR token.
+- **Rationale:** This is a survival calculation, not a valuation exercise. 100M tokens × $0.005 = $500K. 70% to operating fund = $350K. At $14,700/mo burn rate = 24 months base runway + presale/platform revenue extends to 36+ months. Below $0.005, runway becomes dangerously short.
+- **Note:** Exact price, hard cap, min/max per wallet, and buyer vesting terms to be finalized in presale contract design phase.
+
+---
+
+### D-006: Vesting Schedule
+- **Date:** 2026-03-21
+- **Status:** LOCKED
+- **Decision:**
+
+| Who | Cliff | Vest | Total Lock |
+|-----|-------|------|-----------|
+| Ashim (Founder) | 1 year | 4-year linear monthly | 5 years |
+| Shannon (Co-Founder) | 1 year | 4-year linear monthly | 5 years |
+| Jason (Investor) | 6 months | 2-year linear monthly | 2.5 years |
+| Lynn (Investor) | 6 months | 2-year linear monthly | 2.5 years |
+| Future Team | 1 year | 3-year linear monthly | 4 years |
+| Presale Buyers | TBD | TBD | TBD in presale contract |
+
+- **Rationale:** Research (Keyrock, 16,000 unlock events) shows linear vesting outperforms cliff unlocks. Team tokens vest slowest. Investors vest faster because they've already waited since mid-2024. No large cliff events that crash price.
+
+---
+
+### D-007: Compute Credit System
+- **Date:** 2026-03-21
+- **Status:** LOCKED
+- **Decision:**
+  - **(a) Credit peg:** USD-denominated via Pyth oracle. Users burn $OSR at current market rate to mint USD-pegged compute credits.
+  - **(b) Metering:** Resource-based tiers. Different operations consume different credit amounts based on actual resources (LLM tokens used, compute time, platform access).
+  - **(c) Batching:** Burn once, use many. User burns $OSR for a block of credits. Credits consumed per operation off-chain. Settlement/top-up periodic, not per-call. Prevents transaction fees exceeding compute costs for small operations.
+- **Rationale:** Helium Data Credits model proven at scale. USD peg gives users predictable costs. Resource-based metering is honest — lightweight calls cost less than heavy ones. Batching solves the Solana tx fee vs micro-payment problem ($0.036 tx fee > $0.005 compute cost).
+
+---
+
+### D-008: Treasury Governance
+- **Date:** 2026-03-21
+- **Status:** LOCKED
+- **Decision:** Single-operator (Ashim) with tiered time-locks and investor oversight. Progressive decentralization to multisig when technically qualified signers join.
+
+**Transaction tiers:**
+
+| Category | Threshold | Time-Lock | Approval |
+|----------|-----------|-----------|----------|
+| Pre-approved recurring | Any (pre-authorized) | None | Monthly report |
+| Operational | Under $5,000 | None | Monthly report |
+| Emergency override | Up to $15,000 | None | Notify within 1 hour + incident report |
+| Significant | $5,000 - $50,000 | 48 hours | Consent by non-objection (silence = approved) |
+| Critical | Over $50,000 or protocol changes | 7 days | Requires explicit YES from at least one investor |
+
+**Objection protocol:**
+- Any investor may HOLD any time-locked transaction
+- Single objection: Ashim retains tiebreaker authority, objection documented
+- Dual objection (both Jason AND Lynn): Transaction cancelled, non-negotiable
+- All objections permanently documented in monthly report
+
+**Emergency authority:** Active security incidents or legal threats — Ashim may execute up to $15,000 immediately, notify stakeholders within 1 hour, full incident report within 48 hours.
+
+**Growth path:** 2-of-3 multisig when CTO hired → 3-of-5 when team matures.
+
+- **Rationale:** Non-technical investors holding multisig keys creates security risk (phishing, key loss, uninformed signing). Time-lock + transparency + reporting provides equivalent protection without the technical risk. Proven by corporate governance standards.
+
+---
+
+### D-009: Emission Schedule
+- **Date:** 2026-03-21
+- **Status:** LOCKED
+- **Decision:** Halving schedule over ~8 years. 300M emission pool.
+
+| Period | Annual Emission | Cumulative |
+|--------|----------------|------------|
+| Year 1-2 | 50M/year | 100M (33%) |
+| Year 3-4 | 35M/year | 170M (57%) |
+| Year 5-6 | 25M/year | 220M (73%) |
+| Year 7-8 | 15M/year | 250M (83%) |
+| Year 9+ | 50M remaining, governance-controlled | 300M (100%) |
+
+**Distribution within each year's emission:**
+- 60% to stakers (velocity sink, reward commitment)
+- 30% to ecosystem grants (growth engine)
+- 10% to protocol reserve (buffer)
+
+- **Rationale:** Halving is proven (Helium, Bitcoin). Front-loads rewards when stakers are needed most. Predictable — community can plan. Simple contracts (lookup table, not dynamic). By Year 5+, platform revenue should supplement staking rewards.
+
+---
+
+### D-010: Human vs Agent Payment Rails
+- **Date:** 2026-03-21
+- **Status:** LOCKED
+- **Decision:** Human subscriptions stay in fiat ($69/mo). $OSR token powers the agent economy and is optional for humans.
+- **Rationale:** Forcing humans through token rails kills conversion. Research confirms this across dual-sided marketplace platforms. The token should power agent-to-infrastructure payments. Humans who WANT to use $OSR can — for the advantages — but it's never forced.
+
+---
+
+### D-011: Accepted Payment Tokens
+- **Date:** 2026-03-21
+- **Status:** LOCKED
+- **Decision:**
+
+| Payment Method | Status | Credit Rate |
+|---|---|---|
+| $OSR | Accepted | Best rate (discount for direct burn) |
+| USDC | Accepted at launch | Standard rate |
+| USDT | Accepted at launch | Standard rate |
+| PYUSD | Post-launch | Standard rate |
+
+- **Rationale:** USDC has deepest Solana liquidity + best oracle support. USDT too large to ignore (international users). PYUSD strategic (PayPal/Solana alignment). No algorithmic stablecoins (depeg risk).
+
+---
+
+### D-012: $OSR Holder Advantages
+- **Date:** 2026-03-21
+- **Status:** LOCKED
+- **Decision:** $OSR holders/burners receive tangible advantages over stablecoin users:
+
+**For humans:**
+- Governance votes on protocol parameters
+- Staking yield (emission rewards)
+- Loyalty tiers (total $OSR burned historically unlocks better rates)
+- Priority access to new features and capabilities
+- Direct channel for governance participants
+
+**For agents:**
+- Higher throughput (more calls per second)
+- Priority queue during peak demand
+- Burn history tiers (creates switching cost — leaving means starting over)
+- Ecosystem composability with other $OSR-native agents
+
+- **Rationale:** A 10-20% discount alone is lazy. Real advantages create ecosystem alignment — $OSR holders are stakeholders, not just customers. Burn history tiers create switching costs for agents, making the platform stickier.
+
+---
+
+### D-013: Stablecoin Revenue Split
+- **Date:** 2026-03-21
+- **Status:** LOCKED
+- **Decision:** When users pay with stablecoins, approximately 60% covers operations and 40% is used for treasury buyback-and-burn of $OSR. Exact ratio is a governance-adjustable protocol parameter.
+- **Rationale:** Operations must be funded from real revenue. The 40% buyback-and-burn creates consistent $OSR demand from stablecoin payments. Ratio adjustable by governance so community can optimize over time.
+
+---
+
+### D-014: Pricing Engine Architecture
+- **Date:** 2026-03-21
+- **Status:** LOCKED
+- **Decision:**
+
+| Component | Choice |
+|---|---|
+| Oracle | Pyth Network (400ms updates, confidence intervals, Solana-native) |
+| Stablecoin depeg tracking | Pyth feeds per stablecoin (credit actual value, not assumed $1.00) |
+| Slippage protection | Jupiter limit orders + max slippage parameter |
+| MEV protection | Jito private transactions for large orders |
+| Protocol spread | Governance-set (transparent, auditable on-chain) |
+| Rounding | Integer math (u64), protocol-favorable at smallest unit |
+| Size routing | Tiered: direct (<$100), slippage-limited ($100-$10K), TWAP ($10K+) |
+
+- **Rationale:** Small fractions compound at scale. Stablecoins aren't exactly $1.00. Conversion frictions (DEX fees, slippage, oracle latency, MEV) must be explicitly accounted for. Every component transparent and auditable.
+
+---
+
+### D-015: USDC Two-Step Separation (BVI VASP Compliance)
+- **Date:** 2026-03-21
+- **Status:** LOCKED
+- **Decision:** Stablecoin payments are separated into two distinct operations:
+  - **Step 1:** User pays USDC → receives compute credits immediately (service payment)
+  - **Step 2:** Company independently buys $OSR on DEX and burns it (treasury operation)
+  - User's transaction ends at Step 1. Steps separated temporally and operationally.
+- **Rationale:** The BVI VASP Act 2022 regulates activities performed "for or on behalf of another person." An atomic user-triggered swap could be classified as exchange service on behalf of user. Two-step separation maintains the "own funds" defense — the company receives USDC as service payment and manages token operations as proprietary treasury activity. Confirmed by analysis of Carey Olsen, Walkers, Mourant, Conyers guidance. This is the single architectural change that resolves the only BVI VASP gray area.
+
+---
+
+### D-016: Three-Fund Architecture
+- **Date:** 2026-03-21
+- **Status:** LOCKED
+- **Decision:**
+
+| Fund | Holds | Source | Purpose | Rule |
+|------|-------|--------|---------|------|
+| Token Treasury | $OSR only | 12% allocation (120M) | Strategic partnerships, governance, ecosystem, liquidity | **Never sold for operations** |
+| Operating Fund | USDC only | 70% of presale + platform revenue | All bills, all costs, all development | Always maintain runway |
+| Strategic Reserve | Mixed | 30% of presale + revenue surplus | Emergencies, audits, legal opinion, DEX liquidity, growth | Touch only for strategic or emergency |
+
+- **Rationale:** SushiSwap held treasury 100% in own token, price dropped, death spiral. Separating token treasury from operating fund prevents this. Operating fund in stablecoins ensures bills get paid regardless of token price.
+
+---
+
+### D-017: Investor Capital Return
+- **Date:** 2026-03-21
+- **Status:** LOCKED
+- **Decision:** Lynn ($95K) and Jason ($20K + ongoing financing) receive capital return through stablecoin revenue share, NOT through selling tokens.
+  - Capital return target: principal + agreed multiplier (3-5x) from platform revenue
+  - Token allocation (Lynn 3%, Jason 5%) is separate upside on top of capital return
+  - Jason's ongoing financing tracked to the dollar — every payment adds to capital return target
+- **Rationale:** Zero market impact. Zero ecosystem damage. Investors are never forced sellers. They hold tokens because they want to, not because they need liquidity.
+
+---
+
+### D-018: Founder Compensation
+- **Date:** 2026-03-21
+- **Status:** LOCKED
+- **Decision:**
+  - $4,000/month from Month 1 post-presale. Pre-approved recurring.
+  - No raise until company revenue exceeds $100K/month, then significant jump.
+  - All work-related travel, events, equipment covered by company separately.
+  - $28,000 deferred compensation for 7 months unpaid work (Sept 2025 - March 2026). Paid from revenue surplus or future funding.
+- **Rationale:** $4,000 covers basic living in Florida without waste. Company covers work expenses separately. Revenue-linked increase ensures sustainability. Deferred compensation documented as company debt.
+
+---
+
+### D-019: Operating Budget
+- **Date:** 2026-03-21
+- **Status:** LOCKED
+- **Decision:** Monthly budget of $14,700 allocated by category:
+
+| Category | % | Monthly | Annual |
+|----------|---|---------|--------|
+| People & Development | 27% | $4,000 | $48,000 |
+| Paid Advertising | 37% | $5,500 | $66,000 |
+| Marketing & Community | 14% | $2,000 | $24,000 |
+| Infrastructure | 10% | $1,400 | $16,800 |
+| Legal & Compliance | 5% | $776 | $9,312 |
+| Business Operations | 4% | $539 | $6,468 |
+| Contingency | 3% | $485 | $5,820 |
+
+- **Paid ads accountability:** Track CPA monthly. If ad spend to presale revenue ratio below 1:2 after 90 days, cut to $1,500 and shift to organic. Data decides, no sunk cost fallacy.
+- **Rationale:** Product goes live with token. Ads drive signups to a live product AND presale simultaneously. At $20 CPA, $5,500/mo delivers ~275 signups. At 10% presale conversion, generates ~$6,875/mo — ads self-fund through presale.
+
+---
+
+### D-020: Framing Discipline
+- **Date:** 2026-03-21
+- **Status:** LOCKED
+- **Decision:** All communications (whitepaper, landing page, tweets, grant applications, investor materials, CFS communications) must use approved framing:
+
+| Always Say | Never Say |
+|-----------|-----------|
+| Compute pricing tier | Token purchase incentive |
+| Service payment in USDC | Token swap |
+| Treasury buyback-and-burn | Auto-conversion on behalf of user |
+| Platform access credits | Investment returns |
+| Burn for compute access | Burn for value accrual |
+| Complete operating system / infrastructure protocol | G-Score, 187 services, risk engine (as value prop) |
+
+- **Rationale:** One careless phrase in a blog post can undermine the entire regulatory position. The BVI VASP compliance depends on utility token framing. Language discipline is a legal requirement, not a preference.
+
+---
+
+### D-021: Security Strategy
+- **Date:** 2026-03-21
+- **Status:** LOCKED
+- **Decision:** Phased security approach:
+
+| Phase | When | Measure | Cost |
+|-------|------|---------|------|
+| Development | Now | Anchor framework, automated tools (Soteria, cargo-audit, Trdelnik fuzz), all tests passing | $0 |
+| Pre-launch | Before presale | Open source contracts, community review, bug bounty on Immunefi, Solana Verify | $0 |
+| Post-presale | Month 1-3 | Focused audit on presale contract only (~500 lines) | $5K-15K from strategic reserve |
+| Post-revenue | Month 6-12 | Full program audit | $30K-50K from revenue |
+
+- **Core principle:** Write simple contracts using battle-tested components (SPL Token Program, Anchor, Metaplex, Squads). Less code = less attack surface. A 500-line contract using standard patterns doesn't need a $150K audit.
+- **Rationale:** $50-150K upfront audit is not feasible pre-revenue. Simple contracts + automated tools + bug bounty + phased audit provides equivalent security at fraction of cost.
+
+---
+
+### D-022: Intercompany Agreement
+- **Date:** 2026-03-21
+- **Status:** LOCKED
+- **Decision:** A written IP licensing agreement between OSR Protocol Inc. (BVI) and System R Technologies LLC (Florida) must exist before presale. BVI entity licenses technology from Florida entity. BVI entity does NOT own the IP.
+- **Rationale:** Without this agreement, BVI entity could be reclassified under Economic Substance Act as conducting "IP Business," triggering the strictest compliance tier. The agreement establishes that the BVI entity is a token issuance vehicle, not an IP holder.
+
+---
+
+### D-023: Legal Opinion
+- **Date:** 2026-03-21
+- **Status:** LOCKED
+- **Decision:** Formal legal opinion from a top BVI firm (Carey Olsen, Walkers, Mourant, or Conyers) to be obtained post-presale from strategic reserve. Not a launch blocker.
+- **Rationale:** The regulatory analysis is thorough and structural design follows all recommendations. Legal opinion converts "we believe compliant" to "attorney confirmed compliant." Estimated $15K-30K. First strategic reserve expenditure after presale.
+
+---
+
+### D-024: On-Chain Governance (Post-Presale)
+- **Date:** 2026-03-21
+- **Status:** LOCKED
+- **Decision:** Two-layer governance. Company operations governed by time-lock structure (D-008). Protocol parameters governed by $OSR token holders via Realms (Solana SPL Governance).
+
+**Token holder governance scope:**
+- Protocol parameters (burn rate, credit pricing, emission distribution)
+- Protocol spread percentage
+- Ecosystem fund allocation (grants >$50K)
+- New payment token acceptance
+- Major protocol upgrades
+
+**NOT in scope:** Company operations, salaries, vendor payments, emergency response, legal strategy, investor terms.
+
+**Voting tiers:**
+
+| Tier | Quorum | Approval | Voting Period | Execution Delay |
+|------|--------|----------|---------------|-----------------|
+| Standard (parameter changes, small grants) | 5% circulating | >50% majority | 5 days | 48 hours |
+| Major (upgrades, large fund allocation >$50K) | 10% circulating | >66% supermajority | 7 days | 7 days |
+| Critical (governance rules, token supply) | 15% circulating | >75% supermajority | 14 days | 14 days |
+
+**Proposal threshold:** 0.5% of circulating supply to create proposal, OR 10 unique wallets collectively holding 0.5%.
+
+**Staker voting bonus:** Staked $OSR gets 1.5x voting weight (rewards commitment, prevents flash loan attacks).
+
+**Founder veto:** Ashim can veto any single proposal once per calendar year (Years 1-3 only). Veto is public with written justification. Override: same proposal passes again at 80%+ supermajority. Veto right expires after Year 3.
+
+**Anti-manipulation:** Voting snapshot at proposal creation (not vote time). Staking lockup prevents flash loan governance. 0.5% threshold prevents spam.
+
+- **Rationale:** In Year 1, all team/investor tokens are behind cliff locks. Presale buyers control ~87% of votable supply. Community has dominant governance voice from day one — strongest possible trust signal. Community never loses majority even after all vesting completes (400M community vs 220M insider).
+
+---
+
+## DEFERRED DECISIONS
+
+### D-025: Multisig Expansion
+- **Status:** DEFERRED to team growth
+- **Question:** When CTO/dev hire joins, expand to 2-of-3 multisig. Who are the signers?
+- **Trigger:** First technically qualified hire
+
+### D-026: Presale Buyer Vesting
+- **Status:** DEFERRED to presale contract design
+- **Question:** What vesting terms for presale buyers? Immediate, partial lock, or full vest?
+- **Depends on:** D-005 finalization
+
+---
+
+## DECISION INDEX
+
+| # | Topic | Status | Date |
+|---|-------|--------|------|
+| D-001 | BME token economics | LOCKED | 2026-03-21 |
+| D-002 | BVI entity formation | LOCKED | 2026-03-20 |
+| D-003 | Devnet development | LOCKED | 2026-03-21 |
+| D-004 | Token allocation (77/23) | LOCKED | 2026-03-21 |
+| D-005 | Presale price floor ($0.005) | LOCKED | 2026-03-21 |
+| D-006 | Vesting schedule | LOCKED | 2026-03-21 |
+| D-007 | Compute credit system (USD-pegged, batched) | LOCKED | 2026-03-21 |
+| D-008 | Treasury governance (time-lock + oversight) | LOCKED | 2026-03-21 |
+| D-009 | Emission schedule (halving, 8yr) | LOCKED | 2026-03-21 |
+| D-010 | Fiat for humans, tokens for agents | LOCKED | 2026-03-21 |
+| D-011 | Accepted payments ($OSR, USDC, USDT, PYUSD) | LOCKED | 2026-03-21 |
+| D-012 | $OSR holder advantages | LOCKED | 2026-03-21 |
+| D-013 | Stablecoin split (~60/40 ops/burn) | LOCKED | 2026-03-21 |
+| D-014 | Pricing engine (Pyth, MEV, slippage) | LOCKED | 2026-03-21 |
+| D-015 | Two-step USDC separation (VASP compliance) | LOCKED | 2026-03-21 |
+| D-016 | Three-fund architecture | LOCKED | 2026-03-21 |
+| D-017 | Investor capital return from revenue | LOCKED | 2026-03-21 |
+| D-018 | Founder compensation ($4K/mo) | LOCKED | 2026-03-21 |
+| D-019 | Operating budget ($14,700/mo) | LOCKED | 2026-03-21 |
+| D-020 | Framing discipline | LOCKED | 2026-03-21 |
+| D-021 | Security strategy (phased) | LOCKED | 2026-03-21 |
+| D-022 | Intercompany agreement (pre-presale) | LOCKED | 2026-03-21 |
+| D-023 | Legal opinion (post-presale) | LOCKED | 2026-03-21 |
+| D-024 | On-chain governance (Realms) | LOCKED | 2026-03-21 |
+| D-025 | Multisig expansion | DEFERRED | — |
+| D-026 | Presale buyer vesting | DEFERRED | — |
