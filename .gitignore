@@ -75,3 +75,7 @@ keys/mainnet/
 # Logs
 *.log
 logs/
+
+# Internal dev files (not for public repo)
+CLAUDE.md
+MISSION.md
