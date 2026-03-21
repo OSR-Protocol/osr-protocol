@@ -1,7 +1,7 @@
 # OSR Protocol: Onchain Infrastructure for Agentic Finance
 
 OSR Protocol Inc.
-March 22, 2026
+March 21, 2026
 
 
 ---
