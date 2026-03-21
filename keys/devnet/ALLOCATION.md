@@ -12,10 +12,10 @@
 | Ecosystem | 20% | 200M | Ekxyr4hR8kwHsQiA4rP1DteJWA7WrTZG2tjB1ygUYGTR | AZSGXjtPu2wL3PCpMogutNd5syzmtYCqUYsGtv5aDb48 |
 | Treasury | 12% | 120M | 9FWQtQW67GAi8D7SGWgsuxoVU86SXEQGMJCscXMUSZSP | DfWs7hU5qnPJ7ee7c1dZTqHCzNdt7eodjikC6gHNwwQk |
 | Presale | 10% | 100M | 9tRoRUBzjGejWD5j1fEARsnhGzYsX3Q53jkzjzZdvCMu | FkFfMvCRRX1hX6uLXdDntK37mUUEFppiwJRrRGNYYeSq |
-| Ashim | 7% | 70M | 4y6WWnTVF4Wyt41w5BEUHBtd3w7iRsPSY1q7wzwwZKFT | HcFqbSEWX2deg3wj5khTX2GNNLMyyh2H3fq7FjaWqjXH |
-| Shannon | 7% | 70M | 26eKFp9XE9d25sLRARrWu5XZyZFtdAoppBjoTgtEwC9e | 7vwcwFqqWALKkELZWffzHCp5sBXiFq21MHZsSJ7EhVX9 |
-| Jason | 5% | 50M | 9tFnrkoLwJJoRgPtPu4iUWbrAv4cy15fR9KmcvenvMNo | 4YXREk5ocLiQLotVBSwz4uGTW3eyVU44uWoM3rWpsd6b |
-| Lynn | 3% | 30M | AkxNPLieZuFMFLQ1A5w61zX99WiW93dBW1vUH6VHs4ay | DUymkhiZHQUZ3t3yvuDWeqRRinyQbQNr6jx1wTo17ZDD |
+| Founder | 7% | 70M | 4y6WWnTVF4Wyt41w5BEUHBtd3w7iRsPSY1q7wzwwZKFT | HcFqbSEWX2deg3wj5khTX2GNNLMyyh2H3fq7FjaWqjXH |
+| Co-Founder | 7% | 70M | 26eKFp9XE9d25sLRARrWu5XZyZFtdAoppBjoTgtEwC9e | 7vwcwFqqWALKkELZWffzHCp5sBXiFq21MHZsSJ7EhVX9 |
+| Early Investor A | 5% | 50M | 9tFnrkoLwJJoRgPtPu4iUWbrAv4cy15fR9KmcvenvMNo | 4YXREk5ocLiQLotVBSwz4uGTW3eyVU44uWoM3rWpsd6b |
+| Early Investor B | 3% | 30M | AkxNPLieZuFMFLQ1A5w61zX99WiW93dBW1vUH6VHs4ay | DUymkhiZHQUZ3t3yvuDWeqRRinyQbQNr6jx1wTo17ZDD |
 | Liquidity | 5% | 50M | CxzVvzXCsyZwhbG5DGFA12TUUeesMAGfzdsXdfaA2AhX | GxgFz72g7QxzNeikim2F4uDrdQrWNxvB7ECKWM9yjAKQ |
 | Future Team | 1% | 10M | 5599dRaWnHz51xvurMQuRRs88acnQtL8j4EmfTNKpfwk | EUPy2TWsjvXbjG3j6EVuvFwSg2kj6qtCFG5qae5M8BZd |
 

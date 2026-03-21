@@ -7,8 +7,6 @@ $OSR is a Burn and Mint Equilibrium (BME) token that meters AI agent operations 
 Built on Solana. Incorporated in the British Virgin Islands.
 
 [![Solana](https://img.shields.io/badge/Solana-Devnet-9945FF?logo=solana&logoColor=white)](https://solana.com)
-[![License](https://img.shields.io/badge/License-BSL%201.1-blue)](LICENSE)
-[![Tests](https://img.shields.io/badge/Tests-72%20passing-brightgreen)]()
 
 ---
 
@@ -60,32 +58,19 @@ The protocol also accepts USDC, USDT, and PYUSD. Stablecoin payments are receive
 
 77% of supply is in protocol working pools. 23% goes to the people who built and funded the project, all locked behind cliff and vesting periods. In Year 1, zero insider tokens are circulating.
 
-## Architecture
+## Repository Structure
 
 ```
 osr-protocol/
-    agents/                 # 6 monitoring agents (wallet discovery, social, content)
-        discovery/          # Solana wallet scanner via Helius RPC
-        x/                  # X (Twitter) sentiment monitor
-        telegram/           # Telegram group monitor via Telethon
-        youtube/            # YouTube content discovery
-        linkedin/           # LinkedIn research briefer
-        reddit_rss.py       # Reddit RSS content parser
     contracts/              # Anchor programs (Rust) [in development]
         escrow/             # Token escrow for vesting
         presale/            # Presale contract
-    dashboard/              # Next.js ops dashboard (6 pages)
     docs/                   # Whitepaper and technical documentation
-    infra/                  # AWS DynamoDB table definitions
+        whitepaper.md       # Full protocol specification
     keys/                   # Devnet allocation proof (no private keys committed)
-    scripts/                # Utility scripts (token mint, auth helpers)
-    shared/                 # Common Python modules
-        config.py           # Centralized environment loading
-        coordination.py     # Telegram coordination channel
-        dynamo.py           # DynamoDB helpers (osr_ prefix)
-        filters.py          # "So What?" strategic alignment filter
-        llm_client.py       # Multi provider LLM client (Claude, GPT, Gemini, DeepSeek)
-    tests/                  # 72 unit tests
+        devnet/ALLOCATION.md
+    DECISIONS.md            # 24 locked design decisions with rationale
+    README.md               # This file
 ```
 
 ## Key Design Decisions
@@ -143,24 +128,14 @@ The token is live on Solana devnet with full allocation distributed:
 
 Verify on Solana Explorer: [View Token on Devnet](https://explorer.solana.com/address/HBeMPtFD4fFf4otKst3AMvW8E5eJBhB4oqNeNRJneJHB?cluster=devnet)
 
-## Development
+## Verify on Solana
 
 ```bash
-# Python (agents, scripts, shared)
-python -m pytest tests/ -v                    # Run all tests (72 passing)
-python -m pytest tests/agents/discovery/ -v   # Discovery agent tests
-python -m pytest tests/shared/ -v             # Shared infra tests
+# Check total supply
+spl-token supply HBeMPtFD4fFf4otKst3AMvW8E5eJBhB4oqNeNRJneJHB --url devnet
 
-# Linting
-ruff check agents/ shared/ scripts/           # Python lint
-ruff format agents/ shared/ scripts/          # Python format
-
-# Dashboard (Next.js)
-cd dashboard && npm install && npm run dev    # Dev server on localhost:3000
-
-# Solana
-solana config set --url devnet                # Set to devnet
-spl-token supply HBeMPtFD4fFf4otKst3AMvW8E5eJBhB4oqNeNRJneJHB --url devnet  # Check supply
+# Check any allocation wallet balance
+spl-token balance --address DAzSPYwqnK6L35B5BkrS3AKyKB8frS7ZyYeQ1qsAdnyw --url devnet
 ```
 
 ## Documentation

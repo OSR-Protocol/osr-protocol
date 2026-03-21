@@ -79,3 +79,12 @@ logs/
 # Internal dev files (not for public repo)
 CLAUDE.md
 MISSION.md
+.env.template
+agents/
+dashboard/
+scripts/
+shared/
+tests/
+infra/
+docs/COORDINATION_CHANNEL_SETUP.md
+pyproject.toml
