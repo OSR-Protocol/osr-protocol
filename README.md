@@ -173,6 +173,8 @@ The protocol prioritizes simplicity over complexity.
 
 All mainnet operations use Ledger hardware wallets. No private keys in code or cloud storage.
 
+Security audit findings and status are documented in [SECURITY.md](SECURITY.md).
+
 ## Roadmap
 
 | Phase | Focus |
