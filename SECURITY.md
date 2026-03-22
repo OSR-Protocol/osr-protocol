@@ -33,6 +33,8 @@ All findings have been remediated. Each fix references the commit hash that reso
 |---|----------|---------|--------|--------|
 | H-6 | HIGH | Zero test coverage for `buy_with_sol`, `buy_with_stablecoin`, withdrawals, and boundary conditions. | FIXED | `4dfe7a7` |
 
+37 tests passing (confirmed 2026-03-23 on devnet `9K1VNBCK6WRDVzYbidG4hH9L3crPXxhqvTBACqM5q8bi`): initialization (5), admin actions (9), buy_with_sol with geo attestation (10), buy_with_stablecoin (5), withdrawals (6), close presale (2).
+
 28 tests added covering: initialization (valid + 4 invalid param combinations), admin actions (activate/pause/unauthorized/price updates), buy_with_sol (valid + 7 rejection paths), buy_with_stablecoin (valid USDC + fake vault + 3 rejection paths), withdrawals (active/paused/unauthorized/expired), close_presale (before/after end_time).
 
 ## Dashboard Security
