@@ -1,6 +1,6 @@
 # OSR Protocol: Onchain Infrastructure for Agentic Finance
 
-**Version 1.3**
+**Version 1.4**
 **OSR Protocol Inc.**
 **March 2026**
 
@@ -80,13 +80,29 @@ Compute credits are the internal unit of account for platform resource consumpti
 | **Resource metered** | Different operations consume different credit amounts based on actual resources used. A simple query costs fewer credits than a full backtest. A request using a lightweight language model costs fewer credits than one using a frontier model. Pricing reflects real cost, not flat fees. |
 | **Non transferable** | Credits exist as platform balances, not as tokens. They cannot be traded or speculated on. This ensures credits serve their purpose as an operational metering unit. |
 
+**Credit peg:** 1 credit = $0.001 USD.
+
+**Operation costs (initial parameters, governance adjustable):**
+
+| Operation | Credits | USD Cost |
+|-----------|---------|----------|
+| Simple intelligence query (lightweight model) | 10 | $0.01 |
+| Standard intelligence query (standard model) | 50 | $0.05 |
+| Frontier model intelligence query | 200 | $0.20 |
+| Risk assessment (position sizing, stop levels) | 30 | $0.03 |
+| Execution routing optimization | 20 | $0.02 |
+| Full backtest single strategy 1 year | 500 | $0.50 |
+| Full backtest multi strategy multi year | 2,000 | $2.00 |
+| Data feed query single asset real time | 5 | $0.005 |
+| Comprehensive market scan multi asset | 100 | $0.10 |
+
 ### 2.3 Pricing Engine
 
 The pricing engine converts between $OSR, stablecoins, and compute credits using real time data:
 
 | Component | Implementation |
 |-----------|---------------|
-| **Oracle** | Pyth Network provides $OSR/USD and stablecoin/USD price feeds with 400 millisecond update frequency and confidence intervals. The protocol uses the confidence interval to protect both users and the treasury from stale or uncertain pricing. |
+| **Oracle** | Pyth Network provides $OSR/USD and stablecoin/USD price feeds with 400 millisecond update frequency and confidence intervals. Circuit breaker: if the confidence interval exceeds 5% of the reported price, the transaction pauses and retries on the next Solana block. Staleness rejection: if the Pyth feed has not updated for more than 30 seconds, the system rejects all pricing transactions until a fresh feed arrives. |
 | **Stablecoin accuracy** | USDC and USDT are not always exactly $1.00. The protocol credits the actual oracle reported value, not an assumed peg. If USDT is at $0.998, the protocol credits $0.998 per USDT, not $1.00. |
 | **Slippage protection** | Size based routing protects all participants. Small transactions execute directly. Medium transactions enforce maximum slippage limits. Large transactions use time weighted average pricing across multiple blocks to prevent price impact. |
 | **MEV protection** | Large buyback and burn operations use Jito private transactions to prevent sandwich attacks on Solana. |
@@ -180,6 +196,8 @@ The presale distributes 100,000,000 $OSR tokens under the following parameters:
 
 The deepest discount is available in the first week. Each subsequent week the price increases toward the $0.005 base listing price. Early participation is rewarded. All presale purchases are verified on chain through wallet transaction history.
 
+**Presale buyer vesting:** 20% released at Token Generation Event. 1 month cliff on remaining 80%. Linear monthly unlock over 4 months. Total vesting: 5 months. Tokens transfer to the buyer's wallet at purchase. Transfer restrictions apply to unvested tokens. Platform consumption is unrestricted from day one. Buyers can burn tokens for compute credits immediately regardless of vesting status.
+
 ---
 
 ## 4. Accepted Payments
@@ -235,7 +253,7 @@ All $OSR holders, regardless of tier, receive:
 
 ### 4.4 Fiat Access
 
-The underlying platform also accepts fiat currency payments through a separate operating entity. Stablecoin equivalent revenue from fiat operations funds periodic treasury buyback and burn, ensuring all payment paths contribute to the token's consumption cycle.
+The platform also accepts fiat payments through a separate operating entity, with stablecoin equivalent revenue funding periodic treasury buyback and burn operations.
 
 ---
 
@@ -489,3 +507,4 @@ Contact: dev@osrprotocol.com
 | 1.1 | 2026-03-22 | External review refinements: mental model, agent workflow example, growth flywheel, regulatory tone, Phase 4 condensed, D-020 language compliance |
 | 1.2 | 2026-03-22 | Simplified access model: two tier pricing (presale + regular holders), presale structure with parameters |
 | 1.3 | 2026-03-22 | Entity separation enforced: Tier 3 removed, fiat acknowledgment via separate entity, vendor names removed, treasury threshold corrected, identity audit |
+| 1.4 | 2026-03-22 | Pre-mainnet: credit pricing table (9 operations), oracle thresholds (5%/30s), presale buyer vesting, D-005 four-tier weekly prices locked |

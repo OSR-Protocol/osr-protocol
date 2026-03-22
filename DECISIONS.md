@@ -109,14 +109,20 @@
 | Months 2-5 | 80% distributed linearly (20% per month) |
 | Total vesting | 5 months |
 
-- **Rationale:** Progressive pricing rewards earliest participants with the deepest discount. The 25% week-1 discount creates urgency without a countdown timer. Each week the discount narrows, incentivizing earlier commitment. $549 minimum filters for serious participants. $25,000 cap prevents whale concentration. $500,000 hard cap provides 24+ months runway at $14,700/mo burn rate.
+**Geographic Exclusion:** United States, Canada, and all jurisdictions subject to OFAC sanctions. Enforced through self-certification attestation checkbox on the presale page before wallet connection. The buyer attests they are not a citizen or resident of excluded jurisdictions. The attestation response is stored on-chain as a boolean flag (`geo_attested`) in the buyer's presale account.
+
+**Presale Buyer Flag:** Stored on-chain as a boolean (`is_presale_buyer`) in the buyer's account at the time of purchase. This flag is permanent and immutable. It identifies the wallet as a presale participant for the lifetime of the protocol. The platform pricing engine reads this flag to apply the 20% permanent compute discount defined in D-007.
+
+- **Rationale:** Progressive pricing rewards earliest participants with the deepest discount. The 25% week-1 discount creates urgency without a countdown timer. Each week the discount narrows, incentivizing earlier commitment. $549 minimum filters for serious participants. $25,000 cap prevents whale concentration. $500,000 hard cap provides 24+ months runway at $14,700/mo burn rate. Geographic exclusion protects regulatory positioning. On-chain buyer flag enables permanent presale discount without off-chain state.
 
 ---
 
 ### D-006: Vesting Schedule
-- **Date:** 2026-03-21
+- **Date:** 2026-03-22
 - **Status:** LOCKED
 - **Decision:**
+
+**Team and Investor Vesting:**
 
 | Who | Cliff | Vest | Total Lock |
 |-----|-------|------|-----------|
@@ -125,20 +131,72 @@
 | Jason (Investor) | 6 months | 2-year linear monthly | 2.5 years |
 | Lynn (Investor) | 6 months | 2-year linear monthly | 2.5 years |
 | Future Team | 1 year | 3-year linear monthly | 4 years |
-| Presale Buyers | TBD | TBD | TBD in presale contract |
 
-- **Rationale:** Research (Keyrock, 16,000 unlock events) shows linear vesting outperforms cliff unlocks. Team tokens vest slowest. Investors vest faster because they've already waited since mid-2024. No large cliff events that crash price.
+**Presale Buyer Vesting:**
+
+- **Approach:** Tokens transfer to the buyer's wallet at the moment of purchase. The protocol never custodies buyer assets. This avoids safekeeping classification under the BVI VASP Act.
+- **Schedule:** 20% unlocked at TGE. 80% locked with 1 month cliff then 4 month linear monthly unlock. Total vesting period: 5 months from TGE.
+- **Transfer restriction:** Applies to wallet-to-wallet transfers and exchange sales only.
+- **Consumption restriction:** None. The buyer can burn 100% of their allocation for compute credits on the System R AI platform from the moment of purchase. The burn instruction for compute credit consumption is a separate program path that does not trigger the transfer restriction.
+- **Implementation:** SPL Token 2022 transfer hook or dedicated token lock program. The lock program checks the buyer's vesting schedule on every attempted transfer instruction. The burn instruction bypasses the transfer hook.
+
+- **Rationale:** Research (Keyrock, 16,000 unlock events) shows linear vesting outperforms cliff unlocks. Team tokens vest slowest. Investors vest faster because they've already waited since mid-2024. Presale buyers are compute access customers. Their primary relationship with the token is consumption. The faster unlock (5 months versus 2.5 years for investors) reflects this. Immediate consumption strengthens the utility token classification.
 
 ---
 
-### D-007: Compute Credit System
-- **Date:** 2026-03-21
+### D-007: Compute Credit Peg and Platform Access Pricing
+- **Date:** 2026-03-22
 - **Status:** LOCKED
 - **Decision:**
-  - **(a) Credit peg:** USD-denominated via Pyth oracle. Users burn $OSR at current market rate to mint USD-pegged compute credits.
-  - **(b) Metering:** Resource-based tiers. Different operations consume different credit amounts based on actual resources (LLM tokens used, compute time, platform access).
-  - **(c) Batching:** Burn once, use many. User burns $OSR for a block of credits. Credits consumed per operation off-chain. Settlement/top-up periodic, not per-call. Prevents transaction fees exceeding compute costs for small operations.
-- **Rationale:** Helium Data Credits model proven at scale. USD peg gives users predictable costs. Resource-based metering is honest — lightweight calls cost less than heavy ones. Batching solves the Solana tx fee vs micro-payment problem ($0.036 tx fee > $0.005 compute cost).
+
+**Access Model:** Two tiers. Pure pay as you go for all token holders. No plans. No contracts. No caps. No monthly commitments. No minimum usage. No maximum usage. The wallet is the identity. The balance is the access. The on-chain burn history is the loyalty record.
+
+**Tier 1 — Presale Buyers:**
+- Wallet verified on-chain through presale transaction history (`is_presale_buyer` flag).
+- 20% permanent discount on all platform operations below the standard $OSR rate.
+- Discount applies for the lifetime of the wallet's interaction with the platform.
+- Earned through early participation. Verified on-chain. Immutable.
+
+**Tier 2 — Regular $OSR Holders:**
+- Standard $OSR rate at purchase.
+- Loyalty tiers based on lifetime cumulative burn history:
+
+| Cumulative $OSR Burned | Rate Improvement |
+|------------------------|-----------------|
+| 0 — 100,000 | Standard rate (0%) |
+| 100,001 — 500,000 | 5% improvement |
+| 500,001 — 1,000,000 | 10% improvement |
+| 1,000,001+ | 15% improvement |
+
+- Maximum regular holder discount: 15%. Presale buyers always maintain a 5% advantage over the highest loyalty tier.
+
+**Credit Peg:** 1 credit = $0.001 USD. This is the base unit of platform resource consumption.
+
+**Operation Costs (initial parameters, governance-adjustable):**
+
+| Operation | Credits | USD Cost |
+|-----------|---------|----------|
+| Simple intelligence query (lightweight model) | 10 | $0.01 |
+| Standard intelligence query (standard model) | 50 | $0.05 |
+| Frontier model intelligence query | 200 | $0.20 |
+| Risk assessment (position sizing, stop levels) | 30 | $0.03 |
+| Execution routing optimization | 20 | $0.02 |
+| Full backtest single strategy 1 year | 500 | $0.50 |
+| Full backtest multi-strategy multi-year | 2,000 | $2.00 |
+| Data feed query single asset real-time | 5 | $0.005 |
+| Comprehensive market scan multi-asset | 100 | $0.10 |
+
+**Oracle:** Pyth Network $OSR/USD price feed.
+- **Circuit breaker:** If confidence interval exceeds 5% of the reported price, the transaction pauses and retries on the next Solana block.
+- **Staleness rejection:** If the Pyth feed has not updated for more than 30 seconds, the system rejects all pricing transactions until a fresh feed arrives.
+
+**Governance:** All operation costs are stored in a protocol configuration account on-chain. Adjustable through governance standard vote (5% quorum of circulating supply, simple majority, 5-day voting period, 48-hour execution delay).
+
+**Fiat Access:** The platform also accepts fiat payments through a separate operating entity (System R Technologies LLC). Stablecoin-equivalent revenue from fiat operations funds periodic treasury buyback and burn. Documented by one sentence in the whitepaper. No further detail in OSR Protocol documentation.
+
+**Batching:** Burn once, use many. User burns $OSR for a block of credits. Credits consumed per operation off-chain. Settlement/top-up periodic, not per-call. Prevents transaction fees exceeding compute costs for small operations.
+
+- **Rationale:** Helium Data Credits model proven at scale. USD peg gives users predictable costs. Resource-based metering is honest — lightweight calls cost less than heavy ones. Two-tier access rewards early participants while providing clear upgrade path through usage. The 5% presale advantage persists permanently, creating earned loyalty. All parameters governance-adjustable for long-term adaptability.
 
 ---
 

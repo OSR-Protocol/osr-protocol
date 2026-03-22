@@ -19,6 +19,19 @@
 | Liquidity | 5% | 50M | CxzVvzXCsyZwhbG5DGFA12TUUeesMAGfzdsXdfaA2AhX | GxgFz72g7QxzNeikim2F4uDrdQrWNxvB7ECKWM9yjAKQ |
 | Future Team | 1% | 10M | 5599dRaWnHz51xvurMQuRRs88acnQtL8j4EmfTNKpfwk | EUPy2TWsjvXbjG3j6EVuvFwSg2kj6qtCFG5qae5M8BZd |
 
+## Vesting Schedules (D-006)
+
+| Recipient | Cliff | Vesting | Total |
+|-----------|-------|---------|-------|
+| Presale buyers | 1 month | 20% at TGE, 4 month linear monthly | 5 months |
+| Founder | 1 year | 4 year linear monthly | 5 years |
+| Co-Founder | 1 year | 4 year linear monthly | 5 years |
+| Early Investor A | 6 months | 2 year linear monthly | 2.5 years |
+| Early Investor B | 6 months | 2 year linear monthly | 2.5 years |
+| Future Team | 1 year | 3 year linear monthly | 4 years |
+
+Presale tokens transfer to buyer wallet at purchase. Transfer restricted during vesting. Platform consumption (burn for compute credits) unrestricted from day one.
+
 **Mint Authority:** `4jueWNQ2DZfLmrTCuYPdHiBX4nVHWu1BUXhmVX1XWi7C` (devnet deployer)
 **Mint Wallet Balance:** 0 (all tokens distributed)
 **SOL Remaining:** 4.976 SOL

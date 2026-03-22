@@ -125,6 +125,17 @@ pub mod presale {
         Ok(())
     }
 
+    /// Buyer attests geographic eligibility before purchase (D-005)
+    pub fn attest_geo(ctx: Context<BuyWithSol>) -> Result<()> {
+        let buyer_record = &mut ctx.accounts.buyer_record;
+        if buyer_record.init_magic != BUYER_MAGIC {
+            buyer_record.init_magic = BUYER_MAGIC;
+            buyer_record.buyer = ctx.accounts.buyer.key();
+        }
+        buyer_record.geo_attested = true;
+        Ok(())
+    }
+
     pub fn update_sol_price(
         ctx: Context<AdminAction>,
         new_price: u64,
@@ -168,6 +179,12 @@ pub mod presale {
         require!(clock.unix_timestamp >= start_time, PresaleError::NotStarted);
         require!(clock.unix_timestamp <= end_time, PresaleError::Ended);
         require!(amount > 0, PresaleError::ZeroAmount);
+
+        // Geographic attestation check (D-005) — after timing checks
+        require!(
+            ctx.accounts.buyer_record.geo_attested,
+            PresaleError::GeoAttestationRequired
+        );
 
         // Allocation check
         let new_total_sold = tokens_sold
@@ -245,6 +262,7 @@ pub mod presale {
             );
         }
         buyer_record.total_purchased = new_buyer_total;
+        buyer_record.is_presale_buyer = true; // D-005: permanent flag
 
         emit!(TokensPurchased {
             buyer: ctx.accounts.buyer.key(),
@@ -297,6 +315,12 @@ pub mod presale {
         require!(clock.unix_timestamp <= end_time, PresaleError::Ended);
         require!(amount > 0, PresaleError::ZeroAmount);
         require!(stablecoin_amount > 0, PresaleError::ZeroAmount);
+
+        // Geographic attestation check (D-005) — after timing checks
+        require!(
+            ctx.accounts.buyer_record.geo_attested,
+            PresaleError::GeoAttestationRequired
+        );
 
         // Allocation check
         let new_total_sold = tokens_sold
@@ -376,6 +400,7 @@ pub mod presale {
             );
         }
         buyer_record.total_purchased = new_buyer_total;
+        buyer_record.is_presale_buyer = true; // D-005: permanent flag
 
         let payment = if stable_mint == usdc_mint {
             PaymentMethod::Usdc
@@ -726,6 +751,8 @@ pub struct BuyerRecord {
     pub buyer: Pubkey,                  // 32
     pub total_purchased: u64,           // 8
     pub init_magic: u64,                // 8  — reinitialization guard
+    pub geo_attested: bool,             // 1  — geographic attestation (D-005)
+    pub is_presale_buyer: bool,         // 1  — permanent presale flag (D-005/D-007)
 }
 
 // ── EVENTS ──
@@ -852,4 +879,6 @@ pub enum PresaleError {
     InvalidSolVault,
     #[msg("Withdraw destination must be owned by authority")]
     WithdrawDestinationMismatch,
+    #[msg("Geographic attestation required before purchase")]
+    GeoAttestationRequired,
 }

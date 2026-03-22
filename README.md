@@ -67,9 +67,11 @@ Hold $OSR. Connect wallet. Consume credits for platform operations. Disconnect w
 | BME Emission | 30% | 300,000,000 | Declining emission schedule over 8 years |
 | Ecosystem | 20% | 200,000,000 | Milestone based grants |
 | Treasury | 12% | 120,000,000 | Strategic reserve, never sold for operations |
-| Presale | 10% | 100,000,000 | Public community sale, 20% TGE, 1 month cliff, 4 month linear |
-| Founders | 14% | 140,000,000 | 1 year cliff, 4 year linear monthly |
-| Early Investors | 8% | 80,000,000 | 6 month cliff, 2 year linear monthly |
+| Presale | 10% | 100,000,000 | 20% TGE, 1 month cliff, 4 month linear |
+| Founder | 7% | 70,000,000 | 1 year cliff, 4 year linear monthly |
+| Co-Founder | 7% | 70,000,000 | 1 year cliff, 4 year linear monthly |
+| Early Investor A | 5% | 50,000,000 | 6 month cliff, 2 year linear monthly |
+| Early Investor B | 3% | 30,000,000 | 6 month cliff, 2 year linear monthly |
 | Liquidity | 5% | 50,000,000 | Protocol owned DEX pools |
 | Future Team | 1% | 10,000,000 | 1 year cliff, 3 year linear monthly |
 
@@ -79,12 +81,20 @@ Hold $OSR. Connect wallet. Consume credits for platform operations. Disconnect w
 
 | Parameter | Value |
 |-----------|-------|
-| Base price | $0.005 per token |
+| Base listing price | $0.005 per token |
 | Minimum purchase | $549 |
 | Maximum per wallet | $25,000 |
 | Hard cap | $500,000 total raise |
-| Pricing structure | Four weekly tiers with progressive pricing |
-| Accepted payments | SOL, USDC, USDT, PYUSD |
+| Accepted payments | SOL, USDC |
+
+**Four weekly pricing tiers:**
+
+| Week | Dates | Price | Discount |
+|------|-------|-------|----------|
+| 1 | March 25 — March 31, 2026 | $0.00375 | 25% |
+| 2 | April 1 — April 7, 2026 | $0.00425 | 15% |
+| 3 | April 8 — April 14, 2026 | $0.0045 | 10% |
+| 4 | April 15 — April 21, 2026 | $0.00475 | 5% |
 
 ## Vesting
 

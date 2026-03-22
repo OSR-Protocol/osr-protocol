@@ -60,6 +60,32 @@ function deriveBuyerRecord(
   );
 }
 
+async function attestGeoForBuyer(
+  program: Program<Presale>,
+  presaleKp: Keypair,
+  authority: anchor.Wallet,
+  buyerTokenAccount: PublicKey,
+) {
+  const [buyerRecord] = deriveBuyerRecord(
+    presaleKp.publicKey,
+    authority.publicKey,
+    program.programId
+  );
+  await program.methods
+    .attestGeo()
+    .accounts({
+      presale: presaleKp.publicKey,
+      vaultAuthority: VAULT_AUTHORITY,
+      tokenVault: TOKEN_VAULT,
+      buyer: authority.publicKey,
+      buyerTokenAccount: buyerTokenAccount,
+      buyerRecord: buyerRecord,
+      systemProgram: SystemProgram.programId,
+      tokenProgram: TOKEN_PROGRAM_ID,
+    })
+    .rpc();
+}
+
 async function initPresale(
   program: Program<Presale>,
   presaleKp: Keypair,
@@ -388,6 +414,47 @@ describe("OSR Presale — Full Remediation Tests", () => {
       program.programId
     );
 
+    it("rejects purchase without geo attestation", async () => {
+      const amount = new anchor.BN(1_000).mul(ONE_TOKEN);
+      try {
+        await program.methods
+          .buyWithSol(amount)
+          .accounts({
+            presale: mainPresaleKp.publicKey,
+            vaultAuthority: VAULT_AUTHORITY,
+            tokenVault: TOKEN_VAULT,
+            buyer: authority.publicKey,
+            buyerTokenAccount: buyerTokenAccount,
+            buyerRecord: buyerRecord,
+            systemProgram: SystemProgram.programId,
+            tokenProgram: TOKEN_PROGRAM_ID,
+          })
+          .rpc();
+        assert.fail("Should have rejected without geo attestation");
+      } catch (e: any) {
+        assert.include(e.message, "GeoAttestationRequired");
+      }
+    });
+
+    it("submits geo attestation", async () => {
+      await program.methods
+        .attestGeo()
+        .accounts({
+          presale: mainPresaleKp.publicKey,
+          vaultAuthority: VAULT_AUTHORITY,
+          tokenVault: TOKEN_VAULT,
+          buyer: authority.publicKey,
+          buyerTokenAccount: buyerTokenAccount,
+          buyerRecord: buyerRecord,
+          systemProgram: SystemProgram.programId,
+          tokenProgram: TOKEN_PROGRAM_ID,
+        })
+        .rpc();
+
+      const record = await program.account.buyerRecord.fetch(buyerRecord);
+      assert.equal(record.geoAttested, true);
+    });
+
     it("buys tokens with valid SOL payment", async () => {
       // Buy 1,000 tokens — costs ~33,333 lamports (conserves devnet SOL)
       const amount = new anchor.BN(1_000).mul(ONE_TOKEN);
@@ -417,6 +484,8 @@ describe("OSR Presale — Full Remediation Tests", () => {
       assert.ok(record.totalPurchased.gt(new anchor.BN(0)));
       // Verify init_magic was set (non-zero = initialized)
       assert.ok(record.initMagic.gt(new anchor.BN(0)), "init_magic should be non-zero");
+      // Verify is_presale_buyer is true (D-005 permanent flag)
+      assert.equal(record.isPresaleBuyer, true, "is_presale_buyer should be true");
     });
 
     it("rejects purchase below minimum", async () => {
@@ -516,6 +585,7 @@ describe("OSR Presale — Full Remediation Tests", () => {
         .activate()
         .accounts({ presale: limitKp.publicKey, authority: authority.publicKey })
         .rpc();
+      await attestGeoForBuyer(program, limitKp, authority as any, buyerTokenAccount);
 
       // Try to buy 50K tokens (exceeds 1K limit)
       const [limitBuyerRecord] = deriveBuyerRecord(
@@ -635,6 +705,7 @@ describe("OSR Presale — Full Remediation Tests", () => {
         .activate()
         .accounts({ presale: capKp.publicKey, authority: authority.publicKey })
         .rpc();
+      await attestGeoForBuyer(program, capKp, authority as any, buyerTokenAccount);
 
       const [capBuyerRecord] = deriveBuyerRecord(
         capKp.publicKey,
@@ -806,6 +877,7 @@ describe("OSR Presale — Full Remediation Tests", () => {
         .activate()
         .accounts({ presale: capKp.publicKey, authority: authority.publicKey })
         .rpc();
+      await attestGeoForBuyer(program, capKp, authority as any, buyerTokenAccount);
 
       const [capBuyerRecord] = deriveBuyerRecord(
         capKp.publicKey,
@@ -868,6 +940,7 @@ describe("OSR Presale — Full Remediation Tests", () => {
         .activate()
         .accounts({ presale: withdrawKp.publicKey, authority: authority.publicKey })
         .rpc();
+      await attestGeoForBuyer(program, withdrawKp, authority as any, buyerTokenAccount);
 
       // Buy a small amount of tokens to put SOL in presale account
       const [wBuyerRecord] = deriveBuyerRecord(
