@@ -33,9 +33,9 @@ const VAULT_AUTHORITY = new PublicKey("B4HdcPP59quFEiEbQyqpWPSzz2GBnJDHKhDE4LdTz
 // Test constants
 const ONE_TOKEN = new anchor.BN(1_000_000_000); // 1 token in raw units
 const SOL_PRICE_LAMPORTS = new anchor.BN(33_333); // $0.005/token at ~$150/SOL
-// Min SOL purchase in lamports. Set low for devnet testing (mainnet
-// will enforce $549 equivalent). 1 token = 33,333 lamports. Min set
-// above 1-token cost so the "below minimum" test can use 1 token.
+// D-005: Min SOL purchase = $549 equivalent. At $150/SOL = 3.66 SOL = 3,660,000,000 lamports.
+// For devnet testing with limited SOL, set low. Contract enforces $549 via stablecoin constant.
+// SOL min is admin-configurable per presale instance.
 const MIN_PURCHASE_LAMPORTS = new anchor.BN(50_000);
 const MAX_PER_WALLET = new anchor.BN(2_000_000).mul(ONE_TOKEN); // 2M tokens
 const MAX_RAISE_LAMPORTS = new anchor.BN(3_333).mul(new anchor.BN(LAMPORTS_PER_SOL));
@@ -675,9 +675,9 @@ describe("OSR Presale — Full Remediation Tests", () => {
     );
 
     it("buys tokens with USDC", async () => {
-      // Buy 50,000 tokens at $0.005 = $250 USDC
-      const tokenAmount = new anchor.BN(50_000).mul(ONE_TOKEN);
-      const usdcAmount = new anchor.BN(250_000_000); // $250 in 6 decimals
+      // Buy 109,800 tokens at $0.005 = $549 USDC (D-005 minimum)
+      const tokenAmount = new anchor.BN(109_800).mul(ONE_TOKEN);
+      const usdcAmount = new anchor.BN(549_000_000); // $549 in 6 decimals
 
       const stateBefore = await program.account.presaleState.fetch(mainPresaleKp.publicKey);
 
@@ -713,8 +713,8 @@ describe("OSR Presale — Full Remediation Tests", () => {
           fakeVault.publicKey // random owner, not vault authority
         );
 
-        const tokenAmount = new anchor.BN(50_000).mul(ONE_TOKEN);
-        const usdcAmount = new anchor.BN(250_000_000);
+        const tokenAmount = new anchor.BN(109_800).mul(ONE_TOKEN);
+        const usdcAmount = new anchor.BN(549_000_000);
 
         await program.methods
           .buyWithStablecoin(tokenAmount, usdcAmount)
@@ -743,9 +743,9 @@ describe("OSR Presale — Full Remediation Tests", () => {
       }
     });
 
-    it("rejects purchase below $250 minimum", async () => {
+    it("rejects purchase below $549 minimum", async () => {
       const tokenAmount = new anchor.BN(10_000).mul(ONE_TOKEN);
-      const usdcAmount = new anchor.BN(50_000_000); // $50 — below $250 min
+      const usdcAmount = new anchor.BN(100_000_000); // $100 — below $549 min
 
       try {
         await program.methods
@@ -763,16 +763,16 @@ describe("OSR Presale — Full Remediation Tests", () => {
             tokenProgram: TOKEN_PROGRAM_ID,
           })
           .rpc();
-        assert.fail("Should have rejected below $250");
+        assert.fail("Should have rejected below $549");
       } catch (e: any) {
         assert.include(e.message, "BelowMinimum");
       }
     });
 
     it("rejects purchase below $0.005 floor price", async () => {
-      // Try to buy 200K tokens for only $250 (price = $0.00125 < $0.005 floor)
+      // Try to buy 200K tokens for only $549 (price = $0.002745 < $0.005 floor)
       const tokenAmount = new anchor.BN(200_000).mul(ONE_TOKEN);
-      const usdcAmount = new anchor.BN(250_000_000); // $250
+      const usdcAmount = new anchor.BN(549_000_000); // $549
 
       try {
         await program.methods
@@ -812,9 +812,9 @@ describe("OSR Presale — Full Remediation Tests", () => {
         authority.publicKey,
         program.programId
       );
-      // Buy $250 USDC > $100 cap
-      const tokenAmount = new anchor.BN(50_000).mul(ONE_TOKEN);
-      const usdcAmount = new anchor.BN(250_000_000);
+      // Buy $549 USDC > $100 cap
+      const tokenAmount = new anchor.BN(109_800).mul(ONE_TOKEN);
+      const usdcAmount = new anchor.BN(549_000_000);
 
       try {
         await program.methods

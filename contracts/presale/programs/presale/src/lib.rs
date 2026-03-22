@@ -6,9 +6,9 @@ declare_id!("9K1VNBCK6WRDVzYbidG4hH9L3crPXxhqvTBACqM5q8bi");
 // D-004: 100M tokens for presale
 const PRESALE_ALLOCATION: u64 = 100_000_000_000_000_000; // 100M * 10^9
 
-// Minimum presale purchase: $250 USD
-// In USDC/USDT/PYUSD (6 decimals): 250 * 10^6
-const MIN_PURCHASE_STABLECOIN: u64 = 250_000_000;
+// D-005: Minimum presale purchase: $549 USD
+// In USDC/USDT/PYUSD (6 decimals): 549 * 10^6
+const MIN_PURCHASE_STABLECOIN: u64 = 549_000_000;
 
 // D-005: Floor price $0.005 per token
 // In stablecoin units (6 decimals) per 10^9 token-units:
