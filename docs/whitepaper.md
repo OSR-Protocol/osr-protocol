@@ -1,14 +1,16 @@
 # OSR Protocol: Onchain Infrastructure for Agentic Finance
 
-OSR Protocol Inc.
-March 21, 2026
-
+**Version 1.3**
+**OSR Protocol Inc.**
+**March 2026**
 
 ---
 
 ## Abstract
 
-OSR Protocol is the economic layer for autonomous AI agent operations on the System R AI platform. The $OSR token uses a Burn and Mint Equilibrium (BME) model where users burn $OSR to mint USD pegged compute credits that meter access to a complete trading operating system. The protocol provides AI agents and human users with structured access to compute, language models, cloud infrastructure, and all resources required to operate in financial markets. Built on Solana for sub second finality and negligible transaction costs, $OSR aligns the incentives of platform users, token holders, and infrastructure operators through transparent onchain economics.
+OSR Protocol is the economic layer for autonomous AI agent operations on the System R AI platform. Burn $OSR for compute credits. Every operation burns tokens. Circulating supply decreases as platform usage grows.
+
+The $OSR token uses a Burn and Mint Equilibrium (BME) model where users burn $OSR to mint USD pegged compute credits that meter access to a complete trading operating system. The protocol provides AI agents and human users with structured access to compute, language models, cloud infrastructure, and all resources required to operate in financial markets. Built on Solana for sub second finality and negligible transaction costs, $OSR aligns the incentives of platform users, token holders, and infrastructure operators through transparent onchain economics.
 
 ---
 
@@ -18,7 +20,7 @@ OSR Protocol is the economic layer for autonomous AI agent operations on the Sys
 
 AI agents are reshaping financial markets. Autonomous systems now execute trades, manage risk, analyze sentiment, and allocate capital at speeds and scales impossible for human operators. But these agents face a fundamental infrastructure gap.
 
-Running a capable trading agent requires simultaneous access to language models from multiple providers, cloud compute for backtesting and execution, real time market data, risk management systems, broker connectivity, and regulatory compliance tooling. Today, each agent builder must assemble this stack independently, negotiating separate agreements with AWS, Anthropic, OpenAI, data providers, brokers, and compliance vendors.
+Running a capable trading agent requires simultaneous access to language models from multiple providers, cloud compute for backtesting and execution, real time market data, risk management systems, broker connectivity, and regulatory compliance tooling. Today, each agent builder must assemble this stack independently, negotiating separate agreements with cloud providers, language model providers, data providers, brokers, and compliance vendors.
 
 This is the equivalent of every website building its own data center. It does not scale, and it does not need to.
 
@@ -34,9 +36,9 @@ A reasonable question: why not accept USDC directly and skip the token entirely?
 
 The answer lies in what a token enables that stablecoins cannot.
 
-**Value capture through burn.** When $OSR is burned, those tokens are permanently destroyed, reducing circulating supply. When USDC is paid, value transfers once to the service provider and the transaction ends. $OSR creates a reflexive loop: more platform usage means more burn, which means reduced supply. Treasury funds continued platform development. Better infrastructure attracts more usage.
+**Permanent burn.** When $OSR is burned for compute access, those tokens are permanently removed from circulating supply. When USDC is paid, the transaction ends at the point of service delivery. The burn mechanism creates a direct link between platform usage and circulating supply: more operations executed means more tokens permanently destroyed.
 
-**Ecosystem alignment.** Every $OSR holder participates in protocol governance and shapes the platform's direction. Agent builders, presale participants, partners, and stakers all have a voice in how the protocol evolves.
+**Governance participation.** Every $OSR holder participates in protocol governance and shapes the platform's direction. Agent builders, presale participants, partners, and stakers all have a voice in how the protocol evolves.
 
 **Programmable agent economics.** Autonomous agents cannot hold bank accounts or sign payment agreements. They can hold tokens and execute onchain transactions. $OSR provides native payment rails for the agent economy without requiring fiat intermediaries.
 
@@ -65,6 +67,8 @@ The mechanism works as follows:
 
 This creates a self regulating economic system where token supply responds to real demand, not speculation.
 
+**The ecosystem flywheel.** Developer incentives from the ecosystem fund attract agent builders. More agent builders create more diverse strategies and tools on the platform. More diversity attracts more users who want access to those capabilities. More users mean more agent operations. More operations mean more compute credits consumed. More credits consumed means more $OSR burned. The cycle reinforces itself through usage. Each layer of growth feeds the next: builders attract users, users generate operations, operations consume credits.
+
 ### 2.2 Compute Credits
 
 Compute credits are the internal unit of account for platform resource consumption.
@@ -88,6 +92,21 @@ The pricing engine converts between $OSR, stablecoins, and compute credits using
 | **MEV protection** | Large buyback and burn operations use Jito private transactions to prevent sandwich attacks on Solana. |
 | **Transparent spread** | The protocol applies a governance set spread on conversions. This spread is visible onchain, auditable by anyone, and modifiable only through governance vote. |
 | **Integer arithmetic** | All financial calculations use integer math with the token's 9 decimal precision. No floating point. All rounding follows protocol favorable rules at the smallest unit level, ensuring predictable and auditable outcomes. |
+
+### 2.4 Example: One Agent Operation
+
+A trading agent monitoring SOL perpetuals on Drift receives a volatility signal from its data feed.
+
+| Step | Platform Layer | Operation | Credits |
+|------|---------------|-----------|---------|
+| 1 | Intelligence | Regime analysis: the agent sends market context to a language model for classification of current market conditions | 50 |
+| 2 | Risk | Position sizing: the agent queries the risk engine for maximum position size and stop loss levels given current volatility | 30 |
+| 3 | Execution | Order routing: the agent requests optimal execution routing across available venues | 20 |
+| **Total** | | **One complete operation** | **100** |
+
+At a credit peg of $0.001 per credit, this operation costs $0.10. The agent runs this cycle 100 times per day. Daily consumption: 10,000 credits ($10). Monthly consumption: 300,000 credits ($300). One agent, one strategy, one market.
+
+A platform serving 1,000 agents each consuming 300,000 credits per month processes 300 million credits monthly. Every credit consumed traces back to $OSR burned or stablecoins received.
 
 ---
 
@@ -191,11 +210,11 @@ The protocol maintains strict separation between three financial pools:
 
 This separation prevents the death spiral that has destroyed other token projects. When a project holds its treasury entirely in its own token and the price drops, it must sell tokens to fund operations, which further depresses the price, which requires more selling. The three fund architecture breaks this cycle by ensuring operational funding never depends on token price.
 
-### 5.2 Investor Capital Return
+### 5.2 Investor Revenue Share
 
-Early investors receive their capital return through stablecoin revenue share from platform operations, not through selling tokens on the open market. Token allocations represent separate participation in the protocol's governance and utility.
+Early investors receive revenue share from platform operations in stablecoins, not through selling tokens on the open market. Token allocations represent separate participation in the protocol ecosystem.
 
-This structure means investors are never forced sellers. They hold tokens because of long term conviction, not because they need to liquidate for returns. Zero market impact. Zero ecosystem damage.
+This structure means investors are never forced sellers. They hold tokens because of long term conviction, not because they need to liquidate. Zero market impact. Zero ecosystem damage.
 
 ---
 
@@ -252,8 +271,8 @@ All treasury operations follow a tiered approval system:
 
 | Tier | Threshold | Time Lock | Approval Process |
 |------|-----------|-----------|-----------------|
-| Routine | Under $5,000 | None | Founding team executes immediately. All transactions appear in monthly published treasury reports. |
-| Significant | $5,000 to $50,000 | 48 hours | Transaction queued onchain, visible to all stakeholders. Investors notified. Executes after 48 hours unless objection raised. |
+| Routine | Under $15,000 | None | Founding team executes immediately. All transactions appear in monthly published treasury reports. |
+| Significant | $15,000 to $50,000 | 48 hours | Transaction queued onchain, visible to all stakeholders. Investors notified. Executes after 48 hours unless objection raised. |
 | Critical | Over $50,000 or program upgrades | 7 days | Requires explicit approval from at least one early investor. Full visibility during 7 day window. |
 | Emergency | Up to $15,000 | None | Active security incidents or legal threats only. Mandatory stakeholder notification within 1 hour. Full incident report within 48 hours. |
 
@@ -328,7 +347,7 @@ This separation ensures the BVI entity does not hold IP assets, avoiding classif
 
 ### 9.2 BVI VASP Act Compliance
 
-The BVI Virtual Assets Service Providers Act 2022 regulates entities that perform virtual asset services "for or on behalf of another person." The protocol's structure is designed to operate within this framework:
+The BVI Virtual Assets Service Providers Act 2022 regulates entities that perform virtual asset services "for or on behalf of another person." The protocol's architecture aligns with this framework:
 
 Token burns are commercial service access (utility token usage), not financial intermediation. Algorithmic minting is not a regulated activity under the VASP Act. Stablecoin payments are received as service payments, with treasury buyback operations conducted separately as proprietary transactions. Token discounts are commercial pricing tiers, not financial service inducements.
 
@@ -376,19 +395,9 @@ The protocol uses this data to train proprietary models specialized for financia
 
 ### Phase 4: The New Frontier
 
-The platform infrastructure and proprietary intelligence extend into industries adjacent to trading. This is not diversification for its own sake. It is the natural expansion of capabilities that already exist within the platform.
+The 10 layers that power trading agents (identity, intelligence, planning, execution, data, analysis, memory, risk, compliance, and operations) are not unique to trading. Every industry that involves financial decision making under uncertainty needs the same capabilities. The difference between a trading agent and an insurance underwriting agent is the domain data and the specific models, not the underlying infrastructure.
 
-**Why this expansion is logical.** The 10 layers that power trading agents (identity, intelligence, planning, execution, data, analysis, memory, risk, compliance, and operations) are not unique to trading. Every industry that involves financial decision making under uncertainty needs the same capabilities. The difference between a trading agent and an insurance underwriting agent is the domain data and the specific models, not the underlying infrastructure.
-
-**Compliance and regulatory reporting.** Financial institutions spend billions annually on compliance operations that are repetitive, rule based, and error prone. Autonomous agents with access to the platform's risk, data, and analysis layers can perform transaction monitoring, regulatory filing preparation, and audit trail generation at a fraction of the cost. The compliance layer already exists in the platform for trading. Extending it to serve compliance as a standalone capability requires domain specific models and data connectors, not a new platform.
-
-**Insurance and underwriting.** Underwriting is fundamentally a risk assessment problem. The platform's risk layer already evaluates financial risk for trading agents. Applying the same analytical infrastructure to evaluate insurance risk (property, casualty, specialty lines) is an extension of existing capabilities. Proprietary models trained on underwriting outcomes join the trading models in the platform's intelligence layer, all metered by $OSR.
-
-**Treasury management.** Corporations manage billions in short term assets, foreign exchange exposure, and cash flow timing. Agents accessing the platform's execution, risk, and planning layers can automate treasury operations that currently require teams of analysts. The execution infrastructure already handles trading operations. Corporate treasury operations use the same underlying mechanics: analyze conditions, assess risk, execute transactions, monitor outcomes.
-
-**Real estate and asset management.** Tokenized real world assets on Solana and other chains create a direct bridge between the platform's cross chain capabilities and physical asset management. Agents that already operate across chains for trading can extend to manage portfolios of tokenized real estate, evaluate asset performance, and execute rebalancing, all settled in $OSR.
-
-Each of these expansions follows the same pattern: take an existing platform layer, add domain specific data and models, and make it accessible to agents through $OSR burn. The infrastructure does not need to be rebuilt. It needs to be pointed at new problems.
+The platform extends into adjacent industries by adding domain specific data and models to existing layers: compliance and regulatory reporting for financial institutions, insurance underwriting and risk assessment, corporate treasury management and FX exposure automation, and tokenized real estate portfolio management across chains. Each extension follows the same pattern: existing infrastructure, new domain data, accessible through $OSR compute credits.
 
 **This phase is complete when:** At least two industries beyond trading have active agents burning $OSR for domain specific operations, and the protocol's proprietary model library includes models trained on non trading operational data.
 
@@ -414,7 +423,7 @@ Each of these expansions follows the same pattern: take an existing platform lay
 
 $OSR is infrastructure economics for the age of autonomous agents. It provides a proven economic model (BME), transparent onchain operations, community governance from day one, and the complete trading operating system that agents need to operate in financial markets.
 
-The protocol does not ask users to speculate. It asks them to use infrastructure and pay for what they consume. The token economics ensure that usage creates value for everyone in the ecosystem: users get reliable compute access, holders participate in protocol governance, stakers earn yield for securing the economics, and the protocol funds its own growth through sustainable treasury management.
+The protocol does not ask users to speculate. It asks them to use infrastructure and pay for what they consume. Users get reliable compute access. Holders participate in protocol governance. Stakers receive emission rewards for securing the economics. The burn mechanism permanently reduces circulating supply as the platform operates. The protocol funds its own growth through sustainable treasury management.
 
 Built on Solana. Incorporated in the British Virgin Islands. Governed by its community.
 
