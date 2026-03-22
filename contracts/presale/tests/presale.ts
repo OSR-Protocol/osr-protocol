@@ -33,9 +33,10 @@ const VAULT_AUTHORITY = new PublicKey("B4HdcPP59quFEiEbQyqpWPSzz2GBnJDHKhDE4LdTz
 // Test constants
 const ONE_TOKEN = new anchor.BN(1_000_000_000); // 1 token in raw units
 const SOL_PRICE_LAMPORTS = new anchor.BN(33_333); // $0.005/token at ~$150/SOL
-// $250 at $150/SOL ≈ 1.667 SOL. At sol_price=33333, 50K tokens costs
-// exactly 1,666,650,000 lamports. Set min to match floor cost.
-const MIN_PURCHASE_LAMPORTS = new anchor.BN(1_666_650_000);
+// Min SOL purchase in lamports. Set low for devnet testing (mainnet
+// will enforce $549 equivalent). 1 token = 33,333 lamports. Min set
+// above 1-token cost so the "below minimum" test can use 1 token.
+const MIN_PURCHASE_LAMPORTS = new anchor.BN(50_000);
 const MAX_PER_WALLET = new anchor.BN(2_000_000).mul(ONE_TOKEN); // 2M tokens
 const MAX_RAISE_LAMPORTS = new anchor.BN(3_333).mul(new anchor.BN(LAMPORTS_PER_SOL));
 // $500K in stablecoin (6 decimals)
@@ -388,8 +389,8 @@ describe("OSR Presale — Full Remediation Tests", () => {
     );
 
     it("buys tokens with valid SOL payment", async () => {
-      // Buy 50,000 tokens ($250 at floor price)
-      const amount = new anchor.BN(50_000).mul(ONE_TOKEN);
+      // Buy 1,000 tokens — costs ~33,333 lamports (conserves devnet SOL)
+      const amount = new anchor.BN(1_000).mul(ONE_TOKEN);
 
       const stateBefore = await program.account.presaleState.fetch(mainPresaleKp.publicKey);
 
@@ -418,9 +419,9 @@ describe("OSR Presale — Full Remediation Tests", () => {
       assert.ok(record.initMagic.gt(new anchor.BN(0)), "init_magic should be non-zero");
     });
 
-    it("rejects purchase below $250 minimum", async () => {
-      // Buy only 1,000 tokens (~$5 at floor) — cost << min_purchase_lamports
-      const tinyAmount = new anchor.BN(1_000).mul(ONE_TOKEN);
+    it("rejects purchase below minimum", async () => {
+      // Buy 1 token (33,333 lamports) — below min_purchase_lamports (50,000)
+      const tinyAmount = ONE_TOKEN;
       try {
         await program.methods
           .buyWithSol(tinyAmount)
@@ -858,21 +859,24 @@ describe("OSR Presale — Full Remediation Tests", () => {
     });
 
     it("allows SOL withdrawal when paused", async () => {
-      // Create a presale, buy some tokens, pause it, then try withdrawal
+      // Create a presale with low min_purchase so the buy costs minimal SOL
       const withdrawKp = Keypair.generate();
-      await initPresale(program, withdrawKp, authority as any);
+      await initPresale(program, withdrawKp, authority as any, {
+        minPurchase: new anchor.BN(1), // 1 lamport min for this test
+      });
       await program.methods
         .activate()
         .accounts({ presale: withdrawKp.publicKey, authority: authority.publicKey })
         .rpc();
 
-      // Buy tokens to put SOL in vault
+      // Buy a small amount of tokens to put SOL in presale account
       const [wBuyerRecord] = deriveBuyerRecord(
         withdrawKp.publicKey,
         authority.publicKey,
         program.programId
       );
-      const amount = new anchor.BN(50_000).mul(ONE_TOKEN);
+      // 1000 tokens costs ~33,333 lamports (0.000033 SOL) — trivial
+      const amount = new anchor.BN(1_000).mul(ONE_TOKEN);
       await program.methods
         .buyWithSol(amount)
         .accounts({
@@ -895,7 +899,7 @@ describe("OSR Presale — Full Remediation Tests", () => {
 
       // Now withdrawal should succeed (paused = !is_active)
       await program.methods
-        .withdrawSol(new anchor.BN(100_000)) // withdraw small amount
+        .withdrawSol(new anchor.BN(10_000)) // withdraw small amount
         .accounts({
           presale: withdrawKp.publicKey,
           authority: authority.publicKey,
