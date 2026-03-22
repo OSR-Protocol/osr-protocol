@@ -88,7 +88,7 @@
 | Maximum per wallet | $25,000 |
 | Hard cap | $500,000 total raise |
 | Base listing price | $0.005 per token |
-| Accepted payments | SOL, USDC |
+| Accepted payments | SOL, USDC, USDT |
 | Presale allocation | 100,000,000 $OSR (10% of supply) |
 
 **Four Weekly Pricing Tiers:**
