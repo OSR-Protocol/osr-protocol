@@ -1,6 +1,6 @@
 # $OSR Devnet Token Allocation Map
 
-**Token Mint:** `HBeMPtFD4fFf4otKst3AMvW8E5eJBhB4oqNeNRJneJHB`
+**Token Mint:** `DJXh4DpaXMKsDaLc4TLQbpK4e8EVV5jTUe7vzvDVXa9s`
 **Network:** Solana Devnet
 **Supply:** 1,000,000,000 (9 decimals)
 **Date:** 2026-03-21
@@ -22,6 +22,10 @@
 **Mint Authority:** `4jueWNQ2DZfLmrTCuYPdHiBX4nVHWu1BUXhmVX1XWi7C` (devnet deployer)
 **Mint Wallet Balance:** 0 (all tokens distributed)
 **SOL Remaining:** 4.976 SOL
+
+> **NOTE:** The first devnet mint (`HBeMPtFD4fFf4otKst3AMvW8E5eJBhB4oqNeNRJneJHB`) was abandoned after tokens were
+> accidentally transferred during session 6 allocation testing. Mint authority was revoked and remaining tokens burned.
+> The active test mint above (`DJXh4DpaXMKsDaLc4TLQbpK4e8EVV5jTUe7vzvDVXa9s`) is now used for all devnet testing.
 
 > NOTE: These are DEVNET keys for testing only. Mainnet deployment will use Ledger hardware wallets.
 > Private key JSON files in this directory are DEVNET ONLY and must NEVER be used on mainnet.

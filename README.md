@@ -20,7 +20,7 @@ Built on Solana. Incorporated in the British Virgin Islands.
 | Total Supply | 1,000,000,000 (1B) |
 | Decimals | 9 |
 | Token Program | SPL Token |
-| Devnet Mint | `HBeMPtFD4fFf4otKst3AMvW8E5eJBhB4oqNeNRJneJHB` |
+| Devnet Mint | `DJXh4DpaXMKsDaLc4TLQbpK4e8EVV5jTUe7vzvDVXa9s` |
 | Issuer | OSR Protocol Inc. (BVI) |
 
 ## How It Works
@@ -62,14 +62,21 @@ The protocol also accepts USDC, USDT, and PYUSD. Stablecoin payments are receive
 
 ```
 osr-protocol/
+    agents/                 # Python agents (wallet discovery, Telegram, X, LinkedIn, Reddit, YouTube)
     contracts/              # Anchor programs (Rust) [in development]
         escrow/             # Token escrow for vesting
         presale/            # Presale contract
+    dashboard/              # Next.js ops dashboard (localhost:3000)
     docs/                   # Whitepaper and technical documentation
         whitepaper.md       # Full protocol specification
+    infra/                  # AWS resource definitions (DynamoDB, Lambda, ECS)
     keys/                   # Devnet allocation proof (no private keys committed)
         devnet/ALLOCATION.md
-    DECISIONS.md            # 24 locked design decisions with rationale
+    scripts/                # Token mint, airdrop, Dialect messaging
+    shared/                 # Common Python: config, LLM client, DynamoDB helpers
+    tests/                  # Python unit tests
+    tools/                  # Next.js tools site (tools.systemr.ai)
+    DECISIONS.md            # 22 locked design decisions with rationale (2 deferred)
     README.md               # This file
 ```
 
@@ -126,16 +133,16 @@ The token is live on Solana devnet with full allocation distributed:
 | Liquidity | 50,000,000 | `GxgFz72g7QxzNeikim2F4uDrdQrWNxvB7ECKWM9yjAKQ` |
 | Future Team | 10,000,000 | `EUPy2TWsjvXbjG3j6EVuvFwSg2kj6qtCFG5qae5M8BZd` |
 
-Verify on Solana Explorer: [View Token on Devnet](https://explorer.solana.com/address/HBeMPtFD4fFf4otKst3AMvW8E5eJBhB4oqNeNRJneJHB?cluster=devnet)
+Verify on Solana Explorer: [View Token on Devnet](https://explorer.solana.com/address/DJXh4DpaXMKsDaLc4TLQbpK4e8EVV5jTUe7vzvDVXa9s?cluster=devnet)
 
 ## Verify on Solana
 
 ```bash
 # Check total supply
-spl-token supply HBeMPtFD4fFf4otKst3AMvW8E5eJBhB4oqNeNRJneJHB --url devnet
+spl-token supply DJXh4DpaXMKsDaLc4TLQbpK4e8EVV5jTUe7vzvDVXa9s --url devnet
 
 # Check any allocation wallet balance
-spl-token balance --address DAzSPYwqnK6L35B5BkrS3AKyKB8frS7ZyYeQ1qsAdnyw --url devnet
+spl-token balance --address 2vJs6VH6ZC5YyvZrTLiNDzovDegya8eR31e7DuPX2nrD --url devnet
 ```
 
 ## Documentation
@@ -143,7 +150,7 @@ spl-token balance --address DAzSPYwqnK6L35B5BkrS3AKyKB8frS7ZyYeQ1qsAdnyw --url d
 | Document | Description |
 |----------|-------------|
 | [Whitepaper](docs/whitepaper.md) | Full protocol specification, token economics, governance, roadmap |
-| [Decisions](DECISIONS.md) | 24 locked decisions with rationale, covering all protocol design choices |
+| [Decisions](DECISIONS.md) | 22 locked decisions with rationale (2 deferred), covering all protocol design choices |
 | [Allocation Proof](keys/devnet/ALLOCATION.md) | Devnet token distribution with all wallet addresses |
 | [Coordination Setup](docs/COORDINATION_CHANNEL_SETUP.md) | Telegram channel security configuration |
 
