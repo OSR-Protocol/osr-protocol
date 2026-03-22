@@ -89,4 +89,6 @@ tests/
 infra/
 docs/COORDINATION_CHANNEL_SETUP.md
 docs/LANDING_PAGE_RESEARCH.md
+docs/INTERCOMPANY_AGREEMENT.md
+docs/MAINNET_DEPLOYMENT.md
 pyproject.toml
