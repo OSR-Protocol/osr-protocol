@@ -26,7 +26,7 @@
 ### D-001: Token Economics Model — Burn-and-Mint Equilibrium (BME)
 - **Date:** 2026-03-21
 - **Status:** LOCKED
-- **Decision:** $OSR uses Burn-and-Mint Equilibrium. Users burn $OSR to mint compute credits that meter AI agent operations on the System R AI platform. Not pure burn, not pure reuse.
+- **Decision:** OSR uses Burn-and-Mint Equilibrium. Users burn OSR to mint compute credits that meter AI agent operations on the System R AI platform. Not pure burn, not pure reuse.
 - **Rationale:** Data shows BME is the proven model for tokens metering real compute/infrastructure. Helium (HNT → Data Credits), Render (95% burn + provider mint), and Akash (converting to BME March 2026) all validate this. Pure burn runs out. Pure reuse creates no supply reduction. BME balances both.
 - **Implications:**
   - Contracts need: burn mechanism + credit mint + emission
@@ -55,13 +55,13 @@
 ### D-004: Token Allocation
 - **Date:** 2026-03-21
 - **Status:** LOCKED
-- **Decision:** 1B $OSR supply allocated as follows:
+- **Decision:** 1B OSR supply allocated as follows:
 
 | Pool | % | Tokens | Purpose |
 |------|---|--------|---------|
 | BME Emission | 30% | 300M | Staker rewards (60%), ecosystem grants (30%), protocol reserve (10%) |
 | Ecosystem | 20% | 200M | Grants, partnerships, developer incentives, integrations |
-| Treasury | 12% | 120M | Strategic reserve in $OSR. Never sold for operations. |
+| Treasury | 12% | 120M | Strategic reserve in OSR. Never sold for operations. |
 | Presale | 10% | 100M | Public community sale |
 | Ashim (Founder) | 7% | 70M | 1yr cliff, 4yr linear monthly vest |
 | Shannon (Co-Founder) | 7% | 70M | 1yr cliff, 4yr linear monthly vest, org wallet |
@@ -89,7 +89,7 @@
 | Hard cap | $500,000 total raise |
 | Base listing price | $0.005 per token |
 | Accepted payments | SOL, USDC, USDT |
-| Presale allocation | 100,000,000 $OSR (10% of supply) |
+| Presale allocation | 100,000,000 OSR (10% of supply) |
 
 **Four Weekly Pricing Tiers:**
 
@@ -153,15 +153,15 @@
 
 **Tier 1 — Presale Buyers:**
 - Wallet verified on-chain through presale transaction history (`is_presale_buyer` flag).
-- 20% permanent discount on all platform operations below the standard $OSR rate.
+- 20% permanent discount on all platform operations below the standard OSR rate.
 - Discount applies for the lifetime of the wallet's interaction with the platform.
 - Earned through early participation. Verified on-chain. Immutable.
 
-**Tier 2 — Regular $OSR Holders:**
-- Standard $OSR rate at purchase.
+**Tier 2 — Regular OSR Holders:**
+- Standard OSR rate at purchase.
 - Loyalty tiers based on lifetime cumulative burn history:
 
-| Cumulative $OSR Burned | Rate Improvement |
+| Cumulative OSR Burned | Rate Improvement |
 |------------------------|-----------------|
 | 0 — 100,000 | Standard rate (0%) |
 | 100,001 — 500,000 | 5% improvement |
@@ -186,7 +186,7 @@
 | Data feed query single asset real-time | 5 | $0.005 |
 | Comprehensive market scan multi-asset | 100 | $0.10 |
 
-**Oracle:** Pyth Network $OSR/USD price feed.
+**Oracle:** Pyth Network OSR/USD price feed.
 - **Circuit breaker:** If confidence interval exceeds 5% of the reported price, the transaction pauses and retries on the next Solana block.
 - **Staleness rejection:** If the Pyth feed has not updated for more than 30 seconds, the system rejects all pricing transactions until a fresh feed arrives.
 
@@ -194,7 +194,7 @@
 
 **Fiat Access:** The platform also accepts fiat payments through a separate operating entity (System R Technologies LLC). Stablecoin-equivalent revenue from fiat operations funds periodic treasury buyback and burn. Documented by one sentence in the whitepaper. No further detail in OSR Protocol documentation.
 
-**Batching:** Burn once, use many. User burns $OSR for a block of credits. Credits consumed per operation off-chain. Settlement/top-up periodic, not per-call. Prevents transaction fees exceeding compute costs for small operations.
+**Batching:** Burn once, use many. User burns OSR for a block of credits. Credits consumed per operation off-chain. Settlement/top-up periodic, not per-call. Prevents transaction fees exceeding compute costs for small operations.
 
 - **Rationale:** Helium Data Credits model proven at scale. USD peg gives users predictable costs. Resource-based metering is honest — lightweight calls cost less than heavy ones. Two-tier access rewards early participants while providing clear upgrade path through usage. The 5% presale advantage persists permanently, creating earned loyalty. All parameters governance-adjustable for long-term adaptability.
 
@@ -254,7 +254,7 @@
 ### D-010: Human vs Agent Payment Rails
 - **Date:** 2026-03-21
 - **Status:** LOCKED
-- **Decision:** The BVI entity operates the token economy only. Fiat billing is operated by a separate entity (System R Technologies LLC). The $OSR whitepaper describes two pricing tiers: presale participants (20% permanent discount) and regular holders (standard rate with loyalty improvements). Fiat access exists through the separate operating entity and is acknowledged with one neutral sentence in the whitepaper.
+- **Decision:** The BVI entity operates the token economy only. Fiat billing is operated by a separate entity (System R Technologies LLC). The OSR whitepaper describes two pricing tiers: presale participants (20% permanent discount) and regular holders (standard rate with loyalty improvements). Fiat access exists through the separate operating entity and is acknowledged with one neutral sentence in the whitepaper.
 - **Rationale:** Entity separation must be clean in documentation. The BVI entity issues the token and operates the token economy. The US entity operates the SaaS platform and handles fiat billing. Referencing fiat pricing in detail creates a documented operational relationship that undermines BVI Economic Substance Act compliance.
 
 ---
@@ -266,7 +266,7 @@
 
 | Payment Method | Status | Credit Rate |
 |---|---|---|
-| $OSR | Accepted | Best rate (discount for direct burn) |
+| OSR | Accepted | Best rate (discount for direct burn) |
 | USDC | Accepted at launch | Standard rate |
 | USDT | Accepted at launch | Standard rate |
 | PYUSD | Post-launch | Standard rate |
@@ -275,15 +275,15 @@
 
 ---
 
-### D-012: $OSR Holder Advantages
+### D-012: OSR Holder Advantages
 - **Date:** 2026-03-21
 - **Status:** LOCKED
-- **Decision:** $OSR holders/burners receive tangible advantages over stablecoin users:
+- **Decision:** OSR holders/burners receive tangible advantages over stablecoin users:
 
 **For humans:**
 - Governance votes on protocol parameters
 - Staking rewards (emission distribution)
-- Loyalty tiers (total $OSR burned historically unlocks better rates)
+- Loyalty tiers (total OSR burned historically unlocks better rates)
 - Priority access to new features and capabilities
 - Direct channel for governance participants
 
@@ -291,17 +291,17 @@
 - Higher throughput (more calls per second)
 - Priority queue during peak demand
 - Burn history tiers (creates switching cost — leaving means starting over)
-- Ecosystem composability with other $OSR-native agents
+- Ecosystem composability with other OSR-native agents
 
-- **Rationale:** A 10-20% discount alone is lazy. Real advantages create ecosystem alignment — $OSR holders are stakeholders, not just customers. Burn history tiers create switching costs for agents, making the platform stickier.
+- **Rationale:** A 10-20% discount alone is lazy. Real advantages create ecosystem alignment — OSR holders are stakeholders, not just customers. Burn history tiers create switching costs for agents, making the platform stickier.
 
 ---
 
 ### D-013: Stablecoin Revenue Split
 - **Date:** 2026-03-21
 - **Status:** LOCKED
-- **Decision:** When users pay with stablecoins, approximately 60% covers operations and 40% is used for treasury buyback-and-burn of $OSR. Exact ratio is a governance-adjustable protocol parameter.
-- **Rationale:** Operations must be funded from real revenue. The 40% buyback-and-burn creates consistent $OSR demand from stablecoin payments. Ratio adjustable by governance so community can optimize over time.
+- **Decision:** When users pay with stablecoins, approximately 60% covers operations and 40% is used for treasury buyback-and-burn of OSR. Exact ratio is a governance-adjustable protocol parameter.
+- **Rationale:** Operations must be funded from real revenue. The 40% buyback-and-burn creates consistent OSR demand from stablecoin payments. Ratio adjustable by governance so community can optimize over time.
 
 ---
 
@@ -329,7 +329,7 @@
 - **Status:** LOCKED
 - **Decision:** Stablecoin payments are separated into two distinct operations:
   - **Step 1:** User pays USDC → receives compute credits immediately (service payment)
-  - **Step 2:** Company independently buys $OSR on DEX and burns it (treasury operation)
+  - **Step 2:** Company independently buys OSR on DEX and burns it (treasury operation)
   - User's transaction ends at Step 1. Steps separated temporally and operationally.
 - **Rationale:** The BVI VASP Act 2022 regulates activities performed "for or on behalf of another person." An atomic user-triggered swap could be classified as exchange service on behalf of user. Two-step separation maintains the "own funds" defense — the company receives USDC as service payment and manages token operations as proprietary treasury activity. Confirmed by analysis of Carey Olsen, Walkers, Mourant, Conyers guidance. This is the single architectural change that resolves the only BVI VASP gray area.
 
@@ -342,7 +342,7 @@
 
 | Fund | Holds | Source | Purpose | Rule |
 |------|-------|--------|---------|------|
-| Token Treasury | $OSR only | 12% allocation (120M) | Strategic partnerships, governance, ecosystem, liquidity | **Never sold for operations** |
+| Token Treasury | OSR only | 12% allocation (120M) | Strategic partnerships, governance, ecosystem, liquidity | **Never sold for operations** |
 | Operating Fund | USDC only | 70% of presale + platform revenue | All bills, all costs, all development | Always maintain runway |
 | Strategic Reserve | Mixed | 30% of presale + revenue surplus | Emergencies, audits, legal opinion, DEX liquidity, growth | Touch only for strategic or emergency |
 
@@ -447,7 +447,7 @@
 ### D-024: On-Chain Governance (Post-Presale)
 - **Date:** 2026-03-21
 - **Status:** LOCKED
-- **Decision:** Two-layer governance. Company operations governed by time-lock structure (D-008). Protocol parameters governed by $OSR token holders via Realms (Solana SPL Governance).
+- **Decision:** Two-layer governance. Company operations governed by time-lock structure (D-008). Protocol parameters governed by OSR token holders via Realms (Solana SPL Governance).
 
 **Token holder governance scope:**
 - Protocol parameters (burn rate, credit pricing, emission distribution)
@@ -468,7 +468,7 @@
 
 **Proposal threshold:** 0.5% of circulating supply to create proposal, OR 10 unique wallets collectively holding 0.5%.
 
-**Staker voting bonus:** Staked $OSR gets 1.5x voting weight (rewards commitment, prevents flash loan attacks).
+**Staker voting bonus:** Staked OSR gets 1.5x voting weight (rewards commitment, prevents flash loan attacks).
 
 **Founder veto:** Ashim can veto any single proposal once per calendar year (Years 1-3 only). Veto is public with written justification. Override: same proposal passes again at 80%+ supermajority. Veto right expires after Year 3.
 
@@ -506,8 +506,8 @@
 | D-008 | Treasury governance (time-lock + oversight) | LOCKED | 2026-03-21 |
 | D-009 | Emission schedule (declining, 8yr) | LOCKED | 2026-03-21 |
 | D-010 | Fiat for humans, tokens for agents | LOCKED | 2026-03-21 |
-| D-011 | Accepted payments ($OSR, USDC, USDT, PYUSD) | LOCKED | 2026-03-21 |
-| D-012 | $OSR holder advantages | LOCKED | 2026-03-21 |
+| D-011 | Accepted payments (OSR, USDC, USDT, PYUSD) | LOCKED | 2026-03-21 |
+| D-012 | OSR holder advantages | LOCKED | 2026-03-21 |
 | D-013 | Stablecoin split (~60/40 ops/burn) | LOCKED | 2026-03-21 |
 | D-014 | Pricing engine (Pyth, MEV, slippage) | LOCKED | 2026-03-21 |
 | D-015 | Two-step USDC separation (VASP compliance) | LOCKED | 2026-03-21 |

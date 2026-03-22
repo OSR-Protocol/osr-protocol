@@ -1,4 +1,4 @@
-# $OSR Devnet Token Allocation Map
+# OSR Devnet Token Allocation Map
 
 **Token Mint:** `DJXh4DpaXMKsDaLc4TLQbpK4e8EVV5jTUe7vzvDVXa9s`
 **Network:** Solana Devnet
