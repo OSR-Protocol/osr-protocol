@@ -43,6 +43,23 @@ Emission pool releases pre minted tokens to stakers and ecosystem
 
 The protocol also accepts USDC, USDT, and PYUSD. Stablecoin payments are received as service payments. The protocol independently handles buyback and burn as a treasury operation.
 
+## Pricing Tiers
+
+Two pricing tiers, both determined entirely by on chain wallet history. Both are pure pay as you go. No plans. No contracts. No caps.
+
+**Tier 1: Presale participants.** Wallets verified on chain through presale transaction history receive a 20% permanent discount on all platform operations. Earned through early participation. The wallet is the identity. The on chain burn history is the loyalty record.
+
+**Tier 2: Regular $OSR holders.** Wallets that acquired $OSR on the open market after launch pay the standard rate with loyalty improvements based on cumulative lifetime burn history:
+
+| Cumulative $OSR Burned | Rate Improvement |
+|------------------------|-----------------|
+| 0 to 100,000 | Standard rate |
+| 100,001 to 500,000 | 5% improvement |
+| 500,001 to 1,000,000 | 10% improvement |
+| 1,000,001 and above | 15% improvement |
+
+Hold $OSR. Connect wallet. Consume credits for platform operations. Disconnect when finished. Return when ready.
+
 ## Token Allocation
 
 | Pool | % | Tokens | Vesting |
@@ -50,13 +67,33 @@ The protocol also accepts USDC, USDT, and PYUSD. Stablecoin payments are receive
 | BME Emission | 30% | 300,000,000 | Declining emission schedule over 8 years |
 | Ecosystem | 20% | 200,000,000 | Milestone based grants |
 | Treasury | 12% | 120,000,000 | Strategic reserve, never sold for operations |
-| Presale | 10% | 100,000,000 | Public community sale |
+| Presale | 10% | 100,000,000 | Public community sale, 20% TGE, 1 month cliff, 4 month linear |
 | Founders | 14% | 140,000,000 | 1 year cliff, 4 year linear monthly |
 | Early Investors | 8% | 80,000,000 | 6 month cliff, 2 year linear monthly |
 | Liquidity | 5% | 50,000,000 | Protocol owned DEX pools |
 | Future Team | 1% | 10,000,000 | 1 year cliff, 3 year linear monthly |
 
 77% of supply is in protocol working pools. 23% goes to the people who built and funded the project, all locked behind cliff and vesting periods. In Year 1, zero insider tokens are circulating.
+
+## Presale
+
+| Parameter | Value |
+|-----------|-------|
+| Base price | $0.005 per token |
+| Minimum purchase | $549 |
+| Maximum per wallet | $25,000 |
+| Hard cap | $500,000 total raise |
+| Pricing structure | Four weekly tiers with progressive pricing |
+| Accepted payments | SOL, USDC, USDT, PYUSD |
+
+## Vesting
+
+| Recipient | Cliff | Vesting |
+|-----------|-------|---------|
+| Presale buyers | 1 month | 20% at TGE, 4 month linear |
+| Founders | 1 year | 4 year linear monthly |
+| Early Investors | 6 months | 2 year linear monthly |
+| Future Team | 1 year | 3 year linear monthly |
 
 ## Repository Structure
 
@@ -69,13 +106,12 @@ osr-protocol/
     dashboard/              # Next.js ops dashboard (localhost:3000)
     docs/                   # Whitepaper and technical documentation
         whitepaper.md       # Full protocol specification
-    infra/                  # AWS resource definitions (DynamoDB, Lambda, ECS)
+    infra/                  # Cloud resource definitions
     keys/                   # Devnet allocation proof (no private keys committed)
         devnet/ALLOCATION.md
     scripts/                # Token mint, airdrop, Dialect messaging
     shared/                 # Common Python: config, LLM client, DynamoDB helpers
     tests/                  # Python unit tests
-    tools/                  # Next.js tools site (tools.systemr.ai)
     DECISIONS.md            # 22 locked design decisions with rationale (2 deferred)
     README.md               # This file
 ```
@@ -145,6 +181,33 @@ spl-token supply DJXh4DpaXMKsDaLc4TLQbpK4e8EVV5jTUe7vzvDVXa9s --url devnet
 spl-token balance --address 2vJs6VH6ZC5YyvZrTLiNDzovDegya8eR31e7DuPX2nrD --url devnet
 ```
 
+## Build
+
+**Python agents and scripts** (requires Python 3.11+):
+
+```bash
+python -m venv .venv && source .venv/bin/activate
+pip install -e ".[dev]"
+cp .env.template .env   # fill in API keys
+pytest
+```
+
+**Dashboard** (requires Node.js 18+):
+
+```bash
+cd dashboard
+npm install
+npm run dev              # http://localhost:3000
+```
+
+**Presale contract** (requires Rust, Anchor, Solana CLI):
+
+```bash
+cd contracts/presale
+anchor build
+anchor test
+```
+
 ## Documentation
 
 | Document | Description |
@@ -188,7 +251,7 @@ Phases are milestone driven, not calendar driven. See the [whitepaper](docs/whit
 
 ## Entity
 
-**OSR Protocol Inc.** is incorporated in the British Virgin Islands. The BVI entity issues the token and manages protocol operations. Technology is licensed from System R Technologies LLC (Florida) through a written intercompany agreement.
+Issued by OSR Protocol Inc., British Virgin Islands.
 
 ## Contact
 

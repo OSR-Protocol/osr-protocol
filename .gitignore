@@ -78,7 +78,7 @@ keys/mainnet/
 logs/
 
 # Internal dev files (not for public repo)
-CLAUDE.md
+.shannon-config
 MISSION.md
 .env.template
 agents/

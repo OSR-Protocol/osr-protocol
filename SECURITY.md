@@ -69,7 +69,7 @@ Dashboard files are in `.gitignore` (internal operational code). Fixes applied l
 |---|----------|---------|--------|--------|
 | C-5 | CRITICAL | README references abandoned mint `HBeMPtFD` as current token | FIXED | `9c2fdde` |
 | C-6 | CRITICAL | ALLOCATION.md references abandoned mint with wrong supply | FIXED | `9c2fdde` |
-| M-10 | MEDIUM | CLAUDE.md claims "3-of-5 multisig" but D-008 says single-operator | FIXED | on disk |
+| M-10 | MEDIUM | Dev config claimed "3-of-5 multisig" but D-008 says single-operator | FIXED | on disk |
 | M-11 | MEDIUM | MISSION.md has stale "DECISION NEEDED" for BME (locked as D-001) | FIXED | on disk |
 | L-2 | LOW | .env.template missing 3 environment variables | FIXED | on disk |
 
