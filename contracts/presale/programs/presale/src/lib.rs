@@ -169,13 +169,13 @@ pub mod presale {
             require!(new_total_raised <= max_raise, PresaleError::HardCapReached);
         }
 
-        // SOL transfer: buyer -> sol_vault
+        // SOL transfer: buyer -> presale account (program-owned, safe to debit later)
         anchor_lang::system_program::transfer(
             CpiContext::new(
                 ctx.accounts.system_program.to_account_info(),
                 anchor_lang::system_program::Transfer {
                     from: ctx.accounts.buyer.to_account_info(),
-                    to: ctx.accounts.sol_vault.to_account_info(),
+                    to: ctx.accounts.presale.to_account_info(),
                 },
             ),
             cost,
@@ -364,26 +364,28 @@ pub mod presale {
         Ok(())
     }
 
-    /// Admin withdraws SOL — only after presale ends or is paused (D-016)
+    /// Admin withdraws SOL from presale account — only after presale ends or is paused (D-016)
     pub fn withdraw_sol(ctx: Context<WithdrawSol>, amount: u64) -> Result<()> {
         let clock = Clock::get()?;
-        let presale = &ctx.accounts.presale;
+        let presale_info = ctx.accounts.presale.to_account_info();
 
         // Prevent mid-presale withdrawal: must be ended or paused
         require!(
-            clock.unix_timestamp > presale.end_time || !presale.is_active,
+            clock.unix_timestamp > ctx.accounts.presale.end_time
+                || !ctx.accounts.presale.is_active,
             PresaleError::PresaleNotEnded
         );
 
-        let sol_vault = &ctx.accounts.sol_vault;
-        let rent = Rent::get()?.minimum_balance(0);
-        let available = sol_vault
+        // Available = lamports beyond rent-exemption for the presale data account
+        let rent = Rent::get()?.minimum_balance(presale_info.data_len());
+        let available = presale_info
             .lamports()
             .checked_sub(rent)
             .ok_or(error!(PresaleError::InsufficientFunds))?;
         require!(amount <= available, PresaleError::InsufficientFunds);
 
-        **ctx.accounts.sol_vault.to_account_info().try_borrow_mut_lamports()? -= amount;
+        // Presale account is program-owned — safe to debit
+        **presale_info.try_borrow_mut_lamports()? -= amount;
         **ctx.accounts.authority.to_account_info().try_borrow_mut_lamports()? += amount;
 
         emit!(FundsWithdrawn {
@@ -529,9 +531,6 @@ pub struct BuyWithSol<'info> {
     pub vault_authority: UncheckedAccount<'info>,
     #[account(mut, constraint = token_vault.key() == presale.token_vault)]
     pub token_vault: Account<'info, TokenAccount>,
-    /// CHECK: SOL vault
-    #[account(mut, constraint = sol_vault.key() == presale.sol_vault)]
-    pub sol_vault: UncheckedAccount<'info>,
     #[account(mut)]
     pub buyer: Signer<'info>,
     #[account(
@@ -593,14 +592,10 @@ pub struct BuyWithStablecoin<'info> {
 
 #[derive(Accounts)]
 pub struct WithdrawSol<'info> {
-    #[account(has_one = authority)]
+    #[account(mut, has_one = authority)]
     pub presale: Account<'info, PresaleState>,
-    /// CHECK: SOL vault
-    #[account(mut, constraint = sol_vault.key() == presale.sol_vault)]
-    pub sol_vault: UncheckedAccount<'info>,
     #[account(mut)]
     pub authority: Signer<'info>,
-    pub system_program: Program<'info, System>,
 }
 
 /// C-2 FIX: Validate stablecoin vault matches one of the three configured vaults
