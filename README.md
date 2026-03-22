@@ -20,7 +20,7 @@ Built on Solana. Incorporated in the British Virgin Islands.
 | Total Supply | 1,000,000,000 (1B) |
 | Decimals | 9 |
 | Token Program | SPL Token |
-| Devnet Mint | `DJXh4DpaXMKsDaLc4TLQbpK4e8EVV5jTUe7vzvDVXa9s` |
+| Devnet Mint | `E2grvu8fyeeuVaxj2DrHVBqv8j21jK3vyJpXG8FJjJNc` |
 | Issuer | OSR Protocol Inc. (BVI) |
 
 ## How It Works
@@ -179,13 +179,13 @@ The token is live on Solana devnet with full allocation distributed:
 | Liquidity | 50,000,000 | `GxgFz72g7QxzNeikim2F4uDrdQrWNxvB7ECKWM9yjAKQ` |
 | Future Team | 10,000,000 | `EUPy2TWsjvXbjG3j6EVuvFwSg2kj6qtCFG5qae5M8BZd` |
 
-Verify on Solana Explorer: [View Token on Devnet](https://explorer.solana.com/address/DJXh4DpaXMKsDaLc4TLQbpK4e8EVV5jTUe7vzvDVXa9s?cluster=devnet)
+Verify on Solana Explorer: [View Token on Devnet](https://explorer.solana.com/address/E2grvu8fyeeuVaxj2DrHVBqv8j21jK3vyJpXG8FJjJNc?cluster=devnet)
 
 ## Verify on Solana
 
 ```bash
 # Check total supply
-spl-token supply DJXh4DpaXMKsDaLc4TLQbpK4e8EVV5jTUe7vzvDVXa9s --url devnet
+spl-token supply E2grvu8fyeeuVaxj2DrHVBqv8j21jK3vyJpXG8FJjJNc --url devnet
 
 # Check any allocation wallet balance
 spl-token balance --address 2vJs6VH6ZC5YyvZrTLiNDzovDegya8eR31e7DuPX2nrD --url devnet
