@@ -470,3 +470,14 @@ Intershore Chambers, Road Town, Tortola, British Virgin Islands
 Website: osrprotocol.com
 GitHub: github.com/OSR-Protocol
 Contact: dev@osrprotocol.com
+
+---
+
+## Version History
+
+| Version | Date | Changes |
+|---------|------|---------|
+| 1.0 | 2026-03-21 | Initial protocol specification |
+| 1.1 | 2026-03-22 | External review refinements: mental model, agent workflow example, growth flywheel, regulatory tone, Phase 4 condensed, D-020 language compliance |
+| 1.2 | 2026-03-22 | Simplified access model: two tier pricing (presale + regular holders), presale structure with parameters |
+| 1.3 | 2026-03-22 | Entity separation enforced: Tier 3 removed, fiat acknowledgment via separate entity, vendor names removed, treasury threshold corrected, identity audit |
