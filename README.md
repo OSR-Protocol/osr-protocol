@@ -47,7 +47,7 @@ The protocol also accepts USDC, USDT, and PYUSD. Stablecoin payments are receive
 
 | Pool | % | Tokens | Vesting |
 |------|---|--------|---------|
-| BME Emission | 30% | 300,000,000 | Halving schedule over 8 years |
+| BME Emission | 30% | 300,000,000 | Declining emission schedule over 8 years |
 | Ecosystem | 20% | 200,000,000 | Milestone based grants |
 | Treasury | 12% | 120,000,000 | Strategic reserve, never sold for operations |
 | Presale | 10% | 100,000,000 | Public community sale |
@@ -91,8 +91,8 @@ All decisions are documented in [DECISIONS.md](DECISIONS.md) with rationale. Key
 | Credit batching | Burn once, use many | Solana tx fees ($0.036) can exceed micro compute costs ($0.001) |
 | Stablecoin flow | Two step separation | User pays for service (step 1), protocol handles buyback and burn (step 2). BVI VASP compliant. |
 | Treasury | Three fund architecture | Token treasury ($OSR), operating fund (USDC), strategic reserve (mixed). Prevents death spiral. |
-| Governance | Solana Realms, three tier voting | Standard (5% quorum), Major (10%), Critical (15%). Staked tokens get 1.5x voting weight. |
-| Emission | Halving schedule, 8 years | 50M/yr years 1 to 2, decreasing. 60% stakers, 30% ecosystem, 10% reserve. |
+| Governance | Solana Realms, tiered voting | Standard (5% quorum), Major (10%), Critical (15%). Staked tokens get 1.5x voting weight. |
+| Emission | Declining schedule, 8 years | 50M/yr years 1 to 2, decreasing. 60% stakers, 30% ecosystem, 10% reserve. |
 | Security | Simple contracts, phased audits | Under 1,000 lines custom Rust. Anchor framework. Bug bounty on Immunefi. |
 | Mint authority | Revoked after distribution | All 1B tokens pre minted. Emission releases existing tokens, not new minting. |
 

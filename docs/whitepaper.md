@@ -28,7 +28,7 @@ This is the equivalent of every website building its own data center. It does no
 
 System R AI is a complete trading operating system. It provides the full infrastructure stack that trading agents require: compute, language models from all major providers, cloud resources, risk engines, market connectivity, and operational tooling. All accessible through a single protocol.
 
-$OSR is the economic mechanism that meters access to this infrastructure. Rather than monthly invoices, credit card charges, or bilateral agreements, agents burn $OSR tokens to receive compute credits. These credits are consumed as agents use platform resources. The protocol handles billing, metering, and settlement onchain, removing the need for traditional payment infrastructure between autonomous agents and the platforms they depend on.
+$OSR is the economic mechanism that meters access to this infrastructure. Rather than monthly invoices, bilateral agreements, or fragmented vendor relationships, agents burn $OSR tokens to receive compute credits. These credits are consumed as agents use platform resources. The protocol handles billing, metering, and settlement onchain, removing the need for traditional payment infrastructure between autonomous agents and the platforms they depend on.
 
 ### 1.3 Why a Token
 
@@ -119,7 +119,7 @@ Total supply: 1,000,000,000 $OSR (one billion tokens, 9 decimals)
 | BME Emission | 30% | 300,000,000 | Staker rewards, ecosystem grants, protocol reserve |
 | Ecosystem | 20% | 200,000,000 | Partnerships, developer incentives, integrations |
 | Treasury | 12% | 120,000,000 | Strategic reserve in $OSR, never sold for operations |
-| Presale | 10% | 100,000,000 | Public community sale |
+| Presale | 10% | 100,000,000 | Public community sale ($549 minimum, $25,000 per wallet cap) |
 | Founder | 7% | 70,000,000 | 1 year cliff, 4 year linear monthly vesting |
 | Co-Founder | 7% | 70,000,000 | 1 year cliff, 4 year linear monthly vesting |
 | Early Investor A | 5% | 50,000,000 | 6 month cliff, 2 year linear monthly vesting |
@@ -157,6 +157,21 @@ Within each year, emission is distributed: 60% to stakers, 30% to ecosystem gran
 
 Front loading rewards in Years 1 and 2 bootstraps the staking economy when it matters most. As the platform matures, revenue sharing supplements emission rewards, and the emission rate naturally decreases.
 
+### 3.3 Presale Structure
+
+The presale distributes 100,000,000 $OSR tokens under the following parameters:
+
+| Parameter | Value |
+|-----------|-------|
+| Base price | $0.005 per token |
+| Minimum purchase | $549 |
+| Maximum per wallet | $25,000 |
+| Hard cap | $500,000 total raise |
+| Pricing structure | Four weekly tiers with progressive pricing |
+| Accepted payments | SOL, USDC, USDT, PYUSD |
+
+The presale uses four weekly pricing tiers. The base price of $0.005 per token applies in the first week. Each subsequent week introduces a higher price tier, rewarding earlier participation with better rates. All presale purchases are verified on chain through wallet transaction history.
+
 ---
 
 ## 4. Accepted Payments
@@ -182,17 +197,37 @@ These steps are separated temporally and operationally. The user's transaction c
 
 Approximately 60% of stablecoin revenue funds operations. The remaining 40% funds the periodic buyback and burn. This ratio is adjustable through governance vote.
 
-### 4.2 $OSR Payment Advantages
+### 4.2 Pricing Tiers
 
-Users who hold and burn $OSR directly receive tangible benefits beyond a simple discount:
+The protocol operates two pricing tiers. Both are determined entirely by on chain wallet history.
 
-| Advantage | How It Works |
-|-----------|-------------|
-| **Loyalty tiers** | Total $OSR burned historically across all operations unlocks progressively better credit rates. An agent that has burned 500,000 $OSR over its lifetime receives materially better pricing than a new agent. This creates an earned advantage that cannot be replicated by switching to a competitor. |
-| **Staking rewards** | $OSR holders who stake their tokens receive emission rewards from the 300M emission pool. Stakers receive emission rewards distributed from the protocol's pre-minted emission pool. |
-| **Governance participation** | Staked $OSR grants voting rights on protocol parameters including credit pricing, emission distribution, and ecosystem fund allocation. Staked tokens receive 1.5 times voting weight. |
+**Tier 1: Presale participants.** Wallets verified on chain through presale transaction history receive a 20% permanent discount on all platform operations below the standard $OSR rate. The discount applies for the lifetime of the wallet's interaction with the platform. Earned through early participation. Verified on chain. No plan. No contract. No cap. No monthly commitment. No minimum usage. No maximum usage. The wallet is the identity. The balance is the access. The on chain burn history is the loyalty record.
+
+**Tier 2: Regular $OSR holders.** Wallets that acquired $OSR on the open market after launch pay the standard rate with loyalty improvements based on cumulative lifetime burn history:
+
+| Cumulative $OSR Burned | Rate Improvement |
+|------------------------|-----------------|
+| 0 to 100,000 | Standard rate |
+| 100,001 to 500,000 | 5% rate improvement |
+| 500,001 to 1,000,000 | 10% rate improvement |
+| 1,000,001 and above | 15% rate improvement |
+
+Both tiers are pure pay as you go. Hold $OSR. Connect wallet. Consume credits for platform operations. Disconnect when finished. Return when ready. The relationship between the user and the platform is defined entirely by the wallet's on chain history.
+
+### 4.3 Additional Benefits
+
+All $OSR holders, regardless of tier, receive:
+
+| Benefit | Description |
+|---------|-------------|
+| **Staking rewards** | Stakers receive emission rewards distributed from the protocol's pre minted 300M emission pool. Staked tokens receive 1.5 times governance voting weight. |
+| **Governance participation** | Staked $OSR grants voting rights on protocol parameters including credit pricing, emission distribution, and ecosystem fund allocation. |
 | **Priority access** | During periods of high demand, $OSR holders receive priority queue positioning and higher throughput limits. |
 | **Ecosystem composability** | Agents operating natively with $OSR can interact with other $OSR native agents and protocols at reduced friction. |
+
+### 4.4 Fiat Access
+
+The underlying platform also accepts fiat currency payments through a separate operating entity. Stablecoin equivalent revenue from fiat operations funds periodic treasury buyback and burn, ensuring all payment paths contribute to the token's consumption cycle.
 
 ---
 

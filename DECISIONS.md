@@ -27,7 +27,7 @@
 - **Date:** 2026-03-21
 - **Status:** LOCKED
 - **Decision:** $OSR uses Burn-and-Mint Equilibrium. Users burn $OSR to mint compute credits that meter AI agent operations on the System R AI platform. Not pure burn, not pure reuse.
-- **Rationale:** Data shows BME is the proven model for tokens metering real compute/infrastructure. Helium (HNT → Data Credits), Render (95% burn + provider mint), and Akash (converting to BME March 2026) all validate this. Pure burn runs out. Pure reuse has no scarcity. BME balances both.
+- **Rationale:** Data shows BME is the proven model for tokens metering real compute/infrastructure. Helium (HNT → Data Credits), Render (95% burn + provider mint), and Akash (converting to BME March 2026) all validate this. Pure burn runs out. Pure reuse creates no supply reduction. BME balances both.
 - **Implications:**
   - Contracts need: burn mechanism + credit mint + emission
   - Supply is dynamic — market-driven equilibrium
@@ -123,9 +123,9 @@
 | Category | Threshold | Time-Lock | Approval |
 |----------|-----------|-----------|----------|
 | Pre-approved recurring | Any (pre-authorized) | None | Monthly report |
-| Operational | Under $5,000 | None | Monthly report |
+| Operational | Under $15,000 | None | Monthly report |
 | Emergency override | Up to $15,000 | None | Notify within 1 hour + incident report |
-| Significant | $5,000 - $50,000 | 48 hours | Consent by non-objection (silence = approved) |
+| Significant | $15,000 - $50,000 | 48 hours | Consent by non-objection (silence = approved) |
 | Critical | Over $50,000 or protocol changes | 7 days | Requires explicit YES from at least one investor |
 
 **Objection protocol:**
@@ -145,7 +145,7 @@
 ### D-009: Emission Schedule
 - **Date:** 2026-03-21
 - **Status:** LOCKED
-- **Decision:** Halving schedule over ~8 years. 300M emission pool.
+- **Decision:** Declining emission schedule over ~8 years. 300M emission pool.
 
 | Period | Annual Emission | Cumulative |
 |--------|----------------|------------|
@@ -160,15 +160,15 @@
 - 30% to ecosystem grants (growth engine)
 - 10% to protocol reserve (buffer)
 
-- **Rationale:** Halving is proven (Helium, Bitcoin). Front-loads rewards when stakers are needed most. Predictable — community can plan. Simple contracts (lookup table, not dynamic). By Year 5+, platform revenue should supplement staking rewards.
+- **Rationale:** Declining emission is proven (Helium, Bitcoin). Front-loads rewards when stakers are needed most. Predictable — community can plan. Simple contracts (lookup table, not dynamic). By Year 5+, platform revenue should supplement staking rewards.
 
 ---
 
 ### D-010: Human vs Agent Payment Rails
 - **Date:** 2026-03-21
 - **Status:** LOCKED
-- **Decision:** Human subscriptions stay in fiat ($69/mo). $OSR token powers the agent economy and is optional for humans.
-- **Rationale:** Forcing humans through token rails kills conversion. Research confirms this across dual-sided marketplace platforms. The token should power agent-to-infrastructure payments. Humans who WANT to use $OSR can — for the advantages — but it's never forced.
+- **Decision:** The BVI entity operates the token economy only. Fiat billing is operated by a separate entity (System R Technologies LLC). The $OSR whitepaper describes two pricing tiers: presale participants (20% permanent discount) and regular holders (standard rate with loyalty improvements). Fiat access exists through the separate operating entity and is acknowledged with one neutral sentence in the whitepaper.
+- **Rationale:** Entity separation must be clean in documentation. The BVI entity issues the token and operates the token economy. The US entity operates the SaaS platform and handles fiat billing. Referencing fiat pricing in detail creates a documented operational relationship that undermines BVI Economic Substance Act compliance.
 
 ---
 
@@ -195,7 +195,7 @@
 
 **For humans:**
 - Governance votes on protocol parameters
-- Staking yield (emission rewards)
+- Staking rewards (emission distribution)
 - Loyalty tiers (total $OSR burned historically unlocks better rates)
 - Priority access to new features and capabilities
 - Direct channel for governance participants
@@ -417,7 +417,7 @@
 | D-006 | Vesting schedule | LOCKED | 2026-03-21 |
 | D-007 | Compute credit system (USD-pegged, batched) | LOCKED | 2026-03-21 |
 | D-008 | Treasury governance (time-lock + oversight) | LOCKED | 2026-03-21 |
-| D-009 | Emission schedule (halving, 8yr) | LOCKED | 2026-03-21 |
+| D-009 | Emission schedule (declining, 8yr) | LOCKED | 2026-03-21 |
 | D-010 | Fiat for humans, tokens for agents | LOCKED | 2026-03-21 |
 | D-011 | Accepted payments ($OSR, USDC, USDT, PYUSD) | LOCKED | 2026-03-21 |
 | D-012 | $OSR holder advantages | LOCKED | 2026-03-21 |
