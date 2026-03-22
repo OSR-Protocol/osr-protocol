@@ -7,16 +7,47 @@ declare_id!("9K1VNBCK6WRDVzYbidG4hH9L3crPXxhqvTBACqM5q8bi");
 const PRESALE_ALLOCATION: u64 = 100_000_000_000_000_000; // 100M * 10^9
 
 // D-005: Minimum presale purchase: $549 USD
-// In USDC/USDT/PYUSD (6 decimals): 549 * 10^6
+// In USDC (6 decimals): 549 * 10^6
 const MIN_PURCHASE_STABLECOIN: u64 = 549_000_000;
 
-// D-005: Floor price $0.005 per token
-// In stablecoin units (6 decimals) per 10^9 token-units:
-// $0.005 = 5000 stablecoin-units per 10^9 token-units
-const FLOOR_PRICE_PER_BILLION: u64 = 5000;
+// D-005: Four weekly pricing tiers (stablecoin units per 10^9 token-units)
+// Week 1: $0.00375/token = 3750 per billion
+// Week 2: $0.00425/token = 4250 per billion
+// Week 3: $0.0045/token  = 4500 per billion
+// Week 4: $0.00475/token = 4750 per billion
+// Base listing: $0.005/token = 5000 per billion
+const TIER1_PRICE_PER_BILLION: u64 = 3750; // Week 1: 25% discount
+const TIER2_PRICE_PER_BILLION: u64 = 4250; // Week 2: 15% discount
+const TIER3_PRICE_PER_BILLION: u64 = 4500; // Week 3: 10% discount
+const TIER4_PRICE_PER_BILLION: u64 = 4750; // Week 4: 5% discount
+const BASE_PRICE_PER_BILLION: u64 = 5000;  // Post-presale listing price
+
+// D-005: Presale week boundaries (Unix timestamps, UTC midnight)
+// Week 1: March 25 00:00 UTC — March 31 23:59 UTC
+// Week 2: April 1 00:00 UTC — April 7 23:59 UTC
+// Week 3: April 8 00:00 UTC — April 14 23:59 UTC
+// Week 4: April 15 00:00 UTC — April 21 23:59 UTC
+const WEEK1_START: i64 = 1774656000; // 2026-03-25 00:00:00 UTC
+const WEEK2_START: i64 = 1775260800; // 2026-04-01 00:00:00 UTC
+const WEEK3_START: i64 = 1775865600; // 2026-04-08 00:00:00 UTC
+const WEEK4_START: i64 = 1776470400; // 2026-04-15 00:00:00 UTC
+const PRESALE_END: i64 = 1777075200; // 2026-04-22 00:00:00 UTC
 
 // Magic number for buyer record initialization guard
 const BUYER_MAGIC: u64 = 0x4F53525F42555952; // "OSR_BUYR"
+
+/// Returns the current tier price per billion token-units based on timestamp
+fn current_tier_price(timestamp: i64) -> u64 {
+    if timestamp < WEEK2_START {
+        TIER1_PRICE_PER_BILLION
+    } else if timestamp < WEEK3_START {
+        TIER2_PRICE_PER_BILLION
+    } else if timestamp < WEEK4_START {
+        TIER3_PRICE_PER_BILLION
+    } else {
+        TIER4_PRICE_PER_BILLION
+    }
+}
 
 #[program]
 pub mod presale {
@@ -226,9 +257,9 @@ pub mod presale {
         Ok(())
     }
 
-    /// Buy $OSR with a stablecoin (USDC, USDT, or PYUSD — D-011)
+    /// Buy $OSR with a stablecoin (USDC — D-011)
     /// `stablecoin_amount` is in stablecoin units (6 decimals)
-    /// Validates: $250 minimum, $0.005 floor price, stablecoin hard cap
+    /// Validates: $549 minimum, tier-based pricing (D-005), stablecoin hard cap
     pub fn buy_with_stablecoin(
         ctx: Context<BuyWithStablecoin>,
         amount: u64,
@@ -282,9 +313,10 @@ pub mod presale {
         // Minimum $250 purchase
         require!(stablecoin_amount >= MIN_PURCHASE_STABLECOIN, PresaleError::BelowMinimum);
 
-        // Floor price: $0.005 per token (D-005)
+        // D-005: Tier-based pricing — price determined by current week
+        let tier_price = current_tier_price(clock.unix_timestamp);
         let min_stablecoin = (amount as u128)
-            .checked_mul(FLOOR_PRICE_PER_BILLION as u128)
+            .checked_mul(tier_price as u128)
             .ok_or(error!(PresaleError::ArithmeticOverflow))?
             .checked_div(1_000_000_000u128)
             .ok_or(error!(PresaleError::ArithmeticOverflow))? as u64;

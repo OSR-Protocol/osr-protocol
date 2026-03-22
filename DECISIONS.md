@@ -76,11 +76,40 @@
 ---
 
 ### D-005: Presale Structure
-- **Date:** 2026-03-21
+- **Date:** 2026-03-22
 - **Status:** LOCKED
-- **Decision:** Presale price floor: $0.005 per $OSR token.
-- **Rationale:** This is a survival calculation, not a valuation exercise. 100M tokens × $0.005 = $500K. 70% to operating fund = $350K. At $14,700/mo burn rate = 24 months base runway + presale/platform revenue extends to 36+ months. Below $0.005, runway becomes dangerously short.
-- **Note:** Exact price, hard cap, min/max per wallet, and buyer vesting terms to be finalized in presale contract design phase.
+- **Decision:** Four-tier weekly presale with progressive pricing toward $0.005 base listing price.
+
+**Presale Parameters:**
+
+| Parameter | Value |
+|-----------|-------|
+| Minimum purchase | $549 |
+| Maximum per wallet | $25,000 |
+| Hard cap | $500,000 total raise |
+| Base listing price | $0.005 per token |
+| Accepted payments | SOL, USDC |
+| Presale allocation | 100,000,000 $OSR (10% of supply) |
+
+**Four Weekly Pricing Tiers:**
+
+| Tier | Dates | Price | Discount from Base |
+|------|-------|-------|--------------------|
+| Week 1 | March 25 — March 31, 2026 | $0.00375 | 25% |
+| Week 2 | April 1 — April 7, 2026 | $0.00425 | 15% |
+| Week 3 | April 8 — April 14, 2026 | $0.0045 | 10% |
+| Week 4 | April 15 — April 21, 2026 | $0.00475 | 5% |
+
+**Presale Vesting:**
+
+| Event | Release |
+|-------|---------|
+| TGE | 20% unlocked |
+| Month 1 cliff | No additional release |
+| Months 2-5 | 80% distributed linearly (20% per month) |
+| Total vesting | 5 months |
+
+- **Rationale:** Progressive pricing rewards earliest participants with the deepest discount. The 25% week-1 discount creates urgency without a countdown timer. Each week the discount narrows, incentivizing earlier commitment. $549 minimum filters for serious participants. $25,000 cap prevents whale concentration. $500,000 hard cap provides 24+ months runway at $14,700/mo burn rate.
 
 ---
 

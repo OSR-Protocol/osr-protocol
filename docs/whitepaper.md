@@ -163,14 +163,22 @@ The presale distributes 100,000,000 $OSR tokens under the following parameters:
 
 | Parameter | Value |
 |-----------|-------|
-| Base price | $0.005 per token |
+| Base listing price | $0.005 per token |
 | Minimum purchase | $549 |
 | Maximum per wallet | $25,000 |
 | Hard cap | $500,000 total raise |
-| Pricing structure | Four weekly tiers with progressive pricing |
-| Accepted payments | SOL, USDC, USDT, PYUSD |
+| Accepted payments | SOL, USDC |
 
-The presale uses four weekly pricing tiers. The base price of $0.005 per token applies in the first week. Each subsequent week introduces a higher price tier, rewarding earlier participation with better rates. All presale purchases are verified on chain through wallet transaction history.
+**Four weekly pricing tiers:**
+
+| Week | Dates | Price per Token | Discount from Base |
+|------|-------|----------------|--------------------|
+| 1 | March 25 — March 31, 2026 | $0.00375 | 25% |
+| 2 | April 1 — April 7, 2026 | $0.00425 | 15% |
+| 3 | April 8 — April 14, 2026 | $0.0045 | 10% |
+| 4 | April 15 — April 21, 2026 | $0.00475 | 5% |
+
+The deepest discount is available in the first week. Each subsequent week the price increases toward the $0.005 base listing price. Early participation is rewarded. All presale purchases are verified on chain through wallet transaction history.
 
 ---
 
