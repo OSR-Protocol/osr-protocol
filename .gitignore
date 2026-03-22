@@ -36,6 +36,7 @@ htmlcov/
 coverage.xml
 
 # Rust / Anchor
+target/
 contracts/target/
 contracts/escrow/target/
 contracts/presale/target/
@@ -87,4 +88,5 @@ shared/
 tests/
 infra/
 docs/COORDINATION_CHANNEL_SETUP.md
+docs/LANDING_PAGE_RESEARCH.md
 pyproject.toml
