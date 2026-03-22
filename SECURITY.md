@@ -58,6 +58,10 @@ Dashboard files are in `.gitignore` (internal operational code). Fixes applied l
 | H-12 | HIGH | "Staking yield" framing implies financial returns | FIXED | `18856ac` |
 | H-13 | HIGH | "Guaranteed capital return" in Section 5.2 — explicit investment language | FIXED | `18856ac` |
 | M-9 | MEDIUM | "Halving schedule" inaccurate — reductions are ~30%, not 50% | FIXED | `18856ac` |
+| M-16 | MEDIUM | Tier 3 fiat subscription references in whitepaper — entity separation violation | FIXED | `bcc09b3` |
+| M-17 | MEDIUM | "credit card charges" in Section 1.2 — creates documented referral to US entity | FIXED | `bcc09b3` |
+| M-18 | MEDIUM | D-008 threshold shows $5,000 instead of locked $15,000 | FIXED | `bcc09b3` |
+| M-19 | MEDIUM | D-010 references "$69/mo" fiat pricing in BVI entity documentation | FIXED | `bcc09b3` |
 
 ## Documentation Accuracy
 
