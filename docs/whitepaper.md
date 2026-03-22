@@ -34,9 +34,9 @@ A reasonable question: why not accept USDC directly and skip the token entirely?
 
 The answer lies in what a token enables that stablecoins cannot.
 
-**Value capture through burn.** When $OSR is burned, those tokens are permanently destroyed. The value accrues to all remaining holders through reduced supply. When USDC is paid, value transfers once to the service provider and the transaction ends. $OSR creates a reflexive loop: more platform usage means more burn, which means reduced supply, which means treasury holdings appreciate, which funds more development, which attracts more usage.
+**Value capture through burn.** When $OSR is burned, those tokens are permanently destroyed, reducing circulating supply. When USDC is paid, value transfers once to the service provider and the transaction ends. $OSR creates a reflexive loop: more platform usage means more burn, which means reduced supply. Treasury funds continued platform development. Better infrastructure attracts more usage.
 
-**Ecosystem alignment.** Every $OSR holder is economically aligned with the platform's success. Agent builders, presale participants, partners, and stakers all benefit when the platform grows. USDC customers are just customers. $OSR holders are stakeholders.
+**Ecosystem alignment.** Every $OSR holder participates in protocol governance and shapes the platform's direction. Agent builders, presale participants, partners, and stakers all have a voice in how the protocol evolves.
 
 **Programmable agent economics.** Autonomous agents cannot hold bank accounts or sign payment agreements. They can hold tokens and execute onchain transactions. $OSR provides native payment rails for the agent economy without requiring fiat intermediaries.
 
@@ -59,7 +59,7 @@ The mechanism works as follows:
 | 1 | Users or agents acquire $OSR on the open market or through the presale | $OSR enters the user's wallet |
 | 2 | Users burn $OSR to receive compute credits at the current USD exchange rate (provided by Pyth oracle) | Burned tokens are permanently destroyed, reducing circulating supply |
 | 3 | Compute credits are consumed as agents use platform resources | Credits deducted per operation based on actual resource usage |
-| 4 | Pre minted $OSR tokens are released from the emission pool on a halving schedule | Stakers and ecosystem participants receive tokens, maintaining incentive alignment |
+| 4 | Pre minted $OSR tokens are released from the emission pool on a declining emission schedule | Stakers and ecosystem participants receive tokens, maintaining incentive alignment |
 | 5 | If platform usage grows, more $OSR is burned than released from emission | Circulating supply contracts, creating deflationary pressure |
 | 6 | If usage contracts, less $OSR is burned while emission continues at scheduled rates | Ecosystem incentives are maintained through predictable emission |
 
@@ -124,7 +124,7 @@ In Year 1, zero founder or investor tokens are circulating. Presale participants
 
 ### 3.2 Emission Schedule
 
-The 300 million token emission pool follows a halving schedule:
+The 300 million token emission pool follows a declining emission schedule:
 
 | Period | Annual Emission | Cumulative Released |
 |--------|----------------|-------------------|
@@ -170,7 +170,7 @@ Users who hold and burn $OSR directly receive tangible benefits beyond a simple 
 | Advantage | How It Works |
 |-----------|-------------|
 | **Loyalty tiers** | Total $OSR burned historically across all operations unlocks progressively better credit rates. An agent that has burned 500,000 $OSR over its lifetime receives materially better pricing than a new agent. This creates an earned advantage that cannot be replicated by switching to a competitor. |
-| **Staking yield** | $OSR holders who stake their tokens receive emission rewards from the 300M emission pool. This partially offsets the cost of burning tokens for compute, creating a net cost reduction for committed holders. |
+| **Staking rewards** | $OSR holders who stake their tokens receive emission rewards from the 300M emission pool. Stakers receive emission rewards distributed from the protocol's pre-minted emission pool. |
 | **Governance participation** | Staked $OSR grants voting rights on protocol parameters including credit pricing, emission distribution, and ecosystem fund allocation. Staked tokens receive 1.5 times voting weight. |
 | **Priority access** | During periods of high demand, $OSR holders receive priority queue positioning and higher throughput limits. |
 | **Ecosystem composability** | Agents operating natively with $OSR can interact with other $OSR native agents and protocols at reduced friction. |
@@ -193,7 +193,7 @@ This separation prevents the death spiral that has destroyed other token project
 
 ### 5.2 Investor Capital Return
 
-Early investors receive their capital return through stablecoin revenue share from platform operations, not through selling tokens on the open market. Token allocations are separate upside on top of the guaranteed capital return.
+Early investors receive their capital return through stablecoin revenue share from platform operations, not through selling tokens on the open market. Token allocations represent separate participation in the protocol's governance and utility.
 
 This structure means investors are never forced sellers. They hold tokens because of long term conviction, not because they need to liquidate for returns. Zero market impact. Zero ecosystem damage.
 
@@ -312,7 +312,7 @@ On mainnet deployment, mint authority is revoked after the initial 1 billion tok
 | Mint authority | Revoked after distribution | No entity can ever create token number 1,000,000,001. Total supply is permanently fixed. |
 | Freeze authority | Revoked at launch | No entity can ever freeze or restrict any holder's token balance. |
 
-**Clarification on emission.** The 300 million tokens in the emission pool are pre minted and already exist as part of the 1 billion total supply. Emission does not require minting new tokens. The emission smart contract releases tokens from this pre existing pool on the halving schedule defined in Section 3.2. Revoking mint authority does not affect emission because emission is a distribution of existing tokens, not creation of new ones. When the emission pool is eventually depleted, the community governs whether to enable limited minting or transition entirely to fee based staker rewards.
+**Clarification on emission.** The 300 million tokens in the emission pool are pre minted and already exist as part of the 1 billion total supply. Emission does not require minting new tokens. The emission smart contract releases tokens from this pre existing pool on the declining emission schedule defined in Section 3.2. Revoking mint authority does not affect emission because emission is a distribution of existing tokens, not creation of new ones. When the emission pool is eventually depleted, the community governs whether to enable limited minting or transition entirely to fee based staker rewards.
 
 ---
 
@@ -396,7 +396,7 @@ Each of these expansions follows the same pattern: take an existing platform lay
 
 ## 11. Risk Factors
 
-**Demand risk.** BME requires sustained burn demand. If platform adoption is slower than projected, emission may exceed burn, creating inflationary pressure on token price. The halving emission schedule and governance adjustable parameters provide mitigation, but do not eliminate this risk.
+**Demand risk.** BME requires sustained burn demand. If platform adoption is slower than projected, emission may exceed burn, creating inflationary pressure on token price. The declining emission schedule and governance adjustable parameters provide mitigation, but do not eliminate this risk.
 
 **Regulatory risk.** The regulatory landscape for digital assets continues to evolve. While the current BVI framework supports the protocol's structure, future legislation or enforcement actions could require operational changes. The protocol maintains compliance flexibility through its separated entity structure.
 
@@ -414,7 +414,7 @@ Each of these expansions follows the same pattern: take an existing platform lay
 
 $OSR is infrastructure economics for the age of autonomous agents. It provides a proven economic model (BME), transparent onchain operations, community governance from day one, and the complete trading operating system that agents need to operate in financial markets.
 
-The protocol does not ask users to speculate. It asks them to use infrastructure and pay for what they consume. The token economics ensure that usage creates value for everyone in the ecosystem: users get reliable compute access, holders benefit from burn driven scarcity, stakers earn yield for securing the economics, and the protocol funds its own growth through sustainable treasury management.
+The protocol does not ask users to speculate. It asks them to use infrastructure and pay for what they consume. The token economics ensure that usage creates value for everyone in the ecosystem: users get reliable compute access, holders participate in protocol governance, stakers earn yield for securing the economics, and the protocol funds its own growth through sustainable treasury management.
 
 Built on Solana. Incorporated in the British Virgin Islands. Governed by its community.
 
