@@ -1,6 +1,6 @@
 # OSR Protocol: Onchain Infrastructure for Agentic Finance
 
-**Version 1.4**
+**Version 1.5**
 **OSR Protocol Inc.**
 **March 2026**
 
@@ -495,7 +495,11 @@ Intershore Chambers, Road Town, Tortola, British Virgin Islands
 
 Website: osrprotocol.com
 GitHub: github.com/OSR-Protocol
-Contact: dev@osrprotocol.com
+Contact: hello@osrprotocol.com
+
+Token Mint: E2grvu8fyeeuVaxj2DrHVBqv8j21jK3vyJpXG8FJjJNc
+Presale Contract: 9K1VNBCK6WRDVzYbidG4hH9L3crPXxhqvTBACqM5q8bi
+Network: Solana mainnet-beta
 
 ---
 
@@ -508,3 +512,4 @@ Contact: dev@osrprotocol.com
 | 1.2 | 2026-03-22 | Simplified access model: two tier pricing (presale + regular holders), presale structure with parameters |
 | 1.3 | 2026-03-22 | Entity separation enforced: Tier 3 removed, fiat acknowledgment via separate entity, vendor names removed, treasury threshold corrected, identity audit |
 | 1.4 | 2026-03-22 | Pre-mainnet: credit pricing table (9 operations), oracle thresholds (5%/30s), presale buyer vesting, D-005 four-tier weekly prices locked |
+| 1.5 | 2026-03-23 | Mainnet deployment: token minted, allocations distributed, mint authority revoked, presale contract deployed. Mainnet addresses added. Email updated to hello@. |
