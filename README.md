@@ -279,7 +279,7 @@ Issued by OSR Protocol Inc., British Virgin Islands.
 |---------|------|
 | Website | [osrprotocol.com](https://osrprotocol.com) |
 | GitHub | [github.com/OSR-Protocol](https://github.com/OSR-Protocol) |
-| Email | dev@osrprotocol.com |
+| Email | hello@osrprotocol.com |
 
 ---
 
