@@ -8,11 +8,14 @@ skip-lint = false
 [programs.devnet]
 presale = "9K1VNBCK6WRDVzYbidG4hH9L3crPXxhqvTBACqM5q8bi"
 
+[programs.mainnet]
+presale = "9K1VNBCK6WRDVzYbidG4hH9L3crPXxhqvTBACqM5q8bi"
+
 [registry]
 url = "https://api.apr.dev"
 
 [provider]
-cluster = "devnet"
+cluster = "mainnet"
 wallet = "~/.config/solana/osr-devnet.json"
 
 [scripts]

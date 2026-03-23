@@ -2,7 +2,7 @@
 
 **Onchain infrastructure for agentic finance on Solana.**
 
-$OSR is a Burn and Mint Equilibrium (BME) token that meters AI agent operations on the System R AI platform. Users burn $OSR to receive USD pegged compute credits. Agents consume credits as they access compute, language models, cloud infrastructure, risk engines, and the full trading operating system.
+OSR is a Burn and Mint Equilibrium (BME) token that meters AI agent operations on the System R AI platform. Users burn OSR to receive USD pegged compute credits. Agents consume credits as they access compute, language models, cloud infrastructure, risk engines, and the full trading operating system.
 
 Built on Solana. Incorporated in the British Virgin Islands.
 
@@ -15,21 +15,24 @@ Built on Solana. Incorporated in the British Virgin Islands.
 | Property | Value |
 |----------|-------|
 | Name | Operating System R |
-| Ticker | $OSR |
+| Ticker | OSR |
 | Network | Solana |
 | Total Supply | 1,000,000,000 (1B) |
 | Decimals | 9 |
 | Token Program | SPL Token |
-| Devnet Mint | `E2grvu8fyeeuVaxj2DrHVBqv8j21jK3vyJpXG8FJjJNc` |
+| Token Mint | `E2grvu8fyeeuVaxj2DrHVBqv8j21jK3vyJpXG8FJjJNc` |
+| Presale Contract | `9K1VNBCK6WRDVzYbidG4hH9L3crPXxhqvTBACqM5q8bi` |
+| Mint Authority | Revoked |
+| Freeze Authority | Revoked |
 | Issuer | OSR Protocol Inc. (BVI) |
 
 ## How It Works
 
 ```
-User acquires $OSR
+User acquires OSR
        |
        v
-Burns $OSR for compute credits (USD pegged via Pyth oracle)
+Burns OSR for compute credits (USD pegged via Pyth oracle)
        |
        v
 Credits consumed as agent uses platform resources
@@ -49,16 +52,16 @@ Two pricing tiers, both determined entirely by on chain wallet history. Both are
 
 **Tier 1: Presale participants.** Wallets verified on chain through presale transaction history receive a 20% permanent discount on all platform operations. Earned through early participation. The wallet is the identity. The on chain burn history is the loyalty record.
 
-**Tier 2: Regular $OSR holders.** Wallets that acquired $OSR on the open market after launch pay the standard rate with loyalty improvements based on cumulative lifetime burn history:
+**Tier 2: Regular OSR holders.** Wallets that acquired OSR on the open market after launch pay the standard rate with loyalty improvements based on cumulative lifetime burn history:
 
-| Cumulative $OSR Burned | Rate Improvement |
+| Cumulative OSR Burned | Rate Improvement |
 |------------------------|-----------------|
 | 0 to 100,000 | Standard rate |
 | 100,001 to 500,000 | 5% improvement |
 | 500,001 to 1,000,000 | 10% improvement |
 | 1,000,001 and above | 15% improvement |
 
-Hold $OSR. Connect wallet. Consume credits for platform operations. Disconnect when finished. Return when ready.
+Hold OSR. Connect wallet. Consume credits for platform operations. Disconnect when finished. Return when ready.
 
 ## Token Allocation
 
@@ -136,7 +139,7 @@ All decisions are documented in [DECISIONS.md](DECISIONS.md) with rationale. Key
 | Credit peg | USD denominated via Pyth oracle | Users need predictable costs regardless of token volatility |
 | Credit batching | Burn once, use many | Solana tx fees ($0.036) can exceed micro compute costs ($0.001) |
 | Stablecoin flow | Two step separation | User pays for service (step 1), protocol handles buyback and burn (step 2). BVI VASP compliant. |
-| Treasury | Three fund architecture | Token treasury ($OSR), operating fund (USDC), strategic reserve (mixed). Prevents death spiral. |
+| Treasury | Three fund architecture | Token treasury (OSR), operating fund (USDC), strategic reserve (mixed). Prevents death spiral. |
 | Governance | Solana Realms, tiered voting | Standard (5% quorum), Major (10%), Critical (15%). Staked tokens get 1.5x voting weight. |
 | Emission | Declining schedule, 8 years | 50M/yr years 1 to 2, decreasing. 60% stakers, 30% ecosystem, 10% reserve. |
 | Security | Simple contracts, phased audits | Under 1,000 lines custom Rust. Anchor framework. Bug bounty on Immunefi. |
@@ -152,43 +155,50 @@ Token holders govern protocol parameters through onchain voting:
 | Major (upgrades, large grants) | 10% circulating | Over 66% | 7 days |
 | Critical (governance rules) | 15% circulating | Over 75% | 14 days |
 
-Staked $OSR receives 1.5x voting weight. Proposals require 0.5% of circulating supply to create. Community controls governance from day one (all insider tokens locked behind cliff in Year 1).
+Staked OSR receives 1.5x voting weight. Proposals require 0.5% of circulating supply to create. Community controls governance from day one (all insider tokens locked behind cliff in Year 1).
 
 ## Financial Architecture
 
 | Fund | Holds | Purpose |
 |------|-------|---------|
-| Token Treasury | $OSR only | Strategic partnerships, ecosystem incentives. Never sold for operations. |
+| Token Treasury | OSR only | Strategic partnerships, ecosystem incentives. Never sold for operations. |
 | Operating Fund | USDC only | Infrastructure, salaries, legal, marketing. Independent of token price. |
 | Strategic Reserve | Mixed | Security audits, legal opinions, emergencies, growth opportunities. |
 
 Treasury operations use tiered time locks with full onchain transparency. Monthly reports published.
 
-## Devnet Deployment
+## Mainnet Deployment
 
-The token is live on Solana devnet with full allocation distributed:
+OSR is live on Solana mainnet. Mint authority revoked. Freeze authority revoked. Supply permanently fixed at 1,000,000,000.
 
-| Pool | Tokens | Token Account |
-|------|--------|---------------|
-| Emission | 300,000,000 | `DAzSPYwqnK6L35B5BkrS3AKyKB8frS7ZyYeQ1qsAdnyw` |
-| Ecosystem | 200,000,000 | `AZSGXjtPu2wL3PCpMogutNd5syzmtYCqUYsGtv5aDb48` |
-| Treasury | 120,000,000 | `DfWs7hU5qnPJ7ee7c1dZTqHCzNdt7eodjikC6gHNwwQk` |
-| Presale | 100,000,000 | `FkFfMvCRRX1hX6uLXdDntK37mUUEFppiwJRrRGNYYeSq` |
-| Founders | 140,000,000 | See [ALLOCATION.md](keys/devnet/ALLOCATION.md) |
-| Investors | 80,000,000 | See [ALLOCATION.md](keys/devnet/ALLOCATION.md) |
-| Liquidity | 50,000,000 | `GxgFz72g7QxzNeikim2F4uDrdQrWNxvB7ECKWM9yjAKQ` |
-| Future Team | 10,000,000 | `EUPy2TWsjvXbjG3j6EVuvFwSg2kj6qtCFG5qae5M8BZd` |
+| Address | Purpose |
+|---------|---------|
+| `E2grvu8fyeeuVaxj2DrHVBqv8j21jK3vyJpXG8FJjJNc` | Token mint |
+| `9K1VNBCK6WRDVzYbidG4hH9L3crPXxhqvTBACqM5q8bi` | Presale contract |
 
-Verify on Solana Explorer: [View Token on Devnet](https://explorer.solana.com/address/E2grvu8fyeeuVaxj2DrHVBqv8j21jK3vyJpXG8FJjJNc?cluster=devnet)
+| Pool | Tokens | Wallet |
+|------|--------|--------|
+| BME Emission | 300,000,000 | `EFLGB3SaE9PRm6GuT4MhKhzM7EtLh972JaDs8aEgUyuW` |
+| Ecosystem | 200,000,000 | `5feNcPqv6rmBpQGw1dFuRL7nMWxg8HZ85U5bTghk3jwZ` |
+| Treasury | 120,000,000 | `DCK69c9GZnpN3qtRPibMF4FsaLrtyxYfVRQUux9pbqxN` |
+| Presale | 100,000,000 | Held for presale contract vault |
+| Founder | 70,000,000 | `GAkqnM4DtVwY3NYRDiBswtpiVJQSgCG5o2XD91Q4bZko` |
+| Co-Founder | 70,000,000 | `5BMMidQfZM772vryWbPiYor54HAyPEjtihGuTnUfM8db` |
+| Early Investor A | 50,000,000 | `ApaHqjmQohk1TfNRgfTona99siZ3AdewJpHbQeGfL7ZP` |
+| Early Investor B | 30,000,000 | `AAZDqjGgX2DPnbUydiAXdorWj3gRXaDFsLzSd7vvrTrc` |
+| Liquidity | 50,000,000 | `H4xLk9z6pEH5FpY9P3esTJtWCV8Q3fNvcTr6p8AYjbxd` |
+| Future Team | 10,000,000 | `v8oJBbPo3pwWHuRPef8JgVd5pHFZCfH1z47riMvH1yM` |
+
+Verify on Solscan: [View Token](https://solscan.io/token/E2grvu8fyeeuVaxj2DrHVBqv8j21jK3vyJpXG8FJjJNc)
 
 ## Verify on Solana
 
 ```bash
 # Check total supply
-spl-token supply E2grvu8fyeeuVaxj2DrHVBqv8j21jK3vyJpXG8FJjJNc --url devnet
+spl-token supply E2grvu8fyeeuVaxj2DrHVBqv8j21jK3vyJpXG8FJjJNc --url mainnet-beta
 
-# Check any allocation wallet balance
-spl-token balance --address 2vJs6VH6ZC5YyvZrTLiNDzovDegya8eR31e7DuPX2nrD --url devnet
+# Check presale contract
+solana program show 9K1VNBCK6WRDVzYbidG4hH9L3crPXxhqvTBACqM5q8bi --url mainnet-beta
 ```
 
 ## Build
@@ -224,7 +234,7 @@ anchor test
 |----------|-------------|
 | [Whitepaper](docs/whitepaper.md) | Full protocol specification, token economics, governance, roadmap |
 | [Decisions](DECISIONS.md) | 22 locked decisions with rationale (2 deferred), covering all protocol design choices |
-| [Allocation Proof](keys/devnet/ALLOCATION.md) | Devnet token distribution with all wallet addresses |
+| [Allocation Proof](keys/devnet/ALLOCATION.md) | Token distribution with all wallet addresses |
 | [Coordination Setup](docs/COORDINATION_CHANNEL_SETUP.md) | Telegram channel security configuration |
 
 ## Security
