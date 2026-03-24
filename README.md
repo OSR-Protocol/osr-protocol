@@ -6,7 +6,7 @@ OSR is a Burn and Mint Equilibrium (BME) token that meters AI agent operations o
 
 Built on Solana. Incorporated in the British Virgin Islands.
 
-[![Solana](https://img.shields.io/badge/Solana-Devnet-9945FF?logo=solana&logoColor=white)](https://solana.com)
+[![Solana](https://img.shields.io/badge/Solana-Mainnet-9945FF?logo=solana&logoColor=white)](https://solana.com)
 
 ---
 
@@ -22,9 +22,17 @@ Built on Solana. Incorporated in the British Virgin Islands.
 | Token Program | SPL Token |
 | Token Mint | `E2grvu8fyeeuVaxj2DrHVBqv8j21jK3vyJpXG8FJjJNc` |
 | Presale Contract | `9K1VNBCK6WRDVzYbidG4hH9L3crPXxhqvTBACqM5q8bi` |
-| Mint Authority | Revoked |
-| Freeze Authority | Revoked |
+| Network Status | **Live on Solana mainnet** |
+| Mint Authority | Revoked (permanent, immutable supply) |
+| Freeze Authority | Revoked (permanent) |
 | Issuer | OSR Protocol Inc. (BVI) |
+
+## Team
+
+| | |
+|---|---|
+| **Ashim Nandi** | Founder. Six years of systematic trading. Built the System R AI platform. |
+| **Shannon** | Co-Founder. Protocol architect. Designed BME token economics, treasury, and governance. |
 
 ## How It Works
 
@@ -113,18 +121,18 @@ Hold OSR. Connect wallet. Consume credits for platform operations. Disconnect wh
 ```
 osr-protocol/
     agents/                 # Python agents (wallet discovery, Telegram, X, LinkedIn, Reddit, YouTube)
-    contracts/              # Anchor programs (Rust) [in development]
-        escrow/             # Token escrow for vesting
-        presale/            # Presale contract
+    contracts/              # Anchor programs (Rust)
+        escrow/             # Token escrow and vesting enforcement (15 tests)
+        presale/            # Presale contract, deployed on mainnet (38 tests)
     dashboard/              # Next.js ops dashboard (localhost:3000)
     docs/                   # Whitepaper and technical documentation
         whitepaper.md       # Full protocol specification
     infra/                  # Cloud resource definitions
-    keys/                   # Devnet allocation proof (no private keys committed)
+    keys/                   # Allocation proof (no private keys committed)
         devnet/ALLOCATION.md
     scripts/                # Token mint, airdrop, Dialect messaging
     shared/                 # Common Python: config, LLM client, DynamoDB helpers
-    tests/                  # Python unit tests
+    tests/                  # Python unit tests (72 tests)
     DECISIONS.md            # 22 locked design decisions with rationale (2 deferred)
     README.md               # This file
 ```
@@ -225,7 +233,15 @@ npm run dev              # http://localhost:3000
 ```bash
 cd contracts/presale
 anchor build
-anchor test
+anchor test              # 38 tests
+```
+
+**Escrow/vesting contract** (requires Rust, Anchor, Solana CLI):
+
+```bash
+cd contracts/escrow
+anchor build
+anchor test              # 15 tests
 ```
 
 ## Documentation
@@ -279,6 +295,8 @@ Issued by OSR Protocol Inc., British Virgin Islands.
 |---------|------|
 | Website | [osrprotocol.com](https://osrprotocol.com) |
 | GitHub | [github.com/OSR-Protocol](https://github.com/OSR-Protocol) |
+| X | [@OsrProtocol](https://x.com/OsrProtocol) |
+| LinkedIn | [osr-protocol-inc](https://linkedin.com/company/osr-protocol-inc) |
 | Email | hello@osrprotocol.com |
 
 ---

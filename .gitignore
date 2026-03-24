@@ -77,6 +77,9 @@ keys/mainnet/
 *.log
 logs/
 
+# Wrangler (Cloudflare)
+.wrangler/
+
 # Internal dev files (not for public repo)
 .shannon-config
 MISSION.md
@@ -85,7 +88,7 @@ agents/
 dashboard/
 scripts/
 shared/
-tests/
+/tests/
 infra/
 docs/COORDINATION_CHANNEL_SETUP.md
 docs/LANDING_PAGE_RESEARCH.md
