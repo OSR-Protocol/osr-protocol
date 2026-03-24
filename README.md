@@ -81,7 +81,7 @@ Protocol buys and burns OSR (treasury operation)
 | Minimum purchase | $549 |
 | Maximum per wallet | $25,000 |
 | Hard cap | $500,000 |
-| Accepted payments | SOL, USDC, USDT, PYUSD |
+| Accepted payments | SOL, USDC, USDT |
 | Vesting | 20% at TGE, 1 month cliff, 4 months linear |
 | Website | [osrprotocol.com](https://osrprotocol.com) |
 
