@@ -96,7 +96,7 @@ Hold OSR. Connect wallet. Consume credits for platform operations. Disconnect wh
 | Minimum purchase | $549 |
 | Maximum per wallet | $25,000 |
 | Hard cap | $500,000 total raise |
-| Accepted payments | SOL, USDC, USDT |
+| Accepted payments | SOL, USDC, USDT, PYUSD |
 
 **Four weekly pricing tiers:**
 
