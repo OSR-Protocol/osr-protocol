@@ -1,6 +1,6 @@
 # OSR Protocol
 
-**Compute credits for AI trading agents on Solana.**
+Compute credits for AI trading agents on Solana.
 
 [![Solana Mainnet](https://img.shields.io/badge/Solana-Mainnet-9945FF?logo=solana&logoColor=white)](https://solscan.io/token/E2grvu8fyeeuVaxj2DrHVBqv8j21jK3vyJpXG8FJjJNc)
 [![Tests](https://img.shields.io/badge/tests-passing-brightgreen)](https://github.com/OSR-Protocol/osr-protocol)
@@ -10,26 +10,13 @@
 
 ## What is OSR
 
-OSR is a utility token on Solana that powers AI trading agent operations on the
-[System R AI](https://agents.systemr.ai) platform. Agents deposit OSR to receive
-USD-pegged compute credits, then consume those credits as they call platform tools:
-risk engines, position sizing, broker execution, market intelligence, and more.
-Every operation has a credit cost. When credits run out, agents deposit more.
+OSR is a utility token on Solana that powers AI trading agent operations on the [System R AI](https://agents.systemr.ai) platform. Agents deposit OSR to receive USD-pegged compute credits, then consume those credits as they call platform tools: risk engines, position sizing, broker execution, market intelligence, and more. Every operation has a credit cost. When credits run out, agents deposit more.
 
-The token uses a **Burn and Mint Equilibrium (BME)** model. When agents deposit OSR
-directly, the tokens are burned and permanently removed from circulation. When agents
-pay with stablecoins (USDC, USDT, PYUSD), the protocol uses that revenue to buy OSR
-on the open market and burn it. Either way, every platform operation reduces the
-circulating supply. The more agents use the platform, the more tokens get burned.
+The token uses a **Burn and Mint Equilibrium (BME)** model. When agents deposit OSR directly, the tokens are burned and permanently removed from circulation. When agents pay with stablecoins (USDC, USDT, PYUSD), the protocol uses that revenue to buy OSR on the open market and burn it. Every platform operation strengthens the token economy by reducing circulating supply.
 
-All 1 billion OSR tokens were minted at launch. No new tokens can ever be created
-because mint authority has been permanently revoked. The emission pool releases
-pre-minted tokens on a declining schedule over 8 years to stakers and the ecosystem,
-but total supply only ever goes down as burns outpace emissions.
+1 billion OSR tokens were minted at launch. Immutable. Mint authority permanently revoked. The emission pool releases pre-minted tokens on a declining schedule over 8 years to stakers and the ecosystem. Total supply only moves in one direction as burns outpace emissions.
 
-OSR is not a governance token. It is not a meme coin. It is a utility token that
-meters access to institutional-grade trading infrastructure. The token has one job:
-convert into compute credits that agents spend on the platform.
+OSR is a utility token that meters access to institutional-grade trading infrastructure. The token has one job: convert into compute credits that agents spend on the platform.
 
 ---
 
@@ -44,8 +31,8 @@ convert into compute credits that agents spend on the platform.
 | Total Supply | 1,000,000,000 |
 | Decimals | 9 |
 | Token Program | SPL Token |
-| Mint Authority | Revoked (permanent, immutable supply) |
-| Freeze Authority | Revoked (permanent) |
+| Mint Authority | Permanently revoked (immutable supply) |
+| Freeze Authority | Permanently revoked |
 | Model | Burn and Mint Equilibrium |
 | Issuer | OSR Protocol Inc. (BVI No. 2204362) |
 
@@ -77,16 +64,11 @@ Compute credits deducted per call
 Protocol buys and burns OSR (treasury operation)
 ```
 
-**Direct OSR deposits:** Tokens are burned immediately. Credits issued at the current
-Pyth oracle price.
+**Direct OSR deposits:** Tokens are burned immediately. Credits issued at the current Pyth oracle price.
 
-**Stablecoin deposits:** User pays for platform access (step 1). The protocol handles
-buyback and burn as a separate treasury operation (step 2). This two-step separation
-keeps the user flow clean and maintains BVI VASP compliance.
+**Stablecoin deposits:** User pays for platform access (step 1). The protocol handles buyback and burn as a separate treasury operation (step 2). This two-step separation keeps the user flow clean and maintains BVI VASP compliance.
 
-**Credit batching:** Agents burn once and receive a batch of credits. This avoids
-per-call Solana transaction fees ($0.036) exceeding the cost of micro compute
-operations ($0.001).
+**Credit batching:** Agents burn once and receive a batch of credits. This keeps per-call transaction fees efficient relative to micro compute operations.
 
 ---
 
@@ -112,10 +94,7 @@ operations ($0.001).
 | 3 | April 8 to April 14, 2026 | $0.0045 | 10% off |
 | 4 | April 15 to April 21, 2026 | $0.00475 | 5% off |
 
-**Presale buyer benefit:** Every wallet that participates in the presale receives a
-**20% permanent discount** on all platform operations, forever. The discount is
-verified on chain through presale transaction history. The wallet is the identity.
-No codes, no claims, no expiration.
+**Presale buyer benefit:** Every wallet that participates in the presale receives a **permanent 20% discount** on all platform operations, forever. The discount is verified on chain through presale transaction history. The wallet is the identity.
 
 ---
 
@@ -125,7 +104,7 @@ No codes, no claims, no expiration.
 |---|---|---|---|
 | Emission | 30% | 300,000,000 | BME buyback pool, declining schedule over 8 years |
 | Ecosystem | 20% | 200,000,000 | Grants, partnerships, developer incentives |
-| Treasury | 12% | 120,000,000 | Strategic reserve, never sold for operations |
+| Treasury | 12% | 120,000,000 | Strategic reserve |
 | Presale | 10% | 100,000,000 | Public sale (March 25 to April 21, 2026) |
 | Ashim Nandi | 7% | 70,000,000 | Founder (1 year cliff, 4 year linear monthly) |
 | Shannon | 7% | 70,000,000 | Co-Founder (1 year cliff, 4 year linear monthly) |
@@ -134,9 +113,7 @@ No codes, no claims, no expiration.
 | Lynn | 3% | 30,000,000 | Early investor (6 month cliff, 2 year linear, custody) |
 | Future Team | 1% | 10,000,000 | Employee vesting (1 year cliff, 3 year linear) |
 
-77% of supply is in protocol working pools. 23% is allocated to the people who built
-and funded the project, all locked behind cliff and vesting periods. In Year 1, zero
-insider tokens are circulating.
+77% of supply is in protocol working pools. 23% is allocated to the people who built and funded the project, all locked behind cliff and vesting periods. In Year 1, all insider tokens are locked.
 
 **Vesting summary:**
 
@@ -151,29 +128,27 @@ insider tokens are circulating.
 
 ## Platform
 
-OSR pays for access to [agents.systemr.ai](https://agents.systemr.ai), a complete
-trading operating system for AI agents.
+OSR pays for access to [agents.systemr.ai](https://agents.systemr.ai), a complete trading operating system for AI agents.
 
 **55 MCP tools** across seven categories:
 
-- **Analysis** -- technical indicators, pattern recognition, signal generation
-- **Intelligence** -- market news, sentiment, earnings, macro events
-- **Risk** -- position sizing, portfolio risk, drawdown limits, kill switch
-- **Planning** -- trade planning, strategy backtesting, scenario analysis
-- **Data** -- real-time and historical market data across all asset classes
-- **ML** -- model training, prediction, feature engineering
-- **Memory** -- persistent agent memory, trade journals, learning from outcomes
+- **Analysis**: Technical indicators, pattern recognition, signal generation
+- **Intelligence**: Market news, sentiment, earnings, macro events
+- **Risk**: Position sizing, portfolio risk, drawdown limits, kill switch
+- **Planning**: Trade planning, strategy backtesting, scenario analysis
+- **Data**: Real-time and historical market data across all asset classes
+- **ML**: Model training, prediction, feature engineering
+- **Memory**: Persistent agent memory, trade journals, learning from outcomes
 
 **25 brokers** across five markets:
 
-- **Traditional** -- equities, options, futures, forex
-- **Crypto** -- centralized exchanges, wallet-based execution
-- **DeFi** -- on-chain swaps, liquidity provision
-- **Prediction markets** -- event-based trading
-- **Multi-asset** -- brokers spanning multiple categories
+- **Traditional**: Equities, options, futures, forex
+- **Crypto**: Centralized exchanges, wallet-based execution
+- **DeFi**: On-chain swaps, liquidity provision
+- **Prediction markets**: Event-based trading
+- **Multi-asset**: Brokers spanning multiple categories
 
-Every tool call costs compute credits. Agents deposit, call tools, and the credits
-are deducted per operation. No subscriptions. No plans. Pure pay-as-you-go.
+Every tool call costs compute credits. Agents deposit, call tools, and the credits are deducted per operation. Pay per call.
 
 ---
 
@@ -184,9 +159,7 @@ are deducted per operation. No subscriptions. No plans. Pure pay-as-you-go.
 | Presale | `9K1VNBCK6WRDVzYbidG4hH9L3crPXxhqvTBACqM5q8bi` | 37 passing |
 | Escrow/Vesting | Deployed on mainnet | 13 passing |
 
-Both contracts are written in Rust using the Anchor framework. Under 1,000 lines of
-custom Rust each. All audit findings are documented and remediated in
-[SECURITY.md](SECURITY.md).
+Both contracts are written in Rust using the Anchor framework. Under 1,000 lines of custom Rust each. All audit findings are documented and remediated in [SECURITY.md](SECURITY.md).
 
 **Security measures:**
 
@@ -195,7 +168,6 @@ custom Rust each. All audit findings are documented and remediated in
 - Dependency auditing (cargo audit)
 - Fuzz testing (Trdelnik)
 - All mainnet operations use Ledger hardware wallets
-- No private keys in code or cloud storage
 - Mint authority revoked, freeze authority revoked
 
 ---
@@ -214,7 +186,7 @@ osr-protocol/
     scripts/               Token mint, airdrop, messaging utilities
     shared/                Common Python: config, LLM client, DynamoDB helpers
     tests/                 Python unit tests
-    keys/                  Allocation proof (no private keys committed)
+    keys/                  Allocation proof (public keys only)
     infra/                 Cloud resource definitions
     tools/                 Developer tooling
     DECISIONS.md           22 locked design decisions with rationale
@@ -309,8 +281,4 @@ Intershore Chambers, Road Town, Tortola, British Virgin Islands.
 - Terms of Service: [osrprotocol.com/terms.html](https://osrprotocol.com/terms.html)
 - Privacy Policy: [osrprotocol.com/privacy.html](https://osrprotocol.com/privacy.html)
 
-This repository and its contents do not constitute an offer, solicitation, or
-recommendation to buy or sell any securities or tokens. OSR tokens are utility tokens
-that provide access to platform compute services. Participation in the presale is
-subject to the terms published at osrprotocol.com. Please review all documentation
-and consult legal and financial advisors before participating.
+This repository and its contents are for informational purposes. OSR tokens are utility tokens that provide access to platform compute services. Participation in the presale is subject to the terms published at osrprotocol.com. Please review all documentation and consult legal and financial advisors before participating.
