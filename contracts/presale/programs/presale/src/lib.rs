@@ -23,15 +23,15 @@ const TIER4_PRICE_PER_BILLION: u64 = 4750; // Week 4: 5% discount
 const BASE_PRICE_PER_BILLION: u64 = 5000;  // Post-presale listing price
 
 // D-005: Presale week boundaries (Unix timestamps, UTC midnight)
-// Week 1: March 25 00:00 UTC — March 31 23:59 UTC
-// Week 2: April 1 00:00 UTC — April 7 23:59 UTC
-// Week 3: April 8 00:00 UTC — April 14 23:59 UTC
-// Week 4: April 15 00:00 UTC — April 21 23:59 UTC
-const WEEK1_START: i64 = 1774656000; // 2026-03-25 00:00:00 UTC
-const WEEK2_START: i64 = 1775260800; // 2026-04-01 00:00:00 UTC
-const WEEK3_START: i64 = 1775865600; // 2026-04-08 00:00:00 UTC
-const WEEK4_START: i64 = 1776470400; // 2026-04-15 00:00:00 UTC
-const PRESALE_END: i64 = 1777075200; // 2026-04-22 00:00:00 UTC
+// Week 1: March 25 00:00 UTC to March 31 23:59 UTC
+// Week 2: April 1 00:00 UTC to April 7 23:59 UTC
+// Week 3: April 8 00:00 UTC to April 14 23:59 UTC
+// Week 4: April 15 00:00 UTC to April 21 23:59 UTC
+const WEEK1_START: i64 = 1774396800; // 2026-03-25 00:00:00 UTC
+const WEEK2_START: i64 = 1775001600; // 2026-04-01 00:00:00 UTC
+const WEEK3_START: i64 = 1775606400; // 2026-04-08 00:00:00 UTC
+const WEEK4_START: i64 = 1776211200; // 2026-04-15 00:00:00 UTC
+const PRESALE_END: i64 = 1776816000; // 2026-04-22 00:00:00 UTC
 
 // Magic number for buyer record initialization guard
 const BUYER_MAGIC: u64 = 0x4F53525F42555952; // "OSR_BUYR"
@@ -78,8 +78,10 @@ pub mod presale {
         presale.usdc_mint = ctx.accounts.usdc_mint.key();
         presale.usdt_vault = ctx.accounts.usdt_vault.key();
         presale.usdt_mint = ctx.accounts.usdt_mint.key();
-        presale.pyusd_vault = ctx.accounts.pyusd_vault.key();
-        presale.pyusd_mint = ctx.accounts.pyusd_mint.key();
+        // PYUSD uses Token-2022 (incompatible with SPL Token program).
+        // Set to system program as placeholder. PYUSD support post-launch.
+        presale.pyusd_vault = anchor_lang::system_program::ID;
+        presale.pyusd_mint = anchor_lang::system_program::ID;
         presale.sol_price_lamports = sol_price_lamports;
         presale.min_purchase_lamports = min_purchase_lamports;
         presale.max_per_wallet = max_per_wallet;
@@ -298,14 +300,12 @@ pub mod presale {
         let total_raised = ctx.accounts.presale.total_raised_stablecoin;
         let usdc_mint = ctx.accounts.presale.usdc_mint;
         let usdt_mint = ctx.accounts.presale.usdt_mint;
-        let pyusd_mint = ctx.accounts.presale.pyusd_mint;
 
-        // Verify the stablecoin mint is one of the accepted ones
+        // Verify the stablecoin mint is one of the accepted ones (SOL, USDC, USDT)
         let stable_mint = ctx.accounts.buyer_stablecoin_account.mint;
         require!(
             stable_mint == usdc_mint
-                || stable_mint == usdt_mint
-                || stable_mint == pyusd_mint,
+                || stable_mint == usdt_mint,
             PresaleError::UnsupportedStablecoin
         );
 
@@ -559,12 +559,8 @@ pub struct Initialize<'info> {
         constraint = usdt_vault.owner == vault_authority.key() @ PresaleError::VaultAuthorityMismatch,
     )]
     pub usdt_vault: Box<Account<'info, TokenAccount>>,
-    pub pyusd_mint: Box<Account<'info, Mint>>,
-    #[account(
-        constraint = pyusd_vault.mint == pyusd_mint.key() @ PresaleError::VaultMintMismatch,
-        constraint = pyusd_vault.owner == vault_authority.key() @ PresaleError::VaultAuthorityMismatch,
-    )]
-    pub pyusd_vault: Box<Account<'info, TokenAccount>>,
+    // PYUSD removed from presale init (Token-2022 incompatible).
+    // PYUSD support added post-launch on agents.systemr.ai.
     #[account(mut)]
     pub authority: Signer<'info>,
     pub system_program: Program<'info, System>,
@@ -621,7 +617,6 @@ pub struct BuyWithStablecoin<'info> {
         constraint = (
             stablecoin_vault.key() == presale.usdc_vault
             || stablecoin_vault.key() == presale.usdt_vault
-            || stablecoin_vault.key() == presale.pyusd_vault
         ) @ PresaleError::UnsupportedStablecoin,
         constraint = stablecoin_vault.mint == buyer_stablecoin_account.mint @ PresaleError::VaultMintMismatch,
     )]
@@ -668,7 +663,6 @@ pub struct WithdrawStablecoin<'info> {
         constraint = (
             stablecoin_vault.key() == presale.usdc_vault
             || stablecoin_vault.key() == presale.usdt_vault
-            || stablecoin_vault.key() == presale.pyusd_vault
         ) @ PresaleError::UnsupportedStablecoin,
     )]
     pub stablecoin_vault: Account<'info, TokenAccount>,
