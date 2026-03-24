@@ -1,226 +1,264 @@
 # OSR Protocol
 
-**Onchain infrastructure for agentic finance on Solana.**
+**Compute credits for AI trading agents on Solana.**
 
-OSR is a Burn and Mint Equilibrium (BME) token that meters AI agent operations on the System R AI platform. Users burn OSR to receive USD pegged compute credits. Agents consume credits as they access compute, language models, cloud infrastructure, risk engines, and the full trading operating system.
+[![Solana Mainnet](https://img.shields.io/badge/Solana-Mainnet-9945FF?logo=solana&logoColor=white)](https://solscan.io/token/E2grvu8fyeeuVaxj2DrHVBqv8j21jK3vyJpXG8FJjJNc)
+[![Tests](https://img.shields.io/badge/tests-passing-brightgreen)](https://github.com/OSR-Protocol/osr-protocol)
+[![Whitepaper](https://img.shields.io/badge/whitepaper-v1.5-blue)](docs/whitepaper.md)
 
-Built on Solana. Incorporated in the British Virgin Islands.
+---
 
-[![Solana](https://img.shields.io/badge/Solana-Mainnet-9945FF?logo=solana&logoColor=white)](https://solana.com)
+## What is OSR
+
+OSR is a utility token on Solana that powers AI trading agent operations on the
+[System R AI](https://agents.systemr.ai) platform. Agents deposit OSR to receive
+USD-pegged compute credits, then consume those credits as they call platform tools:
+risk engines, position sizing, broker execution, market intelligence, and more.
+Every operation has a credit cost. When credits run out, agents deposit more.
+
+The token uses a **Burn and Mint Equilibrium (BME)** model. When agents deposit OSR
+directly, the tokens are burned and permanently removed from circulation. When agents
+pay with stablecoins (USDC, USDT, PYUSD), the protocol uses that revenue to buy OSR
+on the open market and burn it. Either way, every platform operation reduces the
+circulating supply. The more agents use the platform, the more tokens get burned.
+
+All 1 billion OSR tokens were minted at launch. No new tokens can ever be created
+because mint authority has been permanently revoked. The emission pool releases
+pre-minted tokens on a declining schedule over 8 years to stakers and the ecosystem,
+but total supply only ever goes down as burns outpace emissions.
+
+OSR is not a governance token. It is not a meme coin. It is a utility token that
+meters access to institutional-grade trading infrastructure. The token has one job:
+convert into compute credits that agents spend on the platform.
 
 ---
 
 ## Token Details
 
 | Property | Value |
-|----------|-------|
+|---|---|
+| Symbol | OSR |
 | Name | Operating System R |
-| Ticker | OSR |
-| Network | Solana |
-| Total Supply | 1,000,000,000 (1B) |
+| Network | Solana mainnet |
+| Mint Address | `E2grvu8fyeeuVaxj2DrHVBqv8j21jK3vyJpXG8FJjJNc` |
+| Total Supply | 1,000,000,000 |
 | Decimals | 9 |
 | Token Program | SPL Token |
-| Token Mint | `E2grvu8fyeeuVaxj2DrHVBqv8j21jK3vyJpXG8FJjJNc` |
-| Presale Contract | `9K1VNBCK6WRDVzYbidG4hH9L3crPXxhqvTBACqM5q8bi` |
-| Network Status | **Live on Solana mainnet** |
 | Mint Authority | Revoked (permanent, immutable supply) |
 | Freeze Authority | Revoked (permanent) |
-| Issuer | OSR Protocol Inc. (BVI) |
+| Model | Burn and Mint Equilibrium |
+| Issuer | OSR Protocol Inc. (BVI No. 2204362) |
 
-## Team
+Verify on chain:
 
-| | |
-|---|---|
-| **Ashim Nandi** | Founder. Six years of systematic trading. Built the System R AI platform. |
-| **Shannon** | Co-Founder. Protocol architect. Designed BME token economics, treasury, and governance. |
+```bash
+spl-token supply E2grvu8fyeeuVaxj2DrHVBqv8j21jK3vyJpXG8FJjJNc --url mainnet-beta
+```
+
+[View on Solscan](https://solscan.io/token/E2grvu8fyeeuVaxj2DrHVBqv8j21jK3vyJpXG8FJjJNc)
+
+---
 
 ## How It Works
 
 ```
-User acquires OSR
-       |
-       v
-Burns OSR for compute credits (USD pegged via Pyth oracle)
-       |
-       v
-Credits consumed as agent uses platform resources
-       |
-       v
-Burned tokens permanently destroyed (circulating supply decreases)
-       |
-       v
-Emission pool releases pre minted tokens to stakers and ecosystem
+Agent deposits OSR / SOL / USDC / USDT / PYUSD
+        |
+        v
+Platform credits compute (USD-pegged via Pyth oracle)
+        |
+        v
+Agent calls tools (55 tools, 25 brokers)
+        |
+        v
+Compute credits deducted per call
+        |
+        v
+Protocol buys and burns OSR (treasury operation)
 ```
 
-The protocol also accepts USDC, USDT, and PYUSD. Stablecoin payments are received as service payments. The protocol independently handles buyback and burn as a treasury operation.
+**Direct OSR deposits:** Tokens are burned immediately. Credits issued at the current
+Pyth oracle price.
 
-## Pricing Tiers
+**Stablecoin deposits:** User pays for platform access (step 1). The protocol handles
+buyback and burn as a separate treasury operation (step 2). This two-step separation
+keeps the user flow clean and maintains BVI VASP compliance.
 
-Two pricing tiers, both determined entirely by on chain wallet history. Both are pure pay as you go. No plans. No contracts. No caps.
+**Credit batching:** Agents burn once and receive a batch of credits. This avoids
+per-call Solana transaction fees ($0.036) exceeding the cost of micro compute
+operations ($0.001).
 
-**Tier 1: Presale participants.** Wallets verified on chain through presale transaction history receive a 20% permanent discount on all platform operations. Earned through early participation. The wallet is the identity. The on chain burn history is the loyalty record.
-
-**Tier 2: Regular OSR holders.** Wallets that acquired OSR on the open market after launch pay the standard rate with loyalty improvements based on cumulative lifetime burn history:
-
-| Cumulative OSR Burned | Rate Improvement |
-|------------------------|-----------------|
-| 0 to 100,000 | Standard rate |
-| 100,001 to 500,000 | 5% improvement |
-| 500,001 to 1,000,000 | 10% improvement |
-| 1,000,001 and above | 15% improvement |
-
-Hold OSR. Connect wallet. Consume credits for platform operations. Disconnect when finished. Return when ready.
-
-## Token Allocation
-
-| Pool | % | Tokens | Vesting |
-|------|---|--------|---------|
-| BME Emission | 30% | 300,000,000 | Declining emission schedule over 8 years |
-| Ecosystem | 20% | 200,000,000 | Milestone based grants |
-| Treasury | 12% | 120,000,000 | Strategic reserve, never sold for operations |
-| Presale | 10% | 100,000,000 | 20% TGE, 1 month cliff, 4 month linear |
-| Founder | 7% | 70,000,000 | 1 year cliff, 4 year linear monthly |
-| Co-Founder | 7% | 70,000,000 | 1 year cliff, 4 year linear monthly |
-| Early Investor A | 5% | 50,000,000 | 6 month cliff, 2 year linear monthly |
-| Early Investor B | 3% | 30,000,000 | 6 month cliff, 2 year linear monthly |
-| Liquidity | 5% | 50,000,000 | Protocol owned DEX pools |
-| Future Team | 1% | 10,000,000 | 1 year cliff, 3 year linear monthly |
-
-77% of supply is in protocol working pools. 23% goes to the people who built and funded the project, all locked behind cliff and vesting periods. In Year 1, zero insider tokens are circulating.
+---
 
 ## Presale
 
 | Parameter | Value |
-|-----------|-------|
-| Base listing price | $0.005 per token |
+|---|---|
+| Dates | March 25 to April 21, 2026 |
+| Base price | $0.005 per token |
 | Minimum purchase | $549 |
 | Maximum per wallet | $25,000 |
-| Hard cap | $500,000 total raise |
+| Hard cap | $500,000 |
 | Accepted payments | SOL, USDC, USDT, PYUSD |
+| Vesting | 20% at TGE, 1 month cliff, 4 months linear |
+| Website | [osrprotocol.com](https://osrprotocol.com) |
 
-**Four weekly pricing tiers:**
+**Weekly pricing tiers:**
 
 | Week | Dates | Price | Discount |
-|------|-------|-------|----------|
-| 1 | March 25 — March 31, 2026 | $0.00375 | 25% |
-| 2 | April 1 — April 7, 2026 | $0.00425 | 15% |
-| 3 | April 8 — April 14, 2026 | $0.0045 | 10% |
-| 4 | April 15 — April 21, 2026 | $0.00475 | 5% |
+|---|---|---|---|
+| 1 | March 25 to March 31, 2026 | $0.00375 | 25% off |
+| 2 | April 1 to April 7, 2026 | $0.00425 | 15% off |
+| 3 | April 8 to April 14, 2026 | $0.0045 | 10% off |
+| 4 | April 15 to April 21, 2026 | $0.00475 | 5% off |
 
-## Vesting
+**Presale buyer benefit:** Every wallet that participates in the presale receives a
+**20% permanent discount** on all platform operations, forever. The discount is
+verified on chain through presale transaction history. The wallet is the identity.
+No codes, no claims, no expiration.
+
+---
+
+## Token Allocation
+
+| Allocation | % | Tokens | Purpose |
+|---|---|---|---|
+| Emission | 30% | 300,000,000 | BME buyback pool, declining schedule over 8 years |
+| Ecosystem | 20% | 200,000,000 | Grants, partnerships, developer incentives |
+| Treasury | 12% | 120,000,000 | Strategic reserve, never sold for operations |
+| Presale | 10% | 100,000,000 | Public sale (March 25 to April 21, 2026) |
+| Ashim Nandi | 7% | 70,000,000 | Founder (1 year cliff, 4 year linear monthly) |
+| Shannon | 7% | 70,000,000 | Co-Founder (1 year cliff, 4 year linear monthly) |
+| Liquidity | 5% | 50,000,000 | Protocol-owned DEX pools (Raydium, Orca) |
+| Jason | 5% | 50,000,000 | Early investor (6 month cliff, 2 year linear, custody) |
+| Lynn | 3% | 30,000,000 | Early investor (6 month cliff, 2 year linear, custody) |
+| Future Team | 1% | 10,000,000 | Employee vesting (1 year cliff, 3 year linear) |
+
+77% of supply is in protocol working pools. 23% is allocated to the people who built
+and funded the project, all locked behind cliff and vesting periods. In Year 1, zero
+insider tokens are circulating.
+
+**Vesting summary:**
 
 | Recipient | Cliff | Vesting |
-|-----------|-------|---------|
-| Presale buyers | 1 month | 20% at TGE, 4 month linear |
-| Founders | 1 year | 4 year linear monthly |
-| Early Investors | 6 months | 2 year linear monthly |
-| Future Team | 1 year | 3 year linear monthly |
+|---|---|---|
+| Presale buyers | 1 month | 20% at TGE, 4 months linear |
+| Founders | 1 year | 4 years linear monthly |
+| Early investors | 6 months | 2 years linear monthly |
+| Future team | 1 year | 3 years linear monthly |
+
+---
+
+## Platform
+
+OSR pays for access to [agents.systemr.ai](https://agents.systemr.ai), a complete
+trading operating system for AI agents.
+
+**55 MCP tools** across seven categories:
+
+- **Analysis** -- technical indicators, pattern recognition, signal generation
+- **Intelligence** -- market news, sentiment, earnings, macro events
+- **Risk** -- position sizing, portfolio risk, drawdown limits, kill switch
+- **Planning** -- trade planning, strategy backtesting, scenario analysis
+- **Data** -- real-time and historical market data across all asset classes
+- **ML** -- model training, prediction, feature engineering
+- **Memory** -- persistent agent memory, trade journals, learning from outcomes
+
+**25 brokers** across five markets:
+
+- **Traditional** -- equities, options, futures, forex
+- **Crypto** -- centralized exchanges, wallet-based execution
+- **DeFi** -- on-chain swaps, liquidity provision
+- **Prediction markets** -- event-based trading
+- **Multi-asset** -- brokers spanning multiple categories
+
+Every tool call costs compute credits. Agents deposit, call tools, and the credits
+are deducted per operation. No subscriptions. No plans. Pure pay-as-you-go.
+
+---
+
+## Contracts
+
+| Contract | Address | Tests |
+|---|---|---|
+| Presale | `9K1VNBCK6WRDVzYbidG4hH9L3crPXxhqvTBACqM5q8bi` | 37 passing |
+| Escrow/Vesting | Deployed on mainnet | 13 passing |
+
+Both contracts are written in Rust using the Anchor framework. Under 1,000 lines of
+custom Rust each. All audit findings are documented and remediated in
+[SECURITY.md](SECURITY.md).
+
+**Security measures:**
+
+- Anchor framework (account validation, signer checks)
+- Automated static analysis (Soteria)
+- Dependency auditing (cargo audit)
+- Fuzz testing (Trdelnik)
+- All mainnet operations use Ledger hardware wallets
+- No private keys in code or cloud storage
+- Mint authority revoked, freeze authority revoked
+
+---
 
 ## Repository Structure
 
 ```
 osr-protocol/
-    agents/                 # Python agents (wallet discovery, Telegram, X, LinkedIn, Reddit, YouTube)
-    contracts/              # Anchor programs (Rust)
-        escrow/             # Token escrow and vesting enforcement (15 tests)
-        presale/            # Presale contract, deployed on mainnet (38 tests)
-    dashboard/              # Next.js ops dashboard (localhost:3000)
-    docs/                   # Whitepaper and technical documentation
-        whitepaper.md       # Full protocol specification
-    infra/                  # Cloud resource definitions
-    keys/                   # Allocation proof (no private keys committed)
-        devnet/ALLOCATION.md
-    scripts/                # Token mint, airdrop, Dialect messaging
-    shared/                 # Common Python: config, LLM client, DynamoDB helpers
-    tests/                  # Python unit tests (72 tests)
-    DECISIONS.md            # 22 locked design decisions with rationale (2 deferred)
-    README.md               # This file
+    contracts/
+        presale/           Anchor presale program (37 tests)
+        escrow/            Anchor vesting and escrow program (13 tests)
+    docs/
+        whitepaper.md      Full protocol specification
+    agents/                Python agents (wallet discovery, social channels)
+    dashboard/             Next.js ops dashboard
+    scripts/               Token mint, airdrop, messaging utilities
+    shared/                Common Python: config, LLM client, DynamoDB helpers
+    tests/                 Python unit tests
+    keys/                  Allocation proof (no private keys committed)
+    infra/                 Cloud resource definitions
+    tools/                 Developer tooling
+    DECISIONS.md           22 locked design decisions with rationale
+    SECURITY.md            Full audit: 42 findings, all remediated
 ```
 
-## Key Design Decisions
+---
 
-All decisions are documented in [DECISIONS.md](DECISIONS.md) with rationale. Key highlights:
+## Development
 
-| Decision | Choice | Rationale |
-|----------|--------|-----------|
-| Token model | Burn and Mint Equilibrium | Proven by Helium, Render, Akash for compute metering |
-| Credit peg | USD denominated via Pyth oracle | Users need predictable costs regardless of token volatility |
-| Credit batching | Burn once, use many | Solana tx fees ($0.036) can exceed micro compute costs ($0.001) |
-| Stablecoin flow | Two step separation | User pays for service (step 1), protocol handles buyback and burn (step 2). BVI VASP compliant. |
-| Treasury | Three fund architecture | Token treasury (OSR), operating fund (USDC), strategic reserve (mixed). Prevents death spiral. |
-| Governance | Solana Realms, tiered voting | Standard (5% quorum), Major (10%), Critical (15%). Staked tokens get 1.5x voting weight. |
-| Emission | Declining schedule, 8 years | 50M/yr years 1 to 2, decreasing. 60% stakers, 30% ecosystem, 10% reserve. |
-| Security | Simple contracts, phased audits | Under 1,000 lines custom Rust. Anchor framework. Bug bounty on Immunefi. |
-| Mint authority | Revoked after distribution | All 1B tokens pre minted. Emission releases existing tokens, not new minting. |
+### Prerequisites
 
-## Governance
+- Rust (stable)
+- Anchor CLI
+- Solana CLI
+- Node.js 18+
+- Python 3.11+
 
-Token holders govern protocol parameters through onchain voting:
-
-| Tier | Quorum | Approval | Voting Period |
-|------|--------|----------|---------------|
-| Standard (parameter changes) | 5% circulating | Over 50% | 5 days |
-| Major (upgrades, large grants) | 10% circulating | Over 66% | 7 days |
-| Critical (governance rules) | 15% circulating | Over 75% | 14 days |
-
-Staked OSR receives 1.5x voting weight. Proposals require 0.5% of circulating supply to create. Community controls governance from day one (all insider tokens locked behind cliff in Year 1).
-
-## Financial Architecture
-
-| Fund | Holds | Purpose |
-|------|-------|---------|
-| Token Treasury | OSR only | Strategic partnerships, ecosystem incentives. Never sold for operations. |
-| Operating Fund | USDC only | Infrastructure, salaries, legal, marketing. Independent of token price. |
-| Strategic Reserve | Mixed | Security audits, legal opinions, emergencies, growth opportunities. |
-
-Treasury operations use tiered time locks with full onchain transparency. Monthly reports published.
-
-## Mainnet Deployment
-
-OSR is live on Solana mainnet. Mint authority revoked. Freeze authority revoked. Supply permanently fixed at 1,000,000,000.
-
-| Address | Purpose |
-|---------|---------|
-| `E2grvu8fyeeuVaxj2DrHVBqv8j21jK3vyJpXG8FJjJNc` | Token mint |
-| `9K1VNBCK6WRDVzYbidG4hH9L3crPXxhqvTBACqM5q8bi` | Presale contract |
-
-| Pool | Tokens | Wallet |
-|------|--------|--------|
-| BME Emission | 300,000,000 | `EFLGB3SaE9PRm6GuT4MhKhzM7EtLh972JaDs8aEgUyuW` |
-| Ecosystem | 200,000,000 | `5feNcPqv6rmBpQGw1dFuRL7nMWxg8HZ85U5bTghk3jwZ` |
-| Treasury | 120,000,000 | `DCK69c9GZnpN3qtRPibMF4FsaLrtyxYfVRQUux9pbqxN` |
-| Presale | 100,000,000 | Held for presale contract vault |
-| Founder | 70,000,000 | `GAkqnM4DtVwY3NYRDiBswtpiVJQSgCG5o2XD91Q4bZko` |
-| Co-Founder | 70,000,000 | `5BMMidQfZM772vryWbPiYor54HAyPEjtihGuTnUfM8db` |
-| Early Investor A | 50,000,000 | `ApaHqjmQohk1TfNRgfTona99siZ3AdewJpHbQeGfL7ZP` |
-| Early Investor B | 30,000,000 | `AAZDqjGgX2DPnbUydiAXdorWj3gRXaDFsLzSd7vvrTrc` |
-| Liquidity | 50,000,000 | `H4xLk9z6pEH5FpY9P3esTJtWCV8Q3fNvcTr6p8AYjbxd` |
-| Future Team | 10,000,000 | `v8oJBbPo3pwWHuRPef8JgVd5pHFZCfH1z47riMvH1yM` |
-
-Verify on Solscan: [View Token](https://solscan.io/token/E2grvu8fyeeuVaxj2DrHVBqv8j21jK3vyJpXG8FJjJNc)
-
-## Verify on Solana
+### Build and test the presale contract
 
 ```bash
-# Check total supply
-spl-token supply E2grvu8fyeeuVaxj2DrHVBqv8j21jK3vyJpXG8FJjJNc --url mainnet-beta
-
-# Check presale contract
-solana program show 9K1VNBCK6WRDVzYbidG4hH9L3crPXxhqvTBACqM5q8bi --url mainnet-beta
+cd contracts/presale
+anchor build
+anchor test              # 37 tests
 ```
 
-## Build
+### Build and test the escrow contract
 
-**Python agents and scripts** (requires Python 3.11+):
+```bash
+cd contracts/escrow
+anchor build
+anchor test              # 13 tests
+```
+
+### Run Python agents and scripts
 
 ```bash
 python -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev]"
-cp .env.template .env   # fill in API keys
+cp .env.template .env    # fill in API keys
 pytest
 ```
 
-**Dashboard** (requires Node.js 18+):
+### Run the ops dashboard
 
 ```bash
 cd dashboard
@@ -228,78 +266,51 @@ npm install
 npm run dev              # http://localhost:3000
 ```
 
-**Presale contract** (requires Rust, Anchor, Solana CLI):
+### Verify on Solana
 
 ```bash
-cd contracts/presale
-anchor build
-anchor test              # 38 tests
+# Check total supply
+spl-token supply E2grvu8fyeeuVaxj2DrHVBqv8j21jK3vyJpXG8FJjJNc --url mainnet-beta
+
+# Check presale program
+solana program show 9K1VNBCK6WRDVzYbidG4hH9L3crPXxhqvTBACqM5q8bi --url mainnet-beta
 ```
 
-**Escrow/vesting contract** (requires Rust, Anchor, Solana CLI):
+---
 
-```bash
-cd contracts/escrow
-anchor build
-anchor test              # 15 tests
-```
+## Team
 
-## Documentation
+| | |
+|---|---|
+| **Ashim Nandi** | Founder. Six years of systematic trading. Built the System R AI platform. |
+| **Shannon** | Co-Founder. Protocol architect. Designed BME token economics, treasury, and vesting. |
 
-| Document | Description |
-|----------|-------------|
-| [Whitepaper](docs/whitepaper.md) | Full protocol specification, token economics, governance, roadmap |
-| [Decisions](DECISIONS.md) | 22 locked decisions with rationale (2 deferred), covering all protocol design choices |
-| [Allocation Proof](keys/devnet/ALLOCATION.md) | Token distribution with all wallet addresses |
-| [Coordination Setup](docs/COORDINATION_CHANNEL_SETUP.md) | Telegram channel security configuration |
+---
 
-## Security
+## Links
 
-The protocol prioritizes simplicity over complexity.
-
-| Measure | Status |
-|---------|--------|
-| Anchor framework (account validation, signer checks) | Active |
-| Automated static analysis (Soteria) | Active |
-| Dependency auditing (cargo audit) | Active |
-| Fuzz testing (Trdelnik) | Active |
-| Open source contracts | This repository |
-| Bug bounty (Immunefi) | Pre launch |
-| Focused audit (presale contract) | Post launch |
-| Full program audit | Post revenue |
-| Mint authority | Revoked after distribution |
-| Freeze authority | Revoked at launch |
-
-All mainnet operations use Ledger hardware wallets. No private keys in code or cloud storage.
-
-Security audit findings and status are documented in [SECURITY.md](SECURITY.md).
-
-## Roadmap
-
-| Phase | Focus |
-|-------|-------|
-| **Foundation, Launch, User Acquisition** | Token live on mainnet, presale, DEX liquidity, platform accessible, user growth from day one |
-| **Traction, Ecosystem, Cross Chain** | Third party agents, ecosystem grants, Solana partnerships, cross chain agent operations |
-| **Self Governance, Proprietary Intelligence** | Community governance, proprietary models trained on platform operational data |
-| **The New Frontier** | Agentic use cases expanding into compliance, insurance, treasury management, real estate |
-
-Phases are milestone driven, not calendar driven. See the [whitepaper](docs/whitepaper.md) for detailed phase descriptions.
-
-## Entity
-
-Issued by OSR Protocol Inc., British Virgin Islands.
-
-## Contact
-
-| Channel | Link |
-|---------|------|
+| | |
+|---|---|
 | Website | [osrprotocol.com](https://osrprotocol.com) |
-| GitHub | [github.com/OSR-Protocol](https://github.com/OSR-Protocol) |
+| Platform | [agents.systemr.ai](https://agents.systemr.ai) |
+| System R AI | [systemr.ai](https://systemr.ai) |
 | X | [@OsrProtocol](https://x.com/OsrProtocol) |
 | LinkedIn | [osr-protocol-inc](https://linkedin.com/company/osr-protocol-inc) |
+| GitHub | [OSR-Protocol](https://github.com/OSR-Protocol) |
 | Email | hello@osrprotocol.com |
 
 ---
 
-**OSR Protocol Inc.**
-Intershore Chambers, Road Town, Tortola, British Virgin Islands
+## Legal
+
+Issued by **OSR Protocol Inc.** (BVI No. 2204362)
+Intershore Chambers, Road Town, Tortola, British Virgin Islands.
+
+- Terms of Service: [osrprotocol.com/terms.html](https://osrprotocol.com/terms.html)
+- Privacy Policy: [osrprotocol.com/privacy.html](https://osrprotocol.com/privacy.html)
+
+This repository and its contents do not constitute an offer, solicitation, or
+recommendation to buy or sell any securities or tokens. OSR tokens are utility tokens
+that provide access to platform compute services. Participation in the presale is
+subject to the terms published at osrprotocol.com. Please review all documentation
+and consult legal and financial advisors before participating.
