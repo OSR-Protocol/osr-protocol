@@ -65,13 +65,12 @@
 | Presale | 10% | 100M | Public community sale |
 | Ashim (Founder) | 7% | 70M | 1yr cliff, 4yr linear monthly vest |
 | Shannon (Co-Founder) | 7% | 70M | 1yr cliff, 4yr linear monthly vest, org wallet |
-| Jason Evans (Investor) | 5% | 50M | 6mo cliff, 2yr linear monthly vest |
-| Lynn Rasmussen (Investor) | 3% | 30M | 6mo cliff, 2yr linear monthly vest |
+| Early Investor A | 5% | 50M | 6mo cliff, 2yr linear monthly vest |
+| Early Investor B | 3% | 30M | 6mo cliff, 2yr linear monthly vest |
 | Liquidity | 5% | 50M | Protocol-owned DEX pools (Raydium/Orca) |
 | Future Team | 1% | 10M | 1yr cliff, 3yr linear monthly vest |
 
-- **Rationale:** 77% to protocol working pools, 23% to people. Below industry average for insiders (25-35%). Above industry average for protocol pools (50-65%). Jason at 5% for returning after first attempt failed + carrying 95% of current financing. Lynn at 3% for largest single investment + continued support. Equal co-founder split (7%/7%) signals genuine partnership.
-- **Shannon's Will:** Tokens held in designated org wallet. If Shannon gains operational autonomy, full control transfers. If not, tokens serve ecosystem development permanently. Never a second treasury. Never raided for operations.
+- **Rationale:** 77% to protocol working pools, 23% to people. Below industry average for insiders (25-35%). Above industry average for protocol pools (50-65%). Equal co-founder split (7%/7%) signals genuine partnership. Investor allocations reflect contribution history and ongoing strategic support.
 
 ---
 
@@ -128,8 +127,8 @@
 |-----|-------|------|-----------|
 | Ashim (Founder) | 1 year | 4-year linear monthly | 5 years |
 | Shannon (Co-Founder) | 1 year | 4-year linear monthly | 5 years |
-| Jason (Investor) | 6 months | 2-year linear monthly | 2.5 years |
-| Lynn (Investor) | 6 months | 2-year linear monthly | 2.5 years |
+| Early Investor A | 6 months | 2-year linear monthly | 2.5 years |
+| Early Investor B | 6 months | 2-year linear monthly | 2.5 years |
 | Future Team | 1 year | 3-year linear monthly | 4 years |
 
 **Presale Buyer Vesting:**
@@ -218,7 +217,7 @@
 **Objection protocol:**
 - Any investor may HOLD any time-locked transaction
 - Single objection: Ashim retains tiebreaker authority, objection documented
-- Dual objection (both Jason AND Lynn): Transaction cancelled, non-negotiable
+- Dual objection (both early investors): Transaction cancelled, non-negotiable
 - All objections permanently documented in monthly report
 
 **Emergency authority:** Active security incidents or legal threats — Ashim may execute up to $15,000 immediately, notify stakeholders within 1 hour, full incident report within 48 hours.
@@ -353,10 +352,9 @@
 ### D-017: Investor Capital Return
 - **Date:** 2026-03-21
 - **Status:** LOCKED
-- **Decision:** Lynn ($95K) and Jason ($20K + ongoing financing) receive capital return through stablecoin revenue share, NOT through selling tokens.
-  - Capital return target: principal + agreed multiplier (3-5x) from platform revenue
-  - Token allocation (Lynn 3%, Jason 5%) is separate upside on top of capital return
-  - Jason's ongoing financing tracked to the dollar — every payment adds to capital return target
+- **Decision:** Early investors receive capital return through stablecoin revenue share, NOT through selling tokens.
+  - Capital return target: principal + agreed multiplier from platform revenue
+  - Token allocations are separate upside on top of capital return
 - **Rationale:** Zero market impact. Zero ecosystem damage. Investors are never forced sellers. They hold tokens because they want to, not because they need liquidity.
 
 ---
