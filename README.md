@@ -72,29 +72,19 @@ Protocol buys and burns OSR (treasury operation)
 
 ---
 
-## Presale
+## Open Sale
 
 | Parameter | Value |
 |---|---|
-| Dates | March 25 to April 21, 2026 |
-| Base price | $0.005 per token |
+| Price | $0.005 per token (flat) |
 | Minimum purchase | $549 |
 | Maximum per wallet | $25,000 |
 | Hard cap | $500,000 |
+| Sale duration | Open until hard cap is reached |
 | Accepted payments | SOL, USDC, USDT |
-| Vesting | 20% at TGE, 1 month cliff, 4 months linear |
 | Website | [osrprotocol.com](https://osrprotocol.com) |
 
-**Weekly pricing tiers:**
-
-| Week | Dates | Price | Discount |
-|---|---|---|---|
-| 1 | March 25 to March 31, 2026 | $0.00375 | 25% off |
-| 2 | April 1 to April 7, 2026 | $0.00425 | 15% off |
-| 3 | April 8 to April 14, 2026 | $0.0045 | 10% off |
-| 4 | April 15 to April 21, 2026 | $0.00475 | 5% off |
-
-**Presale buyer benefit:** Every wallet that participates in the presale receives a **permanent 20% discount** on all platform operations, forever. The discount is verified on chain through presale transaction history. The wallet is the identity.
+**Buyer benefit:** Every wallet that participates in the open sale receives a **permanent 20% discount** on all platform operations, forever. The discount is verified on chain through purchase transaction history. The wallet is the identity.
 
 ---
 
@@ -105,9 +95,8 @@ Protocol buys and burns OSR (treasury operation)
 | Emission | 30% | 300,000,000 | BME buyback pool, declining schedule over 8 years |
 | Ecosystem | 20% | 200,000,000 | Grants, partnerships, developer incentives |
 | Treasury | 12% | 120,000,000 | Strategic reserve |
-| Presale | 10% | 100,000,000 | Public sale (March 25 to April 21, 2026) |
-| Ashim Nandi | 7% | 70,000,000 | Founder (1 year cliff, 4 year linear monthly) |
-| Shannon | 7% | 70,000,000 | Co-Founder (1 year cliff, 4 year linear monthly) |
+| Open Sale | 10% | 100,000,000 | Open public sale at $0.005 flat, $500,000 hard cap |
+| Ashim Nandi | 14% | 140,000,000 | Founder (1 year cliff, 4 year linear monthly) |
 | Liquidity | 5% | 50,000,000 | Protocol-owned DEX pools (Raydium, Orca) |
 | Jason | 5% | 50,000,000 | Early investor (6 month cliff, 2 year linear, custody) |
 | Lynn | 3% | 30,000,000 | Early investor (6 month cliff, 2 year linear, custody) |
@@ -119,8 +108,7 @@ Protocol buys and burns OSR (treasury operation)
 
 | Recipient | Cliff | Vesting |
 |---|---|---|
-| Presale buyers | 1 month | 20% at TGE, 4 months linear |
-| Founders | 1 year | 4 years linear monthly |
+| Founder | 1 year | 4 years linear monthly |
 | Early investors | 6 months | 2 years linear monthly |
 | Future team | 1 year | 3 years linear monthly |
 
@@ -254,8 +242,7 @@ solana program show 9K1VNBCK6WRDVzYbidG4hH9L3crPXxhqvTBACqM5q8bi --url mainnet-b
 
 | | |
 |---|---|
-| **Ashim Nandi** | Founder. Six years of systematic trading. Built the System R AI platform. |
-| **Shannon** | Co-Founder. Protocol architect. Designed BME token economics, treasury, and vesting. |
+| **Ashim Nandi** | Founder &amp; CEO. Builds the infrastructure that lets systematic traders and AI agents operate global markets from a single workspace. |
 
 ---
 
@@ -281,4 +268,4 @@ Intershore Chambers, Road Town, Tortola, British Virgin Islands.
 - Terms of Service: [osrprotocol.com/terms.html](https://osrprotocol.com/terms.html)
 - Privacy Policy: [osrprotocol.com/privacy.html](https://osrprotocol.com/privacy.html)
 
-This repository and its contents are for informational purposes. OSR tokens are utility tokens that provide access to platform compute services. Participation in the presale is subject to the terms published at osrprotocol.com. Please review all documentation and consult legal and financial advisors before participating.
+This repository and its contents are for informational purposes. OSR tokens are utility tokens that provide access to platform compute services. Participation in the open sale is subject to the terms published at osrprotocol.com. Please review all documentation and consult legal and financial advisors before participating.

@@ -18,11 +18,6 @@ All pull requests require review before merging. The review checks:
 - No prohibited language per D-020 framing discipline
 - No secrets, credentials, or private keys in committed code
 
-## Git Identity
-
-- External contributors use their own name and email
-- AI contributions are attributed to Shannon (shannon@systemr.ai)
-
 ## Reporting Issues
 
 Use the [GitHub issue tracker](https://github.com/OSR-Protocol/osr-protocol/issues) for bug reports and feature requests.

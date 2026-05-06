@@ -1,8 +1,8 @@
 # OSR Protocol: Onchain Infrastructure for Agentic Finance
 
-**Version 1.5**
+**Version 1.6**
 **OSR Protocol Inc.**
-**March 2026**
+**May 2026**
 
 ---
 
@@ -38,7 +38,7 @@ The answer lies in what a token enables that stablecoins cannot.
 
 **Permanent burn.** When OSR is burned for compute access, those tokens are permanently removed from circulating supply. When USDC is paid, the transaction ends at the point of service delivery. The burn mechanism creates a direct link between platform usage and circulating supply: more operations executed means more tokens permanently destroyed.
 
-**Governance participation.** Every OSR holder participates in protocol governance and shapes the platform's direction. Agent builders, presale participants, partners, and stakers all have a voice in how the protocol evolves.
+**Governance participation.** Every OSR holder participates in protocol governance and shapes the platform's direction. Agent builders, open sale buyers, partners, and stakers all have a voice in how the protocol evolves.
 
 **Programmable agent economics.** Autonomous agents cannot hold bank accounts or sign payment agreements. They can hold tokens and execute onchain transactions. OSR provides native payment rails for the agent economy without requiring fiat intermediaries.
 
@@ -58,7 +58,7 @@ The mechanism works as follows:
 
 | Step | Action | Result |
 |------|--------|--------|
-| 1 | Users or agents acquire OSR on the open market or through the presale | OSR enters the user's wallet |
+| 1 | Users or agents acquire OSR on the open market or through the open sale | OSR enters the user's wallet |
 | 2 | Users burn OSR to receive compute credits at the current USD exchange rate (provided by Pyth oracle) | Burned tokens are permanently destroyed, reducing circulating supply |
 | 3 | Compute credits are consumed as agents use platform resources | Credits deducted per operation based on actual resource usage |
 | 4 | Pre minted OSR tokens are released from the emission pool on a declining emission schedule | Stakers and ecosystem participants receive tokens, maintaining incentive alignment |
@@ -135,15 +135,14 @@ Total supply: 1,000,000,000 OSR (one billion tokens, 9 decimals)
 | BME Emission | 30% | 300,000,000 | Staker rewards, ecosystem grants, protocol reserve |
 | Ecosystem | 20% | 200,000,000 | Partnerships, developer incentives, integrations |
 | Treasury | 12% | 120,000,000 | Strategic reserve in OSR, never sold for operations |
-| Presale | 10% | 100,000,000 | Public community sale ($549 minimum, $25,000 per wallet cap) |
-| Founder | 7% | 70,000,000 | 1 year cliff, 4 year linear monthly vesting |
-| Co-Founder | 7% | 70,000,000 | 1 year cliff, 4 year linear monthly vesting |
+| Open Sale | 10% | 100,000,000 | Open public sale at $0.005 flat ($549 minimum, $25,000 per wallet cap, $500,000 hard cap) |
+| Founder | 14% | 140,000,000 | 1 year cliff, 4 year linear monthly vesting |
 | Early Investor A | 5% | 50,000,000 | 6 month cliff, 2 year linear monthly vesting |
 | Early Investor B | 3% | 30,000,000 | 6 month cliff, 2 year linear monthly vesting |
 | Liquidity | 5% | 50,000,000 | Protocol owned DEX pools |
 | Future Team | 1% | 10,000,000 | 1 year cliff, 3 year linear monthly vesting |
 
-**77% of supply is allocated to protocol working pools.** Emission, ecosystem, treasury, presale, and liquidity serve the protocol and its users. 23% goes to the people who built and funded the project, all subject to vesting locks.
+**77% of supply is allocated to protocol working pools.** Emission, ecosystem, treasury, open sale, and liquidity serve the protocol and its users. 23% goes to the people who built and funded the project, all subject to vesting locks.
 
 ### 3.1 Vesting
 
@@ -151,11 +150,11 @@ All insider tokens are locked behind cliff and vesting periods:
 
 | Recipient | Cliff | Vesting | Total Lock Period |
 |-----------|-------|---------|-------------------|
-| Founders | 1 year | 4 years linear monthly | 5 years |
+| Founder | 1 year | 4 years linear monthly | 5 years |
 | Early Investors | 6 months | 2 years linear monthly | 2.5 years |
 | Future Team | 1 year | 3 years linear monthly | 4 years |
 
-In Year 1, zero founder or investor tokens are circulating. Presale participants and emission recipients control governance. The community has majority voting power from day one and maintains it permanently. Even after all vesting completes, community tokens (presale plus emission) exceed insider tokens by a ratio of approximately 1.8 to 1.
+In Year 1, zero founder or investor tokens are circulating. Token holders and emission recipients control governance. The community has majority voting power from day one and maintains it permanently. Even after all vesting completes, community-aligned tokens (emission, ecosystem, open sale, treasury, and liquidity) exceed insider tokens by a ratio of approximately 3.3 to 1.
 
 ### 3.2 Emission Schedule
 
@@ -173,30 +172,24 @@ Within each year, emission is distributed: 60% to stakers, 30% to ecosystem gran
 
 Front loading rewards in Years 1 and 2 bootstraps the staking economy when it matters most. As the platform matures, revenue sharing supplements emission rewards, and the emission rate naturally decreases.
 
-### 3.3 Presale Structure
+### 3.3 Open Sale Structure
 
-The presale distributes 100,000,000 OSR tokens under the following parameters:
+The open sale distributes up to 100,000,000 OSR tokens under the following parameters:
 
 | Parameter | Value |
 |-----------|-------|
-| Base listing price | $0.005 per token |
+| Price | $0.005 per token (flat) |
 | Minimum purchase | $549 |
 | Maximum per wallet | $25,000 |
 | Hard cap | $500,000 total raise |
+| Sale duration | Open until hard cap is reached |
 | Accepted payments | SOL, USDC, USDT |
 
-**Four weekly pricing tiers:**
+The sale runs continuously from the protocol's mainnet launch and closes only when the hard cap is met. There are no timed pricing tiers and no expiry date. All purchases are verified on chain through wallet transaction history.
 
-| Week | Dates | Price per Token | Discount from Base |
-|------|-------|----------------|--------------------|
-| 1 | March 25 — March 31, 2026 | $0.00375 | 25% |
-| 2 | April 1 — April 7, 2026 | $0.00425 | 15% |
-| 3 | April 8 — April 14, 2026 | $0.0045 | 10% |
-| 4 | April 15 — April 21, 2026 | $0.00475 | 5% |
+**Buyer benefit:** A 20% permanent compute discount on all System R AI operations, applied for the lifetime of the buyer's wallet. Verified on chain through purchase transaction history.
 
-The deepest discount is available in the first week. Each subsequent week the price increases toward the $0.005 base listing price. Early participation is rewarded. All presale purchases are verified on chain through wallet transaction history.
-
-**Presale buyer vesting:** 20% released at Token Generation Event. 1 month cliff on remaining 80%. Linear monthly unlock over 4 months. Total vesting: 5 months. Tokens transfer to the buyer's wallet at purchase. Transfer restrictions apply to unvested tokens. Platform consumption is unrestricted from day one. Buyers can burn tokens for compute credits immediately regardless of vesting status.
+**Token delivery:** OSR tokens are delivered to the buyer's wallet at the time of purchase. Transfer policies, if any, are governed by the protocol's smart contract state at the time of purchase and are visible on-chain. Compute consumption on the System R AI platform is unrestricted from the moment of purchase.
 
 ---
 
@@ -227,7 +220,7 @@ Approximately 60% of stablecoin revenue funds operations. The remaining 40% fund
 
 The protocol operates two pricing tiers. Both are determined entirely by on chain wallet history.
 
-**Tier 1: Presale participants.** Wallets verified on chain through presale transaction history receive a 20% permanent discount on all platform operations below the standard OSR rate. The discount applies for the lifetime of the wallet's interaction with the platform. Earned through early participation. Verified on chain. No plan. No contract. No cap. No monthly commitment. No minimum usage. No maximum usage. The wallet is the identity. The balance is the access. The on chain burn history is the loyalty record.
+**Tier 1: Open sale buyers.** Wallets verified on chain through open sale transaction history receive a 20% permanent discount on all platform operations below the standard OSR rate. The discount applies for the lifetime of the wallet's interaction with the platform. Earned through participation in the open sale. Verified on chain. No plan. No contract. No cap. No monthly commitment. No minimum usage. No maximum usage. The wallet is the identity. The balance is the access. The on chain burn history is the loyalty record.
 
 **Tier 2: Regular OSR holders.** Wallets that acquired OSR on the open market after launch pay the standard rate with loyalty improvements based on cumulative lifetime burn history:
 
@@ -266,8 +259,8 @@ The protocol maintains strict separation between three financial pools:
 | Fund | Holds | Source | Purpose | Rule |
 |------|-------|--------|---------|------|
 | **Token Treasury** | OSR only | 12% token allocation (120M) | Strategic partnerships, ecosystem incentives, governance weight, protocol owned liquidity | Never sold to cover operational expenses |
-| **Operating Fund** | Stablecoins (USDC) | 70% of presale revenue plus ongoing platform revenue | Infrastructure, salaries, legal compliance, marketing, development | Operates independently of OSR price |
-| **Strategic Reserve** | Mixed (stablecoins and OSR) | 30% of presale revenue plus revenue surplus | Security audits, legal opinions, emergency response, exchange listings, market maker | Accessed only for strategic or emergency purposes |
+| **Operating Fund** | Stablecoins (USDC) | 70% of sale revenue plus ongoing platform revenue | Infrastructure, salaries, legal compliance, marketing, development | Operates independently of OSR price |
+| **Strategic Reserve** | Mixed (stablecoins and OSR) | 30% of sale revenue plus revenue surplus | Security audits, legal opinions, emergency response, exchange listings, market maker | Accessed only for strategic or emergency purposes |
 
 This separation prevents the death spiral that has destroyed other token projects. When a project holds its treasury entirely in its own token and the price drops, it must sell tokens to fund operations, which further depresses the price, which requires more selling. The three fund architecture breaks this cycle by ensuring operational funding never depends on token price.
 
@@ -375,8 +368,8 @@ Custom code is minimized. The token mint, burn mechanism, and vesting contracts 
 | Phase | Security Measure | Timeline |
 |-------|-----------------|----------|
 | Development | Anchor framework protections, automated static analysis (Soteria), dependency auditing (cargo audit), fuzz testing (Trdelnik) | Ongoing |
-| Pre launch | Open source contracts, community review, Solana Verify for onchain code verification | Before presale |
-| Post launch | Bug bounty program on Immunefi, focused audit on presale contract from specialized Solana auditors | Month 1 to 3 |
+| Pre launch | Open source contracts, community review, Solana Verify for onchain code verification | Before mainnet |
+| Post launch | Bug bounty program on Immunefi, focused audit on smart contracts from specialized Solana auditors | Month 1 to 3 |
 | Growth | Full program audit from independent security firm | Month 6 to 12 |
 
 ### 8.3 Key Management
@@ -400,7 +393,7 @@ On mainnet deployment, mint authority is revoked after the initial 1 billion tok
 
 ### 9.1 Entity Structure
 
-**OSR Protocol Inc.** is incorporated in the British Virgin Islands. The BVI entity serves as the token issuer and manages token operations, treasury, and presale.
+**OSR Protocol Inc.** is incorporated in the British Virgin Islands. The BVI entity serves as the token issuer and manages token operations, treasury, and the open sale.
 
 **System R Technologies LLC** is incorporated in Florida, United States. The US entity holds the software intellectual property and provides technology services. The BVI entity licenses technology from the US entity through a written intercompany agreement.
 
@@ -429,9 +422,9 @@ The protocol evolves through four phases. Each phase is defined by milestones, n
 The protocol goes live. Users and agents access the full platform from day one. Without users there is no burn, no revenue, and no protocol. User acquisition is not a later phase activity. It is the central objective from the first day of operations.
 
 **What happens in this phase:**
-The OSR token deploys on Solana mainnet. Presale opens to qualified participants. Liquidity pools launch on Raydium and Orca, providing immediate trading access. The System R AI platform becomes accessible through OSR compute credits. The first real burns occur onchain, publicly verifiable by anyone. Staking activates, giving holders the ability to lock OSR for emission rewards and governance participation. Paid acquisition campaigns and community building run in parallel with platform operations, driving signups to a live, functional product.
+The OSR token is deployed on Solana mainnet. The open sale runs continuously until the hard cap is reached. Liquidity pools launch on Raydium and Orca, providing immediate trading access. The System R AI platform becomes accessible through OSR compute credits. The first real burns occur onchain, publicly verifiable by anyone. Staking activates, giving holders the ability to lock OSR for emission rewards and governance participation. Paid acquisition campaigns and community building run in parallel with platform operations, driving signups to a live, functional product.
 
-**This phase is complete when:** The platform has active users burning OSR for compute credits on a sustained daily basis, presale is concluded, and DEX liquidity is established.
+**This phase is complete when:** The platform has active users burning OSR for compute credits on a sustained daily basis and DEX liquidity is established.
 
 ### Phase 2: Traction, Ecosystem, Cross Chain
 
@@ -498,7 +491,7 @@ GitHub: github.com/OSR-Protocol
 Contact: hello@osrprotocol.com
 
 Token Mint: E2grvu8fyeeuVaxj2DrHVBqv8j21jK3vyJpXG8FJjJNc
-Presale Contract: 9K1VNBCK6WRDVzYbidG4hH9L3crPXxhqvTBACqM5q8bi
+Sale Contract: 9K1VNBCK6WRDVzYbidG4hH9L3crPXxhqvTBACqM5q8bi
 Network: Solana mainnet-beta
 
 ---
@@ -509,7 +502,8 @@ Network: Solana mainnet-beta
 |---------|------|---------|
 | 1.0 | 2026-03-21 | Initial protocol specification |
 | 1.1 | 2026-03-22 | External review refinements: mental model, agent workflow example, growth flywheel, regulatory tone, Phase 4 condensed, D-020 language compliance |
-| 1.2 | 2026-03-22 | Simplified access model: two tier pricing (presale + regular holders), presale structure with parameters |
+| 1.2 | 2026-03-22 | Simplified access model: two tier pricing (early supporters + regular holders), distribution structure with parameters |
 | 1.3 | 2026-03-22 | Entity separation enforced: Tier 3 removed, fiat acknowledgment via separate entity, vendor names removed, treasury threshold corrected, identity audit |
-| 1.4 | 2026-03-22 | Pre-mainnet: credit pricing table (9 operations), oracle thresholds (5%/30s), presale buyer vesting, D-005 four-tier weekly prices locked |
-| 1.5 | 2026-03-23 | Mainnet deployment: token minted, allocations distributed, mint authority revoked, presale contract deployed. Mainnet addresses added. Email updated to hello@. |
+| 1.4 | 2026-03-22 | Pre-mainnet: credit pricing table (9 operations), oracle thresholds (5%/30s), early supporter vesting, base price locked |
+| 1.5 | 2026-03-23 | Mainnet deployment: token minted, allocations distributed, mint authority revoked, sale contract deployed. Mainnet addresses added. |
+| 1.6 | 2026-05-06 | Open sale format: continuous public sale at $0.005 flat until $500K hard cap. Founder allocation consolidated to 14% (single founder), Treasury at 12%. |

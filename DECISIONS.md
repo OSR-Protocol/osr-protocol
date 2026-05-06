@@ -1,14 +1,14 @@
 # OSR PROTOCOL — DECISION PROTOCOL
 
-**Authority:** Ashim (Founder) + Shannon (Co-Founder)
+**Authority:** Ashim (Founder)
 **Purpose:** Single source of truth for all strategic and technical decisions. Every decision is numbered, dated, and final unless explicitly superseded.
 
 ---
 
 ## HOW THIS WORKS
 
-1. **Discuss** — Shannon presents research and tradeoffs
-2. **Decide** — Ashim makes the call
+1. **Research** — Tradeoffs and options collected
+2. **Decide** — Founder makes the call
 3. **Record** — Decision logged here with rationale
 4. **Lock** — No revisiting unless new data fundamentally changes the picture
 5. **Build** — Code follows decisions, not the other way around
@@ -62,15 +62,14 @@
 | BME Emission | 30% | 300M | Staker rewards (60%), ecosystem grants (30%), protocol reserve (10%) |
 | Ecosystem | 20% | 200M | Grants, partnerships, developer incentives, integrations |
 | Treasury | 12% | 120M | Strategic reserve in OSR. Never sold for operations. |
-| Presale | 10% | 100M | Public community sale |
-| Ashim (Founder) | 7% | 70M | 1yr cliff, 4yr linear monthly vest |
-| Shannon (Co-Founder) | 7% | 70M | 1yr cliff, 4yr linear monthly vest, org wallet |
+| Open Sale | 10% | 100M | Open public sale at $0.005 flat, $500K hard cap |
+| Ashim (Founder) | 14% | 140M | 1yr cliff, 4yr linear monthly vest |
 | Early Investor A | 5% | 50M | 6mo cliff, 2yr linear monthly vest |
 | Early Investor B | 3% | 30M | 6mo cliff, 2yr linear monthly vest |
 | Liquidity | 5% | 50M | Protocol-owned DEX pools (Raydium/Orca) |
 | Future Team | 1% | 10M | 1yr cliff, 3yr linear monthly vest |
 
-- **Rationale:** 77% to protocol working pools, 23% to people. Below industry average for insiders (25-35%). Above industry average for protocol pools (50-65%). Equal co-founder split (7%/7%) signals genuine partnership. Investor allocations reflect contribution history and ongoing strategic support.
+- **Rationale:** 77% to protocol working pools, 23% to people. Below industry average for insiders (25-35%). Above industry average for protocol pools (50-65%). Founder allocation consolidated at 14% reflects sole-founder responsibility. Investor allocations reflect contribution history and ongoing strategic support.
 
 ---
 
@@ -126,7 +125,6 @@
 | Who | Cliff | Vest | Total Lock |
 |-----|-------|------|-----------|
 | Ashim (Founder) | 1 year | 4-year linear monthly | 5 years |
-| Shannon (Co-Founder) | 1 year | 4-year linear monthly | 5 years |
 | Early Investor A | 6 months | 2-year linear monthly | 2.5 years |
 | Early Investor B | 6 months | 2-year linear monthly | 2.5 years |
 | Future Team | 1 year | 3-year linear monthly | 4 years |

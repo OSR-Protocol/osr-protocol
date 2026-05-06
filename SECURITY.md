@@ -102,13 +102,13 @@ Note: C-7 is mitigated by `.gitignore` preventing git tracking. No secrets have 
 
 ## Bug Bounty
 
-A formal bug bounty program on Immunefi will be established post-presale per D-021 (Security Strategy). Until then, report security issues to dev@osrprotocol.com.
+A formal bug bounty program on Immunefi will be established post-launch per D-021 (Security Strategy). Until then, report security issues to dev@osrprotocol.com.
 
 ## Audit Schedule (D-021)
 
 | Phase | Timeline | Scope |
 |-------|----------|-------|
 | Development (current) | Ongoing | Anchor framework, automated tools, all tests passing |
-| Pre-launch | Before presale | Open source contracts, community review, Solana Verify |
-| Post-presale | Month 1-3 | Focused audit on presale contract (~800 lines) |
+| Pre-launch | Before mainnet | Open source contracts, community review, Solana Verify |
+| Post-launch | Month 1-3 | Focused audit on sale contract (~800 lines) |
 | Post-revenue | Month 6-12 | Full program audit |
