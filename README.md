@@ -10,9 +10,9 @@ Compute credits for System R AI workflows on Solana.
 
 ## What is OSR
 
-OSR is a utility token on Solana that powers compute-credit access for [System R AI](https://systemr.ai/) workflows. Users can use OSR to receive USD-pegged compute credits for supported decision-support operations such as risk checks, position sizing, performance diagnostics, market context, journal workflows, and related finance tools.
+OSR is a utility token on Solana that supports compute-credit access for [System R AI](https://systemr.ai/) workflows. Where enabled, users can use OSR to receive USD-pegged compute credits for supported decision-support operations such as risk checks, position sizing, performance diagnostics, market context, journal workflows, and related finance tools.
 
-The token uses a **Burn and Mint Equilibrium (BME)** model. When agents deposit OSR directly, the tokens are burned and permanently removed from circulation. When agents pay with stablecoins (USDC, USDT, PYUSD), the protocol uses that revenue to buy OSR on the open market and burn it. Every platform operation strengthens the token economy by reducing circulating supply.
+The token uses a **Burn and Mint Equilibrium (BME)** model. When OSR is deposited directly through supported protocol flows, the tokens are burned and permanently removed from circulation. When stablecoins are used through supported flows, the protocol can use that revenue for treasury operations that may include OSR buyback and burn.
 
 1 billion OSR tokens were minted at launch. Immutable. Mint authority permanently revoked. The emission pool releases pre-minted tokens on a declining schedule over 8 years to stakers and the ecosystem. Total supply only moves in one direction as burns outpace emissions.
 
@@ -72,22 +72,6 @@ Protocol buys and burns OSR (treasury operation)
 
 ---
 
-## Open Sale
-
-| Parameter | Value |
-|---|---|
-| Price | $0.005 per token (flat) |
-| Minimum purchase | $549 |
-| Maximum per wallet | $25,000 |
-| Hard cap | $500,000 |
-| Sale duration | Open until hard cap is reached |
-| Accepted payments | SOL, USDC, USDT |
-| Website | [osrprotocol.com](https://osrprotocol.com) |
-
-**Buyer benefit:** Wallet-level compute benefits may apply according to the current open-sale rules. Eligibility is verified on chain through purchase transaction history. The wallet is the identity.
-
----
-
 ## Token Allocation
 
 | Allocation | % | Tokens | Purpose |
@@ -120,15 +104,19 @@ OSR pays for supported compute-credit access to [System R AI](https://systemr.ai
 
 Current tool availability should be verified through the live API Toolkit discovery surface. Public tool areas include:
 
-- **Analysis**: Technical indicators, pattern recognition, signal generation
+- **Analysis**: Technical indicators, pattern recognition, and structured market reads
 - **Intelligence**: Market news, sentiment, earnings, macro events
 - **Risk**: Position sizing, supplied risk inputs, drawdown context, and pre-decision checks
 - **Planning**: Trade planning, strategy backtesting, scenario analysis
 - **Data**: Market context where supported or supplied
-- **ML**: Model training, prediction, feature engineering
+- **ML**: Model training, feature engineering, and analytics workflows
 - **Memory**: Persistent agent memory, trade journals, learning from outcomes
 
 Credit usage depends on the operation, enabled provider path, and current billing rules. Live pricing and billing responses are the source of truth.
+
+## Trust Boundary
+
+System R AI is software for decision support. It is not financial advice, not a broker, not a signal service, and not a guarantee of profits. AI outputs can be wrong. Users remain responsible for their own trading and investing decisions.
 
 ---
 
