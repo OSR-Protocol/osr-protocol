@@ -1,6 +1,6 @@
 # OSR Protocol
 
-Compute credits for AI trading agents on Solana.
+Compute credits for System R AI workflows on Solana.
 
 [![Solana Mainnet](https://img.shields.io/badge/Solana-Mainnet-9945FF?logo=solana&logoColor=white)](https://solscan.io/token/E2grvu8fyeeuVaxj2DrHVBqv8j21jK3vyJpXG8FJjJNc)
 [![Tests](https://img.shields.io/badge/tests-passing-brightgreen)](https://github.com/OSR-Protocol/osr-protocol)
@@ -10,13 +10,13 @@ Compute credits for AI trading agents on Solana.
 
 ## What is OSR
 
-OSR is a utility token on Solana that powers AI trading agent operations on the [System R AI](https://agents.systemr.ai) platform. Agents deposit OSR to receive USD-pegged compute credits, then consume those credits as they call platform tools: risk engines, position sizing, broker execution, market intelligence, and more. Every operation has a credit cost. When credits run out, agents deposit more.
+OSR is a utility token on Solana that powers compute-credit access for [System R AI](https://systemr.ai/) workflows. Users can use OSR to receive USD-pegged compute credits for supported decision-support operations such as risk checks, position sizing, performance diagnostics, market context, journal workflows, and related finance tools.
 
 The token uses a **Burn and Mint Equilibrium (BME)** model. When agents deposit OSR directly, the tokens are burned and permanently removed from circulation. When agents pay with stablecoins (USDC, USDT, PYUSD), the protocol uses that revenue to buy OSR on the open market and burn it. Every platform operation strengthens the token economy by reducing circulating supply.
 
 1 billion OSR tokens were minted at launch. Immutable. Mint authority permanently revoked. The emission pool releases pre-minted tokens on a declining schedule over 8 years to stakers and the ecosystem. Total supply only moves in one direction as burns outpace emissions.
 
-OSR is a utility token that meters access to institutional-grade trading infrastructure. The token has one job: convert into compute credits that agents spend on the platform.
+OSR is a utility token that meters access to System R AI compute. The token has one job: convert into compute credits used for supported platform operations.
 
 ---
 
@@ -55,7 +55,7 @@ Agent deposits OSR / SOL / USDC / USDT / PYUSD
 Platform credits compute (USD-pegged via Pyth oracle)
         |
         v
-Agent calls tools (55 tools, 25 brokers)
+User or agent calls supported finance tools
         |
         v
 Compute credits deducted per call
@@ -84,7 +84,7 @@ Protocol buys and burns OSR (treasury operation)
 | Accepted payments | SOL, USDC, USDT |
 | Website | [osrprotocol.com](https://osrprotocol.com) |
 
-**Buyer benefit:** Every wallet that participates in the open sale receives a **permanent 20% discount** on all platform operations, forever. The discount is verified on chain through purchase transaction history. The wallet is the identity.
+**Buyer benefit:** Wallet-level compute benefits may apply according to the current open-sale rules. Eligibility is verified on chain through purchase transaction history. The wallet is the identity.
 
 ---
 
@@ -116,27 +116,19 @@ Protocol buys and burns OSR (treasury operation)
 
 ## Platform
 
-OSR pays for access to [agents.systemr.ai](https://agents.systemr.ai), a complete trading operating system for AI agents.
+OSR pays for supported compute-credit access to [System R AI](https://systemr.ai/), a decision intelligence system for trading and investing.
 
-**55 MCP tools** across seven categories:
+Current tool availability should be verified through the live API Toolkit discovery surface. Public tool areas include:
 
 - **Analysis**: Technical indicators, pattern recognition, signal generation
 - **Intelligence**: Market news, sentiment, earnings, macro events
-- **Risk**: Position sizing, portfolio risk, drawdown limits, kill switch
+- **Risk**: Position sizing, supplied risk inputs, drawdown context, and pre-decision checks
 - **Planning**: Trade planning, strategy backtesting, scenario analysis
-- **Data**: Real-time and historical market data across all asset classes
+- **Data**: Market context where supported or supplied
 - **ML**: Model training, prediction, feature engineering
 - **Memory**: Persistent agent memory, trade journals, learning from outcomes
 
-**25 brokers** across five markets:
-
-- **Traditional**: Equities, options, futures, forex
-- **Crypto**: Centralized exchanges, wallet-based execution
-- **DeFi**: On-chain swaps, liquidity provision
-- **Prediction markets**: Event-based trading
-- **Multi-asset**: Brokers spanning multiple categories
-
-Every tool call costs compute credits. Agents deposit, call tools, and the credits are deducted per operation. Pay per call.
+Credit usage depends on the operation, enabled provider path, and current billing rules. Live pricing and billing responses are the source of truth.
 
 ---
 

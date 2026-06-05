@@ -10,7 +10,7 @@
 
 OSR Protocol is the economic layer for autonomous AI agent operations on the System R AI platform. Burn OSR for compute credits. Every operation burns tokens. Circulating supply decreases as platform usage grows.
 
-The OSR token uses a Burn and Mint Equilibrium (BME) model where users burn OSR to mint USD pegged compute credits that meter access to a complete trading operating system. The protocol provides AI agents and human users with structured access to compute, language models, cloud infrastructure, and all resources required to operate in financial markets. Built on Solana for sub second finality and negligible transaction costs, OSR aligns the incentives of platform users, token holders, and infrastructure operators through transparent onchain economics.
+The OSR token uses a Burn and Mint Equilibrium (BME) model where users burn OSR to mint USD pegged compute credits that meter access to supported System R AI workflows. The protocol provides AI agents and human users with structured access to compute, language models, cloud infrastructure, and decision-support resources used in financial workflows. Built on Solana for sub second finality and negligible transaction costs, OSR aligns the incentives of platform users, token holders, and infrastructure operators through transparent onchain economics.
 
 ---
 
@@ -20,13 +20,13 @@ The OSR token uses a Burn and Mint Equilibrium (BME) model where users burn OSR 
 
 AI agents are reshaping financial markets. Autonomous systems now execute trades, manage risk, analyze sentiment, and allocate capital at speeds and scales impossible for human operators. But these agents face a fundamental infrastructure gap.
 
-Running a capable trading agent requires simultaneous access to language models from multiple providers, cloud compute for backtesting and execution, real time market data, risk management systems, broker connectivity, and regulatory compliance tooling. Today, each agent builder must assemble this stack independently, negotiating separate agreements with cloud providers, language model providers, data providers, brokers, and compliance vendors.
+Running a capable finance workflow can require access to language models, cloud compute, market context, risk management systems, research tools, and compliance-aware records. Today, each builder must assemble this stack independently, negotiating separate agreements with cloud providers, language model providers, data providers, and compliance vendors.
 
 This is the equivalent of every website building its own data center. It does not scale, and it does not need to.
 
 ### 1.2 The Solution
 
-System R AI is a complete trading operating system. It provides the full infrastructure stack that trading agents require: compute, language models from all major providers, cloud resources, risk engines, market connectivity, and operational tooling. All accessible through a single protocol.
+System R AI is a decision intelligence system for trading and investing. It includes an Agentic Trading Workspace for active traders and an API Toolkit for agents, Python workflows, notebooks, and backend services. OSR meters access to supported compute-backed workflows through a single protocol.
 
 OSR is the economic mechanism that meters access to this infrastructure. Rather than monthly invoices, bilateral agreements, or fragmented vendor relationships, agents burn OSR tokens to receive compute credits. These credits are consumed as agents use platform resources. The protocol handles billing, metering, and settlement onchain, removing the need for traditional payment infrastructure between autonomous agents and the platforms they depend on.
 
@@ -90,7 +90,7 @@ Compute credits are the internal unit of account for platform resource consumpti
 | Standard intelligence query (standard model) | 50 | $0.05 |
 | Frontier model intelligence query | 200 | $0.20 |
 | Risk assessment (position sizing, stop levels) | 30 | $0.03 |
-| Execution routing optimization | 20 | $0.02 |
+| Scenario planning support | 20 | $0.02 |
 | Full backtest single strategy 1 year | 500 | $0.50 |
 | Full backtest multi strategy multi year | 2,000 | $2.00 |
 | Data feed query single asset real time | 5 | $0.005 |
@@ -117,7 +117,7 @@ A trading agent monitoring SOL perpetuals on Drift receives a volatility signal 
 |------|---------------|-----------|---------|
 | 1 | Intelligence | Regime analysis: the agent sends market context to a language model for classification of current market conditions | 50 |
 | 2 | Risk | Position sizing: the agent queries the risk engine for maximum position size and stop loss levels given current volatility | 30 |
-| 3 | Execution | Order routing: the agent requests optimal execution routing across available venues | 20 |
+| 3 | Planning | Scenario planning: the agent requests decision-support context for the next step | 20 |
 | **Total** | | **One complete operation** | **100** |
 
 At a credit peg of $0.001 per credit, this operation costs $0.10. The agent runs this cycle 100 times per day. Daily consumption: 10,000 credits ($10). Monthly consumption: 300,000 credits ($300). One agent, one strategy, one market.
@@ -187,7 +187,7 @@ The open sale distributes up to 100,000,000 OSR tokens under the following param
 
 The sale runs continuously from the protocol's mainnet launch and closes only when the hard cap is met. There are no timed pricing tiers and no expiry date. All purchases are verified on chain through wallet transaction history.
 
-**Buyer benefit:** A 20% permanent compute discount on all System R AI operations, applied for the lifetime of the buyer's wallet. Verified on chain through purchase transaction history.
+**Buyer benefit:** Wallet-level compute benefits may apply to supported System R AI operations according to current protocol rules. Eligibility is verified on chain through purchase transaction history.
 
 **Token delivery:** OSR tokens are delivered to the buyer's wallet at the time of purchase. Transfer policies, if any, are governed by the protocol's smart contract state at the time of purchase and are visible on-chain. Compute consumption on the System R AI platform is unrestricted from the moment of purchase.
 
@@ -220,7 +220,7 @@ Approximately 60% of stablecoin revenue funds operations. The remaining 40% fund
 
 The protocol operates two pricing tiers. Both are determined entirely by on chain wallet history.
 
-**Tier 1: Open sale buyers.** Wallets verified on chain through open sale transaction history receive a 20% permanent discount on all platform operations below the standard OSR rate. The discount applies for the lifetime of the wallet's interaction with the platform. Earned through participation in the open sale. Verified on chain. No plan. No contract. No cap. No monthly commitment. No minimum usage. No maximum usage. The wallet is the identity. The balance is the access. The on chain burn history is the loyalty record.
+**Tier 1: Open sale buyers.** Wallets verified on chain through open sale transaction history may receive buyer compute benefits below the standard OSR rate according to current protocol rules. Eligibility is earned through participation in the open sale and verified on chain. No plan. No contract. No cap. No monthly commitment. No minimum usage. No maximum usage. The wallet is the identity. The balance is the access. The on chain burn history is the loyalty record.
 
 **Tier 2: Regular OSR holders.** Wallets that acquired OSR on the open market after launch pay the standard rate with loyalty improvements based on cumulative lifetime burn history:
 
@@ -431,7 +431,7 @@ The OSR token is deployed on Solana mainnet. The open sale runs continuously unt
 The protocol proves product market fit. Burn volume grows. Third party developers begin building agents on the platform. The ecosystem fund starts deploying grants to builders who create agents, integrations, and tooling that expand what users can do on the platform.
 
 **What happens in this phase:**
-Partnerships form with Solana ecosystem protocols. Developer documentation and SDKs enable third party agent builders to access the platform programmatically. The ecosystem fund deploys capital to developers building high quality agents that generate real usage. Cross chain agent operations begin, allowing agents to interact with assets and protocols on chains beyond Solana while settling all compute costs in OSR on Solana. This means an agent managing positions on Ethereum or Arbitrum still burns OSR for the intelligence, risk assessment, and execution planning that the platform provides. OSR becomes the settlement layer for agent operations regardless of which chain the agent operates on.
+Partnerships form with Solana ecosystem protocols. Developer documentation and SDKs enable third party agent builders to access the platform programmatically. The ecosystem fund deploys capital to developers building high quality agents that generate real usage. Cross chain agent operations begin, allowing agents to interact with assets and protocols on chains beyond Solana while settling supported compute costs in OSR on Solana. This means an agent working with positions or research contexts on Ethereum or Arbitrum can still burn OSR for intelligence, risk assessment, and planning support provided by the platform. OSR becomes the settlement layer for supported agent operations regardless of which chain the agent operates on.
 
 **This phase is complete when:** Third party agents are burning OSR independently (not just agents built by the founding team), cross chain operations are processing transactions, and ecosystem grants have funded at least 10 external builder projects.
 
@@ -449,7 +449,7 @@ The protocol uses this data to train proprietary models specialized for financia
 
 ### Phase 4: The New Frontier
 
-The 10 layers that power trading agents (identity, intelligence, planning, execution, data, analysis, memory, risk, compliance, and operations) are not unique to trading. Every industry that involves financial decision making under uncertainty needs the same capabilities. The difference between a trading agent and an insurance underwriting agent is the domain data and the specific models, not the underlying infrastructure.
+The layers that support financial agent workflows, including identity, intelligence, planning, data, analysis, memory, risk, compliance, and operations, are not unique to trading. Every industry that involves financial decision making under uncertainty needs similar capabilities. The difference between a trading agent and an insurance underwriting agent is the domain data and the specific models, not the underlying infrastructure.
 
 The platform extends into adjacent industries by adding domain specific data and models to existing layers: compliance and regulatory reporting for financial institutions, insurance underwriting and risk assessment, corporate treasury management and FX exposure automation, and tokenized real estate portfolio management across chains. Each extension follows the same pattern: existing infrastructure, new domain data, accessible through OSR compute credits.
 
@@ -475,7 +475,7 @@ The platform extends into adjacent industries by adding domain specific data and
 
 ## 12. Conclusion
 
-OSR is infrastructure economics for the age of autonomous agents. It provides a proven economic model (BME), transparent onchain operations, community governance from day one, and the complete trading operating system that agents need to operate in financial markets.
+OSR is infrastructure economics for the age of autonomous agents. It provides a proven economic model (BME), transparent onchain operations, community governance from day one, and compute-credit access for supported System R AI decision-support workflows.
 
 The protocol does not ask users to speculate. It asks them to use infrastructure and pay for what they consume. Users get reliable compute access. Holders participate in protocol governance. Stakers receive emission rewards for securing the economics. The burn mechanism permanently reduces circulating supply as the platform operates. The protocol funds its own growth through sustainable treasury management.
 

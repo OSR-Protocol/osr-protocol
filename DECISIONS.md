@@ -109,7 +109,7 @@
 
 **Geographic Exclusion:** United States, Canada, and all jurisdictions subject to OFAC sanctions. Enforced through self-certification attestation checkbox on the presale page before wallet connection. The buyer attests they are not a citizen or resident of excluded jurisdictions. The attestation response is stored on-chain as a boolean flag (`geo_attested`) in the buyer's presale account.
 
-**Presale Buyer Flag:** Stored on-chain as a boolean (`is_presale_buyer`) in the buyer's account at the time of purchase. This flag is permanent and immutable. It identifies the wallet as a presale participant for the lifetime of the protocol. The platform pricing engine reads this flag to apply the 20% permanent compute discount defined in D-007.
+**Presale Buyer Flag:** Stored on-chain as a boolean (`is_presale_buyer`) in the buyer's account at the time of purchase. This flag is permanent and immutable. It identifies the wallet as a presale participant for the lifetime of the protocol. The platform pricing engine reads this flag to apply buyer compute benefits defined in D-007.
 
 - **Rationale:** Progressive pricing rewards earliest participants with the deepest discount. The 25% week-1 discount creates urgency without a countdown timer. Each week the discount narrows, incentivizing earlier commitment. $549 minimum filters for serious participants. $25,000 cap prevents whale concentration. $500,000 hard cap provides 24+ months runway at $14,700/mo burn rate. Geographic exclusion protects regulatory positioning. On-chain buyer flag enables permanent presale discount without off-chain state.
 
@@ -150,8 +150,8 @@
 
 **Tier 1 — Presale Buyers:**
 - Wallet verified on-chain through presale transaction history (`is_presale_buyer` flag).
-- 20% permanent discount on all platform operations below the standard OSR rate.
-- Discount applies for the lifetime of the wallet's interaction with the platform.
+- Buyer compute benefits may apply to platform operations below the standard OSR rate.
+- Benefits apply according to the current protocol rules for the wallet's interaction with the platform.
 - Earned through early participation. Verified on-chain. Immutable.
 
 **Tier 2 — Regular OSR Holders:**
@@ -165,7 +165,7 @@
 | 500,001 — 1,000,000 | 10% improvement |
 | 1,000,001+ | 15% improvement |
 
-- Maximum regular holder discount: 15%. Presale buyers always maintain a 5% advantage over the highest loyalty tier.
+- Regular holder rate improvements remain below the buyer benefit tier. Presale buyers maintain a protocol-defined advantage over the highest loyalty tier.
 
 **Credit Peg:** 1 credit = $0.001 USD. This is the base unit of platform resource consumption.
 
@@ -251,7 +251,7 @@
 ### D-010: Human vs Agent Payment Rails
 - **Date:** 2026-03-21
 - **Status:** LOCKED
-- **Decision:** The BVI entity operates the token economy only. Fiat billing is operated by a separate entity (System R Technologies LLC). The OSR whitepaper describes two pricing tiers: presale participants (20% permanent discount) and regular holders (standard rate with loyalty improvements). Fiat access exists through the separate operating entity and is acknowledged with one neutral sentence in the whitepaper.
+- **Decision:** The BVI entity operates the token economy only. Fiat billing is operated by a separate entity (System R Technologies LLC). The OSR whitepaper describes two pricing tiers: buyer wallets with protocol-defined compute benefits and regular holders with standard-rate loyalty improvements. Fiat access exists through the separate operating entity and is acknowledged with one neutral sentence in the whitepaper.
 - **Rationale:** Entity separation must be clean in documentation. The BVI entity issues the token and operates the token economy. The US entity operates the SaaS platform and handles fiat billing. Referencing fiat pricing in detail creates a documented operational relationship that undermines BVI Economic Substance Act compliance.
 
 ---
@@ -290,7 +290,7 @@
 - Burn history tiers (creates switching cost — leaving means starting over)
 - Ecosystem composability with other OSR-native agents
 
-- **Rationale:** A 10-20% discount alone is lazy. Real advantages create ecosystem alignment — OSR holders are stakeholders, not just customers. Burn history tiers create switching costs for agents, making the platform stickier.
+- **Rationale:** A percentage discount alone is lazy. Real advantages create ecosystem alignment — OSR holders are stakeholders, not just customers. Burn history tiers create switching costs for agents, making the platform stickier.
 
 ---
 
