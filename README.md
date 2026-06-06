@@ -1,40 +1,41 @@
 # OSR Protocol
 
-Compute credits for System R AI workflows on Solana.
+OSR Protocol is an onchain compute credit and settlement subproject connected to System R AI.
+
+System R AI is a decision intelligence system for trading and investing. OSR is not the primary System R product, and System R should not be described with retired product-category language.
 
 [![Solana Mainnet](https://img.shields.io/badge/Solana-Mainnet-9945FF?logo=solana&logoColor=white)](https://solscan.io/token/E2grvu8fyeeuVaxj2DrHVBqv8j21jK3vyJpXG8FJjJNc)
 [![Tests](https://img.shields.io/badge/tests-passing-brightgreen)](https://github.com/OSR-Protocol/osr-protocol)
-[![Whitepaper](https://img.shields.io/badge/whitepaper-v1.5-blue)](docs/whitepaper.md)
 
----
+## Relationship to System R AI
 
-## What is OSR
+System R AI has two main product layers:
 
-OSR is a utility token on Solana that supports compute-credit access for [System R AI](https://systemr.ai/) workflows. Where enabled, users can use OSR to receive USD-pegged compute credits for supported decision-support operations such as risk checks, position sizing, performance diagnostics, market context, journal workflows, and related finance tools.
+1. Agentic Trading Workspace
+For active traders to research, plan, journal, and review decisions.
 
-The token uses a **Burn and Mint Equilibrium (BME)** model. When OSR is deposited directly through supported protocol flows, the tokens are burned and permanently removed from circulation. When stablecoins are used through supported flows, the protocol can use that revenue for treasury operations that may include OSR buyback and burn.
+2. API Toolkit
+Finance tools for agents, Python workflows, notebooks, and backend services.
 
-1 billion OSR tokens were minted at launch. Immutable. Mint authority permanently revoked. The emission pool releases pre-minted tokens on a declining schedule over 8 years to stakers and the ecosystem. Total supply only moves in one direction as burns outpace emissions.
+OSR Protocol may support compute credit and settlement research around these workflows.
 
-OSR is a utility token that meters access to System R AI compute. The token has one job: convert into compute credits used for supported platform operations.
+## What this repository contains
 
----
+This repository contains protocol source code, contract history, security notes, and supporting materials for OSR Protocol. Legacy contract documentation is included for repository history. It is not current System R AI product positioning.
 
-## Token Details
+Contract names, source-code paths, and historical identifiers may remain in the codebase where changing them would break technical history or deployed contract references. Public product language should use OSR Protocol and System R AI's current positioning.
+
+## Token reference
 
 | Property | Value |
 |---|---|
 | Symbol | OSR |
-| Name | Operating System R |
 | Network | Solana mainnet |
 | Mint Address | `E2grvu8fyeeuVaxj2DrHVBqv8j21jK3vyJpXG8FJjJNc` |
-| Total Supply | 1,000,000,000 |
-| Decimals | 9 |
 | Token Program | SPL Token |
-| Mint Authority | Permanently revoked (immutable supply) |
+| Mint Authority | Permanently revoked |
 | Freeze Authority | Permanently revoked |
-| Model | Burn and Mint Equilibrium |
-| Issuer | OSR Protocol Inc. (BVI No. 2204362) |
+| Issuer | OSR Protocol Inc. |
 
 Verify on chain:
 
@@ -44,208 +45,55 @@ spl-token supply E2grvu8fyeeuVaxj2DrHVBqv8j21jK3vyJpXG8FJjJNc --url mainnet-beta
 
 [View on Solscan](https://solscan.io/token/E2grvu8fyeeuVaxj2DrHVBqv8j21jK3vyJpXG8FJjJNc)
 
----
+## System R AI context
 
-## How It Works
+System R AI is the primary product company. The public product architecture is:
 
-```
-Agent deposits OSR / SOL / USDC / USDT / PYUSD
-        |
-        v
-Platform credits compute (USD-pegged via Pyth oracle)
-        |
-        v
-User or agent calls supported finance tools
-        |
-        v
-Compute credits deducted per call
-        |
-        v
-Protocol buys and burns OSR (treasury operation)
-```
+- Agentic Trading Workspace: for active traders to research, plan, journal, and review decisions.
+- API Toolkit: finance tools for agents, Python workflows, notebooks, and backend services.
 
-**Direct OSR deposits:** Tokens are burned immediately. Credits issued at the current Pyth oracle price.
+Current API Toolkit capabilities are described in the docs and machine readable agent metadata. Developers should use the documented MCP, SDK, REST, and OpenAPI surfaces that are live and valid.
 
-**Stablecoin deposits:** User pays for platform access (step 1). The protocol handles buyback and burn as a separate treasury operation (step 2). This two-step separation keeps the user flow clean and maintains BVI VASP compliance.
+## Trust boundary
 
-**Credit batching:** Agents burn once and receive a batch of credits. This keeps per-call transaction fees efficient relative to micro compute operations.
-
----
-
-## Token Allocation
-
-| Allocation | % | Tokens | Purpose |
-|---|---|---|---|
-| Emission | 30% | 300,000,000 | BME buyback pool, declining schedule over 8 years |
-| Ecosystem | 20% | 200,000,000 | Grants, partnerships, developer incentives |
-| Treasury | 12% | 120,000,000 | Strategic reserve |
-| Open Sale | 10% | 100,000,000 | Open public sale at $0.005 flat, $500,000 hard cap |
-| Ashim Nandi | 14% | 140,000,000 | Founder (1 year cliff, 4 year linear monthly) |
-| Liquidity | 5% | 50,000,000 | Protocol-owned DEX pools (Raydium, Orca) |
-| Jason | 5% | 50,000,000 | Early investor (6 month cliff, 2 year linear, custody) |
-| Lynn | 3% | 30,000,000 | Early investor (6 month cliff, 2 year linear, custody) |
-| Future Team | 1% | 10,000,000 | Employee vesting (1 year cliff, 3 year linear) |
-
-77% of supply is in protocol working pools. 23% is allocated to the people who built and funded the project, all locked behind cliff and vesting periods. In Year 1, all insider tokens are locked.
-
-**Vesting summary:**
-
-| Recipient | Cliff | Vesting |
-|---|---|---|
-| Founder | 1 year | 4 years linear monthly |
-| Early investors | 6 months | 2 years linear monthly |
-| Future team | 1 year | 3 years linear monthly |
-
----
-
-## Platform
-
-OSR pays for supported compute-credit access to [System R AI](https://systemr.ai/), a decision intelligence system for trading and investing.
-
-Current tool availability should be verified through the live API Toolkit discovery surface. Public tool areas include:
-
-- **Analysis**: Technical indicators, pattern recognition, and structured market reads
-- **Intelligence**: Market news, sentiment, earnings, macro events
-- **Risk**: Position sizing, supplied risk inputs, drawdown context, and pre-decision checks
-- **Planning**: Trade planning, strategy backtesting, scenario analysis
-- **Data**: Market context where supported or supplied
-- **ML**: Model training, feature engineering, and analytics workflows
-- **Memory**: Persistent agent memory, trade journals, learning from outcomes
-
-Credit usage depends on the operation, enabled provider path, and current billing rules. Live pricing and billing responses are the source of truth.
-
-## Trust Boundary
-
-System R AI is software for decision support. It is not financial advice, not a broker, not a signal service, and not a guarantee of profits. AI outputs can be wrong. Users remain responsible for their own trading and investing decisions.
-
----
-
-## Contracts
-
-| Contract | Address | Tests |
-|---|---|---|
-| Presale | `9K1VNBCK6WRDVzYbidG4hH9L3crPXxhqvTBACqM5q8bi` | 37 passing |
-| Escrow/Vesting | Deployed on mainnet | 13 passing |
-
-Both contracts are written in Rust using the Anchor framework. Under 1,000 lines of custom Rust each. All audit findings are documented and remediated in [SECURITY.md](SECURITY.md).
-
-**Security measures:**
-
-- Anchor framework (account validation, signer checks)
-- Automated static analysis (Soteria)
-- Dependency auditing (cargo audit)
-- Fuzz testing (Trdelnik)
-- All mainnet operations use Ledger hardware wallets
-- Mint authority revoked, freeze authority revoked
-
----
-
-## Repository Structure
-
-```
-osr-protocol/
-    contracts/
-        presale/           Anchor presale program (37 tests)
-        escrow/            Anchor vesting and escrow program (13 tests)
-    docs/
-        whitepaper.md      Full protocol specification
-    agents/                Python agents (wallet discovery, social channels)
-    dashboard/             Next.js ops dashboard
-    scripts/               Token mint, airdrop, messaging utilities
-    shared/                Common Python: config, LLM client, DynamoDB helpers
-    tests/                 Python unit tests
-    keys/                  Allocation proof (public keys only)
-    infra/                 Cloud resource definitions
-    tools/                 Developer tooling
-    DECISIONS.md           22 locked design decisions with rationale
-    SECURITY.md            Full audit: 42 findings, all remediated
-```
-
----
+System R AI is software for decision support.
+It is not financial advice.
+It is not a broker.
+It is not a signal service.
+It does not guarantee profits.
+AI outputs can be wrong.
+Users remain responsible for their own trading and investing decisions.
 
 ## Development
 
 ### Prerequisites
 
-- Rust (stable)
+- Rust
 - Anchor CLI
 - Solana CLI
-- Node.js 18+
+- Node.js
 - Python 3.11+
 
-### Build and test the presale contract
+### Build and test
+
+Use the contract and package folders in this repository for local development. Avoid changing deployed contract identifiers unless the change has been explicitly approved.
 
 ```bash
-cd contracts/presale
-anchor build
-anchor test              # 37 tests
-```
-
-### Build and test the escrow contract
-
-```bash
-cd contracts/escrow
-anchor build
-anchor test              # 13 tests
-```
-
-### Run Python agents and scripts
-
-```bash
-python -m venv .venv && source .venv/bin/activate
-pip install -e ".[dev]"
-cp .env.template .env    # fill in API keys
 pytest
 ```
-
-### Run the ops dashboard
-
-```bash
-cd dashboard
-npm install
-npm run dev              # http://localhost:3000
-```
-
-### Verify on Solana
-
-```bash
-# Check total supply
-spl-token supply E2grvu8fyeeuVaxj2DrHVBqv8j21jK3vyJpXG8FJjJNc --url mainnet-beta
-
-# Check presale program
-solana program show 9K1VNBCK6WRDVzYbidG4hH9L3crPXxhqvTBACqM5q8bi --url mainnet-beta
-```
-
----
-
-## Team
-
-| | |
-|---|---|
-| **Ashim Nandi** | Founder &amp; CEO. Builds the infrastructure that lets systematic traders and AI agents operate global markets from a single workspace. |
-
----
 
 ## Links
 
 | | |
 |---|---|
-| Website | [osrprotocol.com](https://osrprotocol.com) |
-| Platform | [agents.systemr.ai](https://agents.systemr.ai) |
+| OSR Protocol website | [osrprotocol.com](https://osrprotocol.com) |
 | System R AI | [systemr.ai](https://systemr.ai) |
-| X | [@OsrProtocol](https://x.com/OsrProtocol) |
-| LinkedIn | [osr-protocol-inc](https://linkedin.com/company/osr-protocol-inc) |
+| System R Docs | [docs.systemr.ai](https://docs.systemr.ai) |
+| System R Agents | [agents.systemr.ai](https://agents.systemr.ai) |
 | GitHub | [OSR-Protocol](https://github.com/OSR-Protocol) |
-| Email | hello@osrprotocol.com |
-
----
 
 ## Legal
 
-Issued by **OSR Protocol Inc.** (BVI No. 2204362)
-Intershore Chambers, Road Town, Tortola, British Virgin Islands.
+Issued by OSR Protocol Inc.
 
-- Terms of Service: [osrprotocol.com/terms.html](https://osrprotocol.com/terms.html)
-- Privacy Policy: [osrprotocol.com/privacy.html](https://osrprotocol.com/privacy.html)
-
-This repository and its contents are for informational purposes. OSR tokens are utility tokens that provide access to platform compute services. Participation in the open sale is subject to the terms published at osrprotocol.com. Please review all documentation and consult legal and financial advisors before participating.
+This repository is for informational and development purposes. It is not investment advice, financial advice, a profit guarantee, a broker service, or a signal service.
