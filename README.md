@@ -38,9 +38,9 @@ OSR is designed for compute-credit access where OSR utility is enabled. The prot
 Current public pages:
 
 - OSR website: https://osrprotocol.com/
-- Whitepaper: https://osrprotocol.com/whitepaper.html
-- Transparency: https://osrprotocol.com/transparency.html
-- About: https://osrprotocol.com/about.html
+- Whitepaper: https://osrprotocol.com/whitepaper
+- Transparency: https://osrprotocol.com/transparency
+- About: https://osrprotocol.com/about
 
 ## Relationship to System R AI
 
