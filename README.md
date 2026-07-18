@@ -44,7 +44,7 @@ Current public pages:
 
 ## Relationship to System R AI
 
-System R AI is the first supported product surface for OSR compute-credit utility. System R AI is a decision intelligence system for trading and investing, while OSR remains the protocol and token layer for access, settlement, and onchain participation.
+System R AI is an Agentic Trading System built to manage meaningful capital across global markets for risk-adjusted returns. It is the first supported product surface for OSR compute-credit utility, while OSR remains the protocol and token layer for access, settlement, and onchain participation.
 
 ## Development
 

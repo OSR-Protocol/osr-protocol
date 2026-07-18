@@ -8,9 +8,9 @@
 
 ## Abstract
 
-OSR Protocol is the economic layer for autonomous AI agent operations on the System R AI platform. Burn OSR for compute credits. Every operation burns tokens. Circulating supply decreases as platform usage grows.
+OSR Protocol is the economic layer for supported agentic operations. Burn OSR for compute credits. Every eligible operation burns tokens. Circulating supply decreases as supported usage grows.
 
-The OSR token uses a Burn and Mint Equilibrium (BME) model where users burn OSR to mint USD pegged compute credits that meter access to supported System R AI workflows. The protocol provides AI agents and human users with structured access to compute, language models, cloud infrastructure, and decision-support resources used in financial workflows. Built on Solana for sub second finality and negligible transaction costs, OSR aligns the incentives of platform users, token holders, and infrastructure operators through transparent onchain economics.
+The OSR token uses a Burn and Mint Equilibrium (BME) model where users burn OSR to mint USD pegged compute credits that meter access to supported workflows. The protocol provides eligible users and systems with structured access to compute resources. Built on Solana for sub second finality and negligible transaction costs, OSR aligns the incentives of platform users, token holders, and infrastructure operators through transparent onchain economics.
 
 ---
 
@@ -26,9 +26,9 @@ This is the equivalent of every website building its own data center. It does no
 
 ### 1.2 The Solution
 
-System R AI is a decision intelligence system for trading and investing. It includes an Agentic Trading Workspace for active traders and an API Toolkit for agents, Python workflows, notebooks, and backend services. OSR meters access to supported compute-backed workflows through a single protocol.
+System R AI is an Agentic Trading System built to manage meaningful capital across global markets for risk-adjusted returns. It is the first supported product surface for OSR compute-credit utility. OSR meters access to eligible compute-backed workflows through a separate protocol and token layer.
 
-OSR is the economic mechanism that meters access to this infrastructure. Rather than monthly invoices, bilateral agreements, or fragmented vendor relationships, agents burn OSR tokens to receive compute credits. These credits are consumed as agents use platform resources. The protocol handles billing, metering, and settlement onchain, removing the need for traditional payment infrastructure between autonomous agents and the platforms they depend on.
+OSR is the economic mechanism that meters access to supported infrastructure. Rather than monthly invoices, bilateral agreements, or fragmented vendor relationships, eligible participants burn OSR tokens to receive compute credits. These credits are consumed through supported product usage. The protocol handles metering and settlement onchain.
 
 ### 1.3 Why a Token
 
@@ -419,21 +419,21 @@ The protocol evolves through four phases. Each phase is defined by milestones, n
 
 ### Phase 1: Foundation, Launch, User Acquisition
 
-The protocol goes live. Users and agents access the full platform from day one. Without users there is no burn, no revenue, and no protocol. User acquisition is not a later phase activity. It is the central objective from the first day of operations.
+The protocol goes live with supported product usage. Without users there is no burn, no revenue, and no protocol. User acquisition is not a later phase activity. It is the central objective from the first day of operations.
 
 **What happens in this phase:**
-The OSR token is deployed on Solana mainnet. The open sale runs continuously until the hard cap is reached. Liquidity pools launch on Raydium and Orca, providing immediate trading access. The System R AI platform becomes accessible through OSR compute credits. The first real burns occur onchain, publicly verifiable by anyone. Staking activates, giving holders the ability to lock OSR for emission rewards and governance participation. Paid acquisition campaigns and community building run in parallel with platform operations, driving signups to a live, functional product.
+The OSR token is deployed on Solana mainnet. The open sale runs continuously until the hard cap is reached. Liquidity pools launch on Raydium and Orca, providing immediate trading access. Eligible System R AI usage becomes accessible through OSR compute credits. The first real burns occur onchain, publicly verifiable by anyone. Staking activates, giving holders the ability to lock OSR for emission rewards and governance participation. Paid acquisition campaigns and community building run in parallel with protocol operations.
 
 **This phase is complete when:** The platform has active users burning OSR for compute credits on a sustained daily basis and DEX liquidity is established.
 
 ### Phase 2: Traction, Ecosystem, Cross Chain
 
-The protocol proves product market fit. Burn volume grows. Third party developers begin building agents on the platform. The ecosystem fund starts deploying grants to builders who create agents, integrations, and tooling that expand what users can do on the platform.
+The protocol proves product market fit. Burn volume grows. Supported integrations expand and the ecosystem fund can deploy grants to work that increases verifiable protocol usage.
 
 **What happens in this phase:**
-Partnerships form with Solana ecosystem protocols. Developer documentation and SDKs enable third party agent builders to access the platform programmatically. The ecosystem fund deploys capital to developers building high quality agents that generate real usage. Cross chain agent operations begin, allowing agents to interact with assets and protocols on chains beyond Solana while settling supported compute costs in OSR on Solana. This means an agent working with positions or research contexts on Ethereum or Arbitrum can still burn OSR for intelligence, risk assessment, and planning support provided by the platform. OSR becomes the settlement layer for supported agent operations regardless of which chain the agent operates on.
+Partnerships form with Solana ecosystem protocols. The ecosystem fund can deploy capital to supported integrations that generate real usage. Cross-chain operations can settle eligible compute costs in OSR on Solana. OSR becomes the protocol layer for supported operations regardless of where the underlying product workflow originates.
 
-**This phase is complete when:** Third party agents are burning OSR independently (not just agents built by the founding team), cross chain operations are processing transactions, and ecosystem grants have funded at least 10 external builder projects.
+**This phase is complete when:** Supported operations are burning OSR independently, cross-chain operations are processing transactions, and ecosystem grants have funded verifiable protocol usage.
 
 ### Phase 3: Self Governance, Proprietary Intelligence
 
@@ -475,7 +475,7 @@ The platform extends into adjacent industries by adding domain specific data and
 
 ## 12. Conclusion
 
-OSR is infrastructure economics for the age of autonomous agents. It provides a proven economic model (BME), transparent onchain operations, community governance from day one, and compute-credit access for supported System R AI decision-support workflows.
+OSR is infrastructure economics for the age of autonomous agents. It provides a proven economic model (BME), transparent onchain operations, community governance from day one, and compute-credit access for eligible System R AI Agentic Trading System workflows.
 
 The protocol does not ask users to speculate. It asks them to use infrastructure and pay for what they consume. Users get reliable compute access. Holders participate in protocol governance. Stakers receive emission rewards for securing the economics. The burn mechanism permanently reduces circulating supply as the platform operates. The protocol funds its own growth through sustainable treasury management.
 
