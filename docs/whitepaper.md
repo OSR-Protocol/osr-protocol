@@ -26,7 +26,7 @@ This is the equivalent of every website building its own data center. It does no
 
 ### 1.2 The Solution
 
-System R AI is an Agentic Trading System built to manage meaningful capital across global markets for risk-adjusted returns. It is the first supported product surface for OSR compute-credit utility. OSR meters access to eligible compute-backed workflows through a separate protocol and token layer.
+System R AI is a quantitative investment and trading platform for investors and asset managers. It builds agentic systems that combine investment and trading workflows with big data analytics and proprietary AI across research, risk, execution, and oversight. It is the first supported product surface for OSR compute-credit utility. OSR meters access to eligible compute-backed workflows through a separate protocol and token layer.
 
 OSR is the economic mechanism that meters access to supported infrastructure. Rather than monthly invoices, bilateral agreements, or fragmented vendor relationships, eligible participants burn OSR tokens to receive compute credits. These credits are consumed through supported product usage. The protocol handles metering and settlement onchain.
 
@@ -475,7 +475,7 @@ The platform extends into adjacent industries by adding domain specific data and
 
 ## 12. Conclusion
 
-OSR is infrastructure economics for the age of autonomous agents. It provides a proven economic model (BME), transparent onchain operations, community governance from day one, and compute-credit access for eligible System R AI Agentic Trading System workflows.
+OSR is infrastructure economics for the age of autonomous agents. It provides a proven economic model (BME), transparent onchain operations, community governance from day one, and compute-credit access for eligible System R AI workflows.
 
 The protocol does not ask users to speculate. It asks them to use infrastructure and pay for what they consume. Users get reliable compute access. Holders participate in protocol governance. Stakers receive emission rewards for securing the economics. The burn mechanism permanently reduces circulating supply as the platform operates. The protocol funds its own growth through sustainable treasury management.
 
